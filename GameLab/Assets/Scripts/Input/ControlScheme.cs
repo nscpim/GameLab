@@ -17,24 +17,24 @@ public class ControlScheme : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (!isActive || input == null || _input.Length == 0)
         {
             return;
         }
 
-        foreach (InputBinding binding in _input) 
+        foreach (InputBinding binding in _input)
         {
             binding.HandleBinding();
         }
-       
+
 
     }
 
-    public void AssignInput(Player player) 
+    public void AssignInput(Player player)
     {
         _input[(int)InputAction.Test].action = player.Test;
     }
-     
+
 }

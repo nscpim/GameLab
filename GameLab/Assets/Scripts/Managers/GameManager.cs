@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool paused;
 
     [Header("Players")]
-    public Player[] player; 
+    public Player player; 
 
     public static GameManager instance { get; private set; }
 
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
+        inGame = true;
         for (int i = 0; i < managers.Length; i++)
         {
             managers[i].Awake();
@@ -92,6 +93,11 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Pause(value);
         }
+    }
+
+    public static bool GetInGame() 
+    {
+        return inGame;
     }
 
 
