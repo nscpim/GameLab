@@ -19,7 +19,6 @@ public class Player : Actor
         scheme.Update();
     }
 
-
     public void SetViewPortRect(string _name) 
     {
         switch (_name)
@@ -62,7 +61,6 @@ public class Player : Actor
     public void Test()
     {
         Debug.Log("Test has been called");
-
     }
 
 }

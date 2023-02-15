@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
 
-public class ControlScheme : MonoBehaviour
+public class ControlScheme
 {
     public bool isActive;
     public Dictionary<InputAction, InputBinding> input;
@@ -28,8 +27,6 @@ public class ControlScheme : MonoBehaviour
         {
             binding.HandleBinding();
         }
-
-
     }
 
     public void AssignInput(Player player)

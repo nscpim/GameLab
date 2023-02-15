@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InputBinding : MonoBehaviour
+public class InputBinding
 {
 
     public Action action;
