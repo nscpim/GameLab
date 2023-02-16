@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : Actor
 {
     private ControlScheme scheme;
     private Camera mainCamera;
+    [HideInInspector]public int playerInt;
+    private float gravity = 20f;
+
+    private Vector3 moveDirection = Vector3.zero;
+    private int speed = 6;
     //Start is called before the first frame update
     void Start()
     {
@@ -18,6 +24,8 @@ public class Player : Actor
     void Update()
     {
         scheme.Update();
+
+        moveDirection.y -= gravity * Time.deltaTime;
     }
 
     public void SetViewPortRect(string _name, int amount)
@@ -107,7 +115,20 @@ public class Player : Actor
 
     public void Test()
     {
-        Debug.Log("Test has been called");
+        Debug.Log("Input Called from: " + gameObject.name);
+     
+        CharacterController controller = GetComponent<CharacterController>();
+        Debug.Log(controller.isGrounded);
+        if (controller.isGrounded)
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerInt), 0, 0);
+            moveDirection = transform.TransformDirection(moveDirection);
+
+            moveDirection *= speed;
+          
+
+            controller.Move(moveDirection);
+        }
     }
 
 }

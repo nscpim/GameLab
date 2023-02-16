@@ -5,7 +5,6 @@ using UnityEngine;
 public class InputManager : Manager
 {
     private ControlScheme[] schemes;
-    public bool setControlScheme;
 
     public InputManager()
     {
@@ -23,19 +22,16 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal" },
-                 new InputBinding() {  },
+                 new InputBinding() { axis = "Horizontal1" },
                }
-
             },
             new ControlScheme()
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Vertical" },
+                 new InputBinding() { axis = "Horizontal2" },
 
                }
-
             },
        };
                 break;
@@ -112,7 +108,6 @@ public class InputManager : Manager
             default:
                 break;
         }
-        setControlScheme = true;
     }
 
 
@@ -140,6 +135,7 @@ public class InputManager : Manager
             schemes[i].isActive = true;
             Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 10), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.transform.rotation);
             player.name = GameManager.instance.player.name = "Player: " + (i + 1);
+            player.playerInt = i + 1;
             if (player.name != "Player: 1")
             {
                 Object.Destroy(player.GetComponentInChildren<AudioListener>());

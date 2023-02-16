@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
 
     [Header("UI")]
-    public int amountOfPlayers;
+    [HideInInspector]public int amountOfPlayers;
 
     public static GameManager instance { get; private set; }
 
@@ -70,10 +70,7 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Update();
         }
-
-        print(amountOfPlayers);
     }
-
 
     public static void LoadLevel(Levels level)
     {
