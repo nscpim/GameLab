@@ -9,8 +9,9 @@ public class Player : Actor
     //Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         mainCamera = GetComponentInChildren<Camera>();
-        SetViewPortRect(gameObject.name);
+        SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
     }
 
     // Update is called once per frame
@@ -19,26 +20,72 @@ public class Player : Actor
         scheme.Update();
     }
 
-    public void SetViewPortRect(string _name) 
+    public void SetViewPortRect(string _name, int amount)
     {
-        switch (_name)
+
+        //X , Y, Width and Height
+        //Widh and height are always the same in 2 or 4 players
+        //X position of screen on the X axis, starting from the bottom left corner
+        //Y Position of screen on the Y axis, starting from the bottom
+        switch (amount)
         {
-            case "Player: 1":
-                mainCamera.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+            case 2:
+                switch (_name)
+                {
+                    case "Player: 1":
+                        mainCamera.rect = new Rect(0, 0.5f, 1f, 0.5f);
+                        break;
+                    case "Player: 2":
+                        mainCamera.rect = new Rect(0f, 0f, 1f, 0.5f);
+                        break;
+                    default:
+                        Debug.LogError("Players not correctly initalized!");
+                        break;
+                }
                 break;
-            case "Player: 2":
-                mainCamera.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            case 3:
+                switch (_name)
+                {
+                    case "Player: 1":
+                        mainCamera.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                        break;
+                    case "Player: 2":
+                        mainCamera.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                        break;
+                    case "Player: 3":
+                        mainCamera.rect = new Rect(0f, 0f, 1f, 0.5f);
+                        break;
+                    default:
+                        Debug.LogError("Players not correctly initalized!");
+                        break;
+                }
                 break;
-            case "Player: 3":
-                mainCamera.rect = new Rect(0f, 0f, 0.5f, 0.5f);
-                break;
-            case "Player: 4":
-                mainCamera.rect = new Rect(0.5f, 0f, 0.5f, 0.5f);
+            case 4:
+                switch (_name)
+                {
+                    case "Player: 1":
+                        mainCamera.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                        break;
+                    case "Player: 2":
+                        mainCamera.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                        break;
+                    case "Player: 3":
+                        mainCamera.rect = new Rect(0f, 0f, 0.5f, 0.5f);
+                        break;
+                    case "Player: 4":
+                        mainCamera.rect = new Rect(0.5f, 0f, 0.5f, 0.5f);
+                        break;
+                    default:
+                        Debug.LogError("Players not correctly initalized!");
+                        break;
+                }
                 break;
             default:
-                Debug.LogError("Player not correctly initalized!");
                 break;
         }
+
+
+
 
 
     }

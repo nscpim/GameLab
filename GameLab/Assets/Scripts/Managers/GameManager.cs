@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
     public static bool paused;
 
     [Header("Players")]
-    public Player player; 
+    public Player player;
+
+
+    [Header("UI")]
+    public int amountOfPlayers;
 
     public static GameManager instance { get; private set; }
 
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static T GetManager<T>() where T : Manager 
+    public static T GetManager<T>() where T : Manager
     {
         for (int i = 0; i < managers.Length; i++)
         {
@@ -42,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        inGame = true;
         for (int i = 0; i < managers.Length; i++)
         {
             managers[i].Awake();
@@ -67,10 +70,12 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Update();
         }
+
+        print(amountOfPlayers);
     }
 
 
-    public static void LoadLevel(Levels level) 
+    public static void LoadLevel(Levels level)
     {
         SceneManager.LoadScene((int)level);
         if (level == Levels.InGame)
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviour
         {
             inGame = false;
         }
-    
+
     }
 
     public static void Pause(bool value)
@@ -95,12 +100,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static bool GetInGame() 
+    public static bool GetInGame()
     {
         return inGame;
     }
 
+    public void SetAmountOfPlayers(int value)
+    {
+        amountOfPlayers = value;
+    }
 
+    public int GetAmountOfPlayers() 
+    {
+        return amountOfPlayers; 
+    }
 }
 public enum Levels 
 {
