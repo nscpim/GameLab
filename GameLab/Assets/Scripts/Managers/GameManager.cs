@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         managers = new Manager[]
         {
             new InputManager(),
+            new AudioManager(),
         };
     }
 
