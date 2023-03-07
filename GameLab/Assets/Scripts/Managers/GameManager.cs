@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Players")]
     public Player player;
-
+    public ScriptableCharacter[] characters;
 
     [Header("UI")]
     [HideInInspector]public int amountOfPlayers;

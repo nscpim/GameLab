@@ -9,7 +9,7 @@ public class Player : Actor
     private Camera mainCamera;
     [HideInInspector]public int playerInt;
     private float gravity = 20f;
-
+    [SerializeField] private ScriptableCharacter character; 
     private Vector3 moveDirection = Vector3.zero;
     private int speed = 6;
     //Start is called before the first frame update
@@ -18,6 +18,7 @@ public class Player : Actor
         DontDestroyOnLoad(gameObject);
         mainCamera = GetComponentInChildren<Camera>();
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+   
     }
 
     // Update is called once per frame

@@ -214,3 +214,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInt: 0
+  character: {fileID: 0}
