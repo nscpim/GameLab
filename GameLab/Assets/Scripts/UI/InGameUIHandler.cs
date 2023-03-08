@@ -7,20 +7,28 @@ using UnityEngine.UI;
 public class InGameUIHandler : MonoBehaviour
 {
     public GameObject[] panels;
-  
-   
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < GameManager.instance.amountOfPlayers; i++)
+        GameManager.instance.canSelect = true;
+    }
+
+    public void SetupPanels()
+    {
+        switch (GameManager.instance.amountOfPlayers)
         {
-            panels[i].gameObject.SetActive(true);
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
         }
 
-        GameManager.instance.canSelect = true;
     }
 
     // Update is called once per frame
@@ -29,11 +37,12 @@ public class InGameUIHandler : MonoBehaviour
 
     }
 
-    public void ChooseCharacter(Character character)
+    public void ChooseCharacter(int character)
     {
         switch (GameManager.instance.order)
         {
             case 0:
+                GameManager.instance.currentPlayers[GameManager.instance.order].SelectedCharacter((Character)character);
                 break;
             case 1:
                 break;
@@ -45,7 +54,7 @@ public class InGameUIHandler : MonoBehaviour
                 break;
         }
         //Reference to the player who pressed it
-       GameManager.instance.order++;
+        GameManager.instance.order++;
 
     }
 
