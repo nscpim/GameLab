@@ -8,7 +8,7 @@ public class ScriptableCharacter : ScriptableObject
 {
     public string characterName;
     public int characterID;
-    public Character character;
+    public Character characterEnum;
     [TextArea(3, 10)]
     public string description;
     public Image abilityIcon;
@@ -17,33 +17,8 @@ public class ScriptableCharacter : ScriptableObject
     public float abilityCooldown;
     public float moveSpeed;
     public float jumpHeight;
-    private float timeStamp;
 
-   
     // Start is called before the first frame update
-
-    public void ExecuteAbility() 
-    {
-        if (timeStamp <= Time.time)
-        {
-            switch (character)
-            {
-                case Character.Test:
-                    break;
-                case Character.Test1:
-                    break;
-                case Character.Test2:
-                    break;
-                case Character.Test3:
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        timeStamp = Time.time + abilityCooldown;
-    }
-
     public void Awake()
     {
         
@@ -54,14 +29,4 @@ public class ScriptableCharacter : ScriptableObject
     {
         
     }
-
-    public enum Character 
-    {
-    Test,
-    Test1,
-    Test2,
-    Test3,
-    }
-
 }
-

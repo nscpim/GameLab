@@ -445,8 +445,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 850194483}
-  - component: {fileID: 850194484}
   - component: {fileID: 850194485}
+  - component: {fileID: 850194484}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -478,11 +478,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 850194481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6729904538beba4fa641005d0edc2db, type: 3}
+  m_Script: {fileID: 11500000, guid: 8faf2cd3b758e8246912337a1d85f638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5063050315645604358, guid: 1389ff44490370f4d801ac46507fd236, type: 3}
-  amountOfPlayers: 0
+  audioGroups: []
 --- !u!114 &850194485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,12 +491,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 850194481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d531352d4b83cf40b041626aa3fa8a4, type: 3}
+  m_Script: {fileID: 11500000, guid: fcecbd7e99589064abca50af96f821f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioGroups:
-  - name: 
-    clips: []
+  player: {fileID: 6733709232715596240, guid: 1d476fa0bbd735d40a8a0f46d8d22dfa, type: 3}
+  characters:
+  - {fileID: 11400000, guid: 0d072040bb839cb4eb33a4b7b83a82e2, type: 2}
+  - {fileID: 11400000, guid: 9b919f2d06b62944b84bfd5eb00e77a5, type: 2}
+  - {fileID: 11400000, guid: c9cf8d9a520de484bb232cbd1dfaf40e, type: 2}
+  - {fileID: 11400000, guid: 73662456d41860042b3c0d234e0764bf, type: 2}
+  amountOfPlayers: 0
 --- !u!1 &923807755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1019,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1273423647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ace08b5aad9a12248be722704311af61, type: 3}
+  m_Script: {fileID: 11500000, guid: 126dbb704703cd242861b2a9444d7c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1298078511

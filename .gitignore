@@ -75,5 +75,3 @@ crashlytics-build.properties
 #VSCONFIG
 *.vsconfig
 
-#metafiles
-*.meta

@@ -12,11 +12,16 @@ public class GameManager : MonoBehaviour
     public static bool paused;
 
     [Header("Players")]
+    //Initial player object
     public Player player;
+    //Referenced Players
+    public List<Player> currentPlayers = new List<Player>();
     public ScriptableCharacter[] characters;
 
     [Header("UI")]
-    [HideInInspector]public int amountOfPlayers;
+    [HideInInspector] public int amountOfPlayers;
+    public bool canSelect = false;
+    public int order = 0;
 
     public static GameManager instance { get; private set; }
 
@@ -108,14 +113,26 @@ public class GameManager : MonoBehaviour
         amountOfPlayers = value;
     }
 
-    public int GetAmountOfPlayers() 
+    public int GetAmountOfPlayers()
     {
-        return amountOfPlayers; 
+        return amountOfPlayers;
+    }
+
+    public void AddToGameManager(Player player)
+    {
+        currentPlayers.Add(player);
     }
 }
-public enum Levels 
+public enum Levels
 {
     MainMenu,
     InGame,
 
+}
+public enum Character
+{
+    Test,
+    Test1,
+    Test2,
+    Test3,
 }

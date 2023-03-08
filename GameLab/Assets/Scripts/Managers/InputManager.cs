@@ -15,6 +15,7 @@ public class InputManager : Manager
     {
         switch (GameManager.instance.GetAmountOfPlayers())
         {
+            //2 Players Array
             case 2:
                 schemes = new ControlScheme[]
        {
@@ -23,6 +24,7 @@ public class InputManager : Manager
             _input = new InputBinding[]
                {
                  new InputBinding() { axis = "Horizontal1" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
             },
             new ControlScheme()
@@ -35,6 +37,7 @@ public class InputManager : Manager
             },
        };
                 break;
+                //3 Players array
             case 3:
                 schemes = new ControlScheme[]
 {
@@ -65,6 +68,7 @@ public class InputManager : Manager
             },
         };
                 break;
+                //4 Players Array
             case 4:
                 schemes = new ControlScheme[]
        {
@@ -103,7 +107,6 @@ public class InputManager : Manager
             },
 
        };
-
                 break;
             default:
                 break;
@@ -134,6 +137,7 @@ public class InputManager : Manager
             }
             schemes[i].isActive = true;
             Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 10), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.transform.rotation);
+            GameManager.instance.AddToGameManager(player);
             player.name = GameManager.instance.player.name = "Player: " + (i + 1);
             player.playerInt = i + 1;
             if (player.name != "Player: 1")
@@ -141,6 +145,7 @@ public class InputManager : Manager
                 Object.Destroy(player.GetComponentInChildren<AudioListener>());
             }
             player.GetComponent<Player>().SetControlScheme(schemes[i]);
+           
             if (GameManager.GetInGame())
             {
                 GameManager.Pause(false);
