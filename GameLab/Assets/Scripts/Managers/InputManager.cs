@@ -32,6 +32,7 @@ public class InputManager : Manager
                _input = new InputBinding[]
                {
                  new InputBinding() { axis = "Horizontal2" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
 
                }
             },
