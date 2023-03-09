@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-
+    [Header("Manager Variables")]
     public static Manager[] managers;
-
     public static bool inGame;
     public static bool paused;
 
@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [HideInInspector] public int amountOfPlayers;
     public bool canSelect = false;
-    public int order = 0;
+    public int order = 1;
+    public EventSystem eventSystem;
 
     public static GameManager instance { get; private set; }
 
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
             new AudioManager(),
         };
     }
-
 
     public static T GetManager<T>() where T : Manager
     {
@@ -121,6 +121,17 @@ public class GameManager : MonoBehaviour
     public void AddToGameManager(Player player)
     {
         currentPlayers.Add(player);
+    }
+
+    public void SelectedPlayer()
+    {
+        //-1 because arrays start at 0 and the order is a representation of the actual player number.
+        currentPlayers[order - 1].canSelectCharacter = false;
+        order++;
+        if (order <= amountOfPlayers)
+        {
+            currentPlayers[order - 1].canSelectCharacter = true;
+        }
     }
 }
 public enum Levels

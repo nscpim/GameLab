@@ -23,6 +23,7 @@ public class MainMenuCanvas : MonoBehaviour
         GameManager.instance.SetAmountOfPlayers(amount);
         GameManager.LoadLevel(Levels.InGame);
         GameManager.GetManager<InputManager>().SetPlayerSchemes();
+        
     }
 
 

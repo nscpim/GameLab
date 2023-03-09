@@ -215,3 +215,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInt: 0
   character: {fileID: 0}
+  canSelectCharacter: 0

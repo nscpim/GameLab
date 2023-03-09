@@ -11,15 +11,15 @@ public class Player : Actor
     private float gravity = 20f;
     [SerializeField] private ScriptableCharacter character;
     private Vector3 moveDirection = Vector3.zero;
-    private int speed = 6;
     private float timeStamp;
+    public bool canSelectCharacter;
     //Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         mainCamera = GetComponentInChildren<Camera>();
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
-     
+
     }
 
     // Update is called once per frame
@@ -29,11 +29,12 @@ public class Player : Actor
         moveDirection.y -= gravity * Time.deltaTime;
     }
 
-    public void UpdateMesh() 
+    public void UpdateMesh()
     {
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         filter.mesh = character.characterMesh;
     }
+
 
 
     public void SetViewPortRect(string _name, int amount)
@@ -122,20 +123,7 @@ public class Player : Actor
 
     public void Test()
     {
-        Debug.Log("Input Called from: " + gameObject.name);
-
-        CharacterController controller = GetComponent<CharacterController>();
-        Debug.Log(controller.isGrounded);
-        if (controller.isGrounded)
-        {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal" + playerInt), 0, 0);
-            moveDirection = transform.TransformDirection(moveDirection);
-
-            moveDirection *= speed;
-
-
-            controller.Move(moveDirection);
-        }
+      
     }
     public void ExecuteAbility()
     {
@@ -154,9 +142,7 @@ public class Player : Actor
                 default:
                     break;
             }
-
             timeStamp = Time.time + character.abilityCooldown;
-
         }
         else
         {
@@ -164,22 +150,15 @@ public class Player : Actor
         }
     }
 
-    public void SelectToleft() 
-    {
-        if (GameManager.instance.canSelect && playerInt == GameManager.instance.order)
-        {
-
-
-
-
-        }
-    
-    }
-
-    public void SelectedCharacter(Character selection) 
+    public void SelectedCharacter(Character selection)
     {
         character = GameManager.instance.characters[(int)selection];
-        UpdateMesh();
+        //UpdateMesh();
+        //+1 because arrays start at 0, but we need the actual number of players here.
+        if (GameManager.instance.order <= GameManager.instance.amountOfPlayers)
+        {
+            GameManager.instance.SelectedPlayer();
+        }
     }
 
 }
