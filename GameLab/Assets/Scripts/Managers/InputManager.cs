@@ -46,7 +46,7 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal" },
+                 new InputBinding() { axis = "Horizontal1" },
                  new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
 
@@ -55,7 +55,7 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Vertical" },
+                 new InputBinding() { axis = "Horizontal2" },
                  new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
 
                }
@@ -65,7 +65,8 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { keyCode = KeyCode.Space, strokeType = KeyStrokeType.down },
+                 new InputBinding() { axis = "Horizontal3" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
 
             },
@@ -79,7 +80,8 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal" },
+                 new InputBinding() { axis = "Horizontal1" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
 
             },
@@ -87,7 +89,8 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Vertical" },
+                 new InputBinding() { axis = "Horizontal2" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
 
                }
 
@@ -96,7 +99,8 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { keyCode = KeyCode.Space, strokeType = KeyStrokeType.down },
+                 new InputBinding() { axis = "Horizontal3" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
 
             },
@@ -104,9 +108,9 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { keyCode = KeyCode.W, strokeType = KeyStrokeType.down },
+                 new InputBinding() { axis = "Horizontal4" },
+                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
                }
-
             },
 
        };
