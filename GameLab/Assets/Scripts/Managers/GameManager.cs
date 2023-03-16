@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
         order++;
         if (order <= amountOfPlayers)
         {
-            //Also update inputmodule
+            SetInputModule(order);
             currentPlayers[order - 1].canSelectCharacter = true;
         }
     }
@@ -193,9 +193,9 @@ public class GameManager : MonoBehaviour
     /// Setting the input module to allow different player's input
     /// </summary>
     /// <param name="order"></param>
-    public void SetInputModule(int order) 
+    public void SetInputModule(int order)
     {
-        
+        inputModule.horizontalAxis = "Horizontal" + order;
     }
 
 }
