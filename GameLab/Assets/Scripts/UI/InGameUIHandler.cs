@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InGameUIHandler : MonoBehaviour
 {
@@ -16,14 +17,24 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons3players;
     public GameObject[] buttons4players;
 
+    private Timer countdownTimer;
+    private bool once = false;
+
+    public TextMeshProUGUI countdownText;
+    public GameObject pausePanel;
 
     // Start is called before the first frame updates
     void Start()
     {
+        countdownTimer = new Timer();
         GameManager.instance.canSelect = true;
         SetupPanels(true);
         ResetSelection();
         //Dont forget to disable movement code 
+        for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
+        {
+            GameManager.instance.currentPlayers[i].canMove = false;
+        }
     }
 
     public void SetupPanels(bool value)
@@ -47,11 +58,33 @@ public class InGameUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.order == (GameManager.instance.amountOfPlayers + 1))
+        if (GameManager.instance.order == (GameManager.instance.amountOfPlayers + 1) && !once)
         {
             SetupPanels(false);
             GameManager.instance.canSelect = false;
+            once = true;
+            countdownTimer.SetTimer(GameManager.instance.matchCountdown);
+            Debug.Log("MATCH ABOUT TO START");
         }
+
+        if (countdownTimer.isActive && countdownTimer.TimerDone())
+        {
+            countdownTimer.StopTimer();
+            countdownText.transform.parent.gameObject.SetActive(false);
+            Debug.Log("GAME STARTING");
+            for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
+            {
+                GameManager.instance.currentPlayers[i].canMove = true;
+            }
+
+        }
+        if (countdownTimer.TimeLeft() >= 0f && countdownTimer.isActive)
+        {
+            UpdateUI(Mathf.RoundToInt(countdownTimer.TimeLeft()).ToString(), countdownText);
+        }
+
+        SetActivePanel(pausePanel, GameManager.paused);
+
     }
 
     public void ChooseCharacter(int character)
@@ -119,6 +152,16 @@ public class InGameUIHandler : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void SetActivePanel(GameObject panel, bool state)
+    {
+        panel.SetActive(state);
+    }
+
+    public void UpdateUI(string message, TextMeshProUGUI text)
+    {
+        text.text = message;
     }
 
 }

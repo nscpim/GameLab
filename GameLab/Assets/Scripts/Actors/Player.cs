@@ -13,12 +13,16 @@ public class Player : Actor
     private Vector3 moveDirection = Vector3.zero;
     private float timeStamp;
     public bool canSelectCharacter;
+    private Timer abilityCooldown;
+    public bool canMove;
+
     //Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         mainCamera = GetComponentInChildren<Camera>();
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+        abilityCooldown = new Timer();
 
     }
 
@@ -27,6 +31,7 @@ public class Player : Actor
     {
         scheme.Update();
         moveDirection.y -= gravity * Time.deltaTime;
+        Timer();
     }
 
     public void UpdateMesh()
@@ -34,7 +39,13 @@ public class Player : Actor
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         filter.mesh = character.characterMesh;
     }
-
+    public void Timer() 
+    {
+        if (abilityCooldown.isActive && abilityCooldown.TimerDone())
+        {
+            abilityCooldown.StopTimer();
+        }
+    }
 
 
     public void SetViewPortRect(string _name, int amount)
@@ -127,26 +138,31 @@ public class Player : Actor
     }
     public void ExecuteAbility()
     {
-        if (timeStamp <= Time.time)
+        if (!abilityCooldown.isActive)
         {
             switch (character.characterEnum)
             {
                 case Character.Test:
+                    Debug.Log("Executed Ability, WOW!");
                     break;
                 case Character.Test1:
+                    Debug.Log("Executed Ability, WOW!");
                     break;
                 case Character.Test2:
+                    Debug.Log("Executed Ability, WOW!");
                     break;
                 case Character.Test3:
+                    Debug.Log("Executed Ability, WOW!");
                     break;
                 default:
                     break;
             }
-            timeStamp = Time.time + character.abilityCooldown;
+            abilityCooldown.SetTimer(character.abilityCooldown);
         }
+
         else
         {
-            Debug.Log(gameObject.name + " Your ability is on cooldown:" + timeStamp);
+            Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
         }
     }
 

@@ -24,7 +24,7 @@ public class AudioManager : Manager
         SetDefaultVolume();
 
         //All the music sources.
-        musicSources = new AudioSource[2];
+        musicSources = new AudioSource[1];
 
 
         //The amount of Musicsources in the array will be created within the scene, and it will not destroy when the game loads a different scene. 

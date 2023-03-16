@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 850194484}
   - component: {fileID: 850194487}
   - component: {fileID: 850194486}
+  - component: {fileID: 850194488}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -503,11 +504,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b919f2d06b62944b84bfd5eb00e77a5, type: 2}
   - {fileID: 11400000, guid: c9cf8d9a520de484bb232cbd1dfaf40e, type: 2}
   - {fileID: 11400000, guid: 73662456d41860042b3c0d234e0764bf, type: 2}
+  spawnpoint: {fileID: 0}
   amountOfPlayers: 0
   canSelect: 0
   order: 1
   eventSystem: {fileID: 850194487}
   inputModule: {fileID: 850194486}
+  matchCountdown: 10
 --- !u!114 &850194486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +546,18 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &850194488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850194481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a53a3a5dc413b4391c7fefe9407e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &923807755
 GameObject:
   m_ObjectHideFlags: 0

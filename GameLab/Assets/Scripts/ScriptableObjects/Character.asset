@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Character
   m_EditorClassIdentifier: 
   characterName: 
-  characterID: 0
+  characterID: 1
   characterEnum: 0
   description: 
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
-  abilityCooldown: 0
+  abilityCooldown: 5
   moveSpeed: 0
   jumpHeight: 0

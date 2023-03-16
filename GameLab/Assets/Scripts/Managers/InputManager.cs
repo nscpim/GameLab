@@ -32,7 +32,7 @@ public class InputManager : Manager
                _input = new InputBinding[]
                {
                  new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+                 new InputBinding() { keyCode = KeyCode.A, strokeType = KeyStrokeType.down}
 
                }
             },
@@ -143,21 +143,16 @@ public class InputManager : Manager
                 continue;
             }
             schemes[i].isActive = true;
-            Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 10), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.transform.rotation);
-           
-            player.name = GameManager.instance.player.name = "Player: " + (i + 1);
-            player.playerInt = i + 1;
-            GameManager.instance.AddToGameManager(player);
-            if (player.name != "Player: 1")
-            {
-                Object.Destroy(player.GetComponentInChildren<AudioListener>());
-            }
-            player.GetComponent<Player>().SetControlScheme(schemes[i]);
-           
-            if (GameManager.GetInGame())
-            {
-                GameManager.Pause(false);
-            }
+            
+                Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 3), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.player.transform.rotation);
+                player.name = GameManager.instance.player.name = "Player: " + (i + 1);
+                player.playerInt = i + 1;
+                GameManager.instance.AddToGameManager(player);
+                if (player.name != "Player: 1")
+                {
+                    Object.Destroy(player.GetComponentInChildren<AudioListener>());
+                }
+                player.GetComponent<Player>().SetControlScheme(schemes[i]);
         }
     }
 }
