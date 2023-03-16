@@ -7,6 +7,7 @@ using TMPro;
 
 public class InGameUIHandler : MonoBehaviour
 {
+
     [Header("Panels")]
     public GameObject PlayerSelectionPanel_2;
     public GameObject PlayerSelectionPanel_3;
@@ -22,6 +23,8 @@ public class InGameUIHandler : MonoBehaviour
 
     public TextMeshProUGUI countdownText;
     public GameObject pausePanel;
+
+    public GameObject toolTipPanel;
 
     // Start is called before the first frame updates
     void Start()
@@ -62,6 +65,7 @@ public class InGameUIHandler : MonoBehaviour
         {
             SetupPanels(false);
             GameManager.instance.canSelect = false;
+            toolTipPanel.SetActive(false);
             once = true;
             countdownTimer.SetTimer(GameManager.instance.matchCountdown);
             Debug.Log("MATCH ABOUT TO START");

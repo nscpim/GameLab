@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: 
   characterID: 1
   characterEnum: 0
-  description: 
+  description: IM THE FIRST CHARACTER EVER CREATED!!!1
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}

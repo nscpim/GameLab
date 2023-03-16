@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: 
   characterID: 3
   characterEnum: 2
-  description: 
+  description: Generic Description for the third character
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
