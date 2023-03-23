@@ -144,7 +144,7 @@ public class InputManager : Manager
             }
             schemes[i].isActive = true;
             
-                Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 3), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.player.transform.rotation);
+                Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.spawnPoints[i].transform.position.x, GameManager.instance.spawnPoints[i].transform.position.y, GameManager.instance.spawnPoints[i].transform.position.z), GameManager.instance.player.transform.rotation);
                 player.name = GameManager.instance.player.name = "Player: " + (i + 1);
                 player.playerInt = i + 1;
                 GameManager.instance.AddToGameManager(player);

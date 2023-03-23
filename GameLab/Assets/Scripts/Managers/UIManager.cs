@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : Manager
 {
@@ -16,6 +17,10 @@ public class UIManager : Manager
 
     }
 
+    public void UpdateUI(TextMeshProUGUI text, string value) 
+    {
+        text.text = value;
+    }
 
   
 }

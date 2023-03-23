@@ -4,6 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class InGameUIHandler : MonoBehaviour
 {
@@ -19,17 +20,26 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons4players;
 
     private Timer countdownTimer;
+    
     private bool once = false;
 
     public TextMeshProUGUI countdownText;
     public GameObject pausePanel;
-
     public GameObject toolTipPanel;
+
+    public float matchTimer = 0f;
+    private Timer matchTimerUpdater;
+
+    public bool matchStarted = false;
+
+    public TextMeshProUGUI matchTimerText;
 
     // Start is called before the first frame updates
     void Start()
     {
         countdownTimer = new Timer();
+        matchTimerUpdater = new Timer();
+      
         GameManager.instance.canSelect = true;
         SetupPanels(true);
         ResetSelection();
@@ -38,6 +48,8 @@ public class InGameUIHandler : MonoBehaviour
         {
             GameManager.instance.currentPlayers[i].canMove = false;
         }
+
+
     }
 
     public void SetupPanels(bool value)
@@ -75,6 +87,8 @@ public class InGameUIHandler : MonoBehaviour
         {
             countdownTimer.StopTimer();
             countdownText.transform.parent.gameObject.SetActive(false);
+            matchTimerUpdater.SetTimer(1f);
+            matchStarted = true;
             Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
@@ -88,6 +102,20 @@ public class InGameUIHandler : MonoBehaviour
         }
 
         SetActivePanel(pausePanel, GameManager.paused);
+
+        if (matchStarted)
+        {
+            matchTimer += Time.deltaTime;
+        }
+      
+        if (matchTimerUpdater.isActive && matchTimerUpdater.TimerDone())
+        {
+            matchTimerUpdater.StopTimer();
+            float totalSeconds = matchTimer;
+            TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+            GameManager.GetManager<UIManager>().UpdateUI(matchTimerText, time.ToString("mm':'ss"));
+            matchTimerUpdater.SetTimer(1f);
+        }
 
     }
 

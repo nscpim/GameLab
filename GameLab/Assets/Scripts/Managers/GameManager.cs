@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     //All the available character Objects.
     public ScriptableCharacter[] characters;
     //Spawnpoint for the players
-    public GameObject spawnpoint;
+    public List<Transform> spawnPoints;
 
 
     [Header("UI")]
@@ -37,9 +39,10 @@ public class GameManager : MonoBehaviour
     //Input Module for the event system.
     public StandaloneInputModule inputModule;
 
+
     [Header("Level")]
     public int matchCountdown;
-
+  
 
     //Instance of this class
     public static GameManager instance { get; private set; }
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             new InputManager(),
             new AudioManager(),
+            new UIManager(),
         };
     }
 
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         DontDestroyOnLoad(gameObject);
+       
 
         for (int i = 0; i < managers.Length; i++)
         {
@@ -111,104 +116,108 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Update();
         }
+        //Add OR for controller input
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
         }
-}
-
-/// <summary>
-/// Method for loading a level.
-/// </summary>
-/// <param name="level"></param>
-public static void LoadLevel(Levels level)
-{
-    SceneManager.LoadScene((int)level);
-    if (level == Levels.InGame)
-    {
-        inGame = true;
-        paused = false;
-    }
-    else
-    {
-        inGame = false;
     }
 
-}
-
-/// <summary>
-/// Method for pausing the game.
-/// </summary>
-/// <param name="value"></param>
-public static void Pause()
-{
-    paused =! paused;
-
-    for (int i = 0; i < managers.Length; i++)
+    /// <summary>
+    /// Method for loading a level.
+    /// </summary>
+    /// <param name="level"></param>
+    public static void LoadLevel(Levels level)
     {
-        managers[i].Pause(paused);
+        SceneManager.LoadScene((int)level);
+        if (level == Levels.InGame)
+        {
+            inGame = true;
+            paused = false;
+            
+        }
+        else
+        {
+            inGame = false;
+        }
+
     }
-}
 
-/// <summary>
-/// Getter for the ingame boolean
-/// </summary>
-/// <returns></returns>
-public static bool GetInGame()
-{
-    return inGame;
-}
-
-/// <summary>
-/// Method for setting the amount of players. (This should have 1 reference)
-/// </summary>
-/// <param name="value"></param>
-public void SetAmountOfPlayers(int value)
-{
-    amountOfPlayers = value;
-}
-
-/// <summary>
-/// Getter method for getting the amount of players.
-/// </summary>
-/// <returns></returns>
-public int GetAmountOfPlayers()
-{
-    return amountOfPlayers;
-}
-
-/// <summary>
-/// Add player to the currentplayers list
-/// </summary>
-/// <param name="player"></param>
-public void AddToGameManager(Player player)
-{
-    currentPlayers.Add(player);
-}
-
-/// <summary>
-/// Selecting player in pick order for choosing a character
-/// </summary>
-public void SelectedPlayer()
-{
-    //-1 because arrays start at 0 and the order is a representation of the actual player number.
-    currentPlayers[order - 1].canSelectCharacter = false;
-    order++;
-    if (order <= amountOfPlayers)
+    /// <summary>
+    /// Method for pausing the game.
+    /// </summary>
+    /// <param name="value"></param>
+    public static void Pause()
     {
-        SetInputModule(order);
-        currentPlayers[order - 1].canSelectCharacter = true;
-    }
-}
+        paused = !paused;
 
-/// <summary>
-/// Setting the input module to allow different player's input
-/// </summary>
-/// <param name="order"></param>
-public void SetInputModule(int order)
-{
-    inputModule.horizontalAxis = "Horizontal" + order;
-}
+        for (int i = 0; i < managers.Length; i++)
+        {
+            managers[i].Pause(paused);
+        }
+    }
+
+    /// <summary>
+    /// Getter for the ingame boolean
+    /// </summary>
+    /// <returns></returns>
+    public static bool GetInGame()
+    {
+        return inGame;
+    }
+
+    /// <summary>
+    /// Method for setting the amount of players. (This should have 1 reference)
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetAmountOfPlayers(int value)
+    {
+        amountOfPlayers = value;
+    }
+
+    /// <summary>
+    /// Getter method for getting the amount of players.
+    /// </summary>
+    /// <returns></returns>
+    public int GetAmountOfPlayers()
+    {
+        return amountOfPlayers;
+    }
+
+    /// <summary>
+    /// Add player to the currentplayers list
+    /// </summary>
+    /// <param name="player"></param>
+    public void AddToGameManager(Player player)
+    {
+        currentPlayers.Add(player);
+    }
+
+    /// <summary>
+    /// Selecting player in pick order for choosing a character
+    /// </summary>
+    public void SelectedPlayer()
+    {
+        //-1 because arrays start at 0 and the order is a representation of the actual player number.
+        currentPlayers[order - 1].canSelectCharacter = false;
+        order++;
+        if (order <= amountOfPlayers)
+        {
+            SetInputModule(order);
+            currentPlayers[order - 1].canSelectCharacter = true;
+        }
+    }
+
+    /// <summary>
+    /// Setting the input module to allow different player's input
+    /// </summary>
+    /// <param name="order"></param>
+    public void SetInputModule(int order)
+    {
+        inputModule.horizontalAxis = "Horizontal" + order;
+        inputModule.verticalAxis = "Vertical" + order;
+        inputModule.submitButton = "Submit" + order;
+    }
 
 }
 
