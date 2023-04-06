@@ -19,8 +19,12 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons3players;
     public GameObject[] buttons4players;
 
+    [Header("VariableChangeUI")]
+    public Transform variablesPanel;
+    public TMP_InputField moveSpeedField, abilityCooldown, jumpSpeed, gravity, maxSpeed, acceleration;
+
     private Timer countdownTimer;
-    
+
     private bool once = false;
 
     public TextMeshProUGUI countdownText;
@@ -31,6 +35,7 @@ public class InGameUIHandler : MonoBehaviour
     private Timer matchTimerUpdater;
 
     public bool matchStarted = false;
+    private bool activeState = false;
 
     public TextMeshProUGUI matchTimerText;
 
@@ -39,7 +44,7 @@ public class InGameUIHandler : MonoBehaviour
     {
         countdownTimer = new Timer();
         matchTimerUpdater = new Timer();
-      
+
         GameManager.instance.canSelect = true;
         SetupPanels(true);
         ResetSelection();
@@ -48,8 +53,6 @@ public class InGameUIHandler : MonoBehaviour
         {
             GameManager.instance.currentPlayers[i].canMove = false;
         }
-
-
     }
 
     public void SetupPanels(bool value)
@@ -70,9 +73,29 @@ public class InGameUIHandler : MonoBehaviour
         }
     }
 
+    public void OnTextFieldChange()
+    {
+        for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
+        {
+            GameManager.instance.currentPlayers[i].character.moveSpeed = float.Parse(moveSpeedField.text);
+            GameManager.instance.currentPlayers[i].character.abilityCooldown = float.Parse(abilityCooldown.text);
+            GameManager.instance.currentPlayers[i].character.jumpHeight = float.Parse(jumpSpeed.text);
+            GameManager.instance.currentPlayers[i].character.acceleration = float.Parse(acceleration.text);
+            GameManager.instance.currentPlayers[i].character.gravity = float.Parse(gravity.text);
+            GameManager.instance.currentPlayers[i].character.maxSpeed = float.Parse(maxSpeed.text);
+        }
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            activeState = !activeState;
+            variablesPanel.gameObject.SetActive(activeState);
+        }
+
         if (GameManager.instance.order == (GameManager.instance.amountOfPlayers + 1) && !once)
         {
             SetupPanels(false);
@@ -107,7 +130,7 @@ public class InGameUIHandler : MonoBehaviour
         {
             matchTimer += Time.deltaTime;
         }
-      
+
         if (matchTimerUpdater.isActive && matchTimerUpdater.TimerDone())
         {
             matchTimerUpdater.StopTimer();

@@ -9,12 +9,25 @@ public class Player : Actor
     private Camera mainCamera;
     [HideInInspector] public int playerInt;
     private float gravity = 20f;
-    [SerializeField] private ScriptableCharacter character;
+    [HideInInspector] public ScriptableCharacter character;
     private Vector3 moveDirection = Vector3.zero;
     private float timeStamp;
     public bool canSelectCharacter;
     private Timer abilityCooldown;
     public bool canMove;
+
+
+    [Header("References")]
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Transform point, cameraPos;
+    [SerializeField] private LayerMask grabbable;
+
+    [Header("SwingAbility")]
+    private float maxSwingDistance = 25f;
+    private Vector3 swingPoint;
+    private SpringJoint joint;
+    private Vector3 currentGrapplePosition;
+
 
     //Start is called before the first frame update
     void Start()
@@ -29,8 +42,10 @@ public class Player : Actor
     // Update is called once per frame
     void Update()
     {
+
+
+
         scheme.Update();
-        moveDirection.y -= gravity * Time.deltaTime;
         Timer();
     }
 
@@ -39,7 +54,7 @@ public class Player : Actor
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         filter.mesh = character.characterMesh;
     }
-    public void Timer() 
+    public void Timer()
     {
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
         {
@@ -110,11 +125,6 @@ public class Player : Actor
             default:
                 break;
         }
-
-
-
-
-
     }
     public void SetControlScheme(ControlScheme scheme)
     {
@@ -132,9 +142,19 @@ public class Player : Actor
     }
 
 
-    public void Test()
+
+    //Integrate the ScriptableObjects in these methods.
+    public void Jump()
     {
-      
+        //Reserved for Nako
+    }
+
+
+
+
+    public void Movement()
+    {
+        //Reserved for Nako
     }
 
     public void ExecuteAbility()
@@ -144,6 +164,7 @@ public class Player : Actor
             switch (character.characterEnum)
             {
                 case Character.Test:
+                    StartSwing();
                     Debug.Log("Executed Ability, WOW!");
                     break;
                 case Character.Test1:
@@ -165,6 +186,91 @@ public class Player : Actor
         {
             Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
         }
+    }
+
+    public void StartSwing()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cameraPos.position, cameraPos.forward, out hit, maxSwingDistance, grabbable))
+        {
+            swingPoint = hit.point;
+            joint = gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = swingPoint;
+
+            float distanceFromPoint = Vector3.Distance(gameObject.transform.position, swingPoint);
+
+            joint.maxDistance = distanceFromPoint * 0.8f;
+            joint.minDistance = distanceFromPoint * 0.25f;
+
+            joint.spring = 4.5f;
+            joint.damper = 7f;
+            joint.massScale = 4.5f;
+
+            lineRenderer.positionCount = 2;
+            currentGrapplePosition = point.position;
+        }
+    }
+
+    public void StopSwing()
+    {
+        lineRenderer.positionCount = 0;
+        Destroy(joint);
+    }
+
+    public void LateUpdate()
+    {
+        DrawRope();
+    }
+
+    public void DrawRope()
+    {
+        if (!joint) return;
+
+        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, swingPoint, Time.deltaTime * 8f);
+
+        lineRenderer.SetPosition(0, point.position);
+        lineRenderer.SetPosition(1, swingPoint);
+    }
+
+    public void AirControlToLeft()
+    {
+        if (joint != null)
+        {
+
+        }
+    }
+
+    public void AirControlToRight()
+    {
+        if (joint != null)
+        {
+
+        }
+    }
+    public void AirControlToForward()
+    {
+        if (joint != null)
+        {
+
+        }
+    }
+    public void ShortenCable()
+    {
+        if (joint != null)
+        {
+
+        }
+
+    }
+    public void CableExtender()
+    {
+
+        if (joint != null)
+        {
+
+        }
+
     }
 
     public void SelectedCharacter(Character selection)

@@ -28,6 +28,17 @@ public class ScriptableCharacter : ScriptableObject
     //Jump height of the character.
     public float jumpHeight;
 
+    public float turnSmoothTime;
+
+    public float turnSmoothVelocity;
+
+    public float gravity;
+
+    public float maxSpeed;
+
+    public float acceleration;
+
+
     // Start is called before the first frame update
     public void Awake()
     {
