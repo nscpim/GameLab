@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour
         {
             Pause();
         }
+
+        GetInput();
     }
 
     /// <summary>
@@ -219,6 +221,23 @@ public class GameManager : MonoBehaviour
         inputModule.submitButton = "Submit" + order;
     }
 
+    public void SetCanMove(bool value) 
+    {
+        for (int i = 0; i < currentPlayers.Count; i++)
+        {
+            currentPlayers[i].canMove = value;
+        }
+    }
+
+
+    public void GetInput()
+    {
+        System.Array values = System.Enum.GetValues(typeof(KeyCode));
+        foreach (KeyCode code in values)
+        {
+            if (Input.GetKeyDown(code)) { print(System.Enum.GetName(typeof(KeyCode), code)); }
+        }
+    }
 }
 
 /// <summary>

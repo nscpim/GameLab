@@ -7,8 +7,7 @@ public class Player : Actor
 {
     private ControlScheme scheme;
     private Camera mainCamera;
-    [HideInInspector] public int playerInt;
-    private float gravity = 20f;
+    public int playerInt;
     [HideInInspector] public ScriptableCharacter character;
     private Vector3 moveDirection = Vector3.zero;
     private float timeStamp;
@@ -16,6 +15,13 @@ public class Player : Actor
     private Timer abilityCooldown;
     public bool canMove;
 
+    [Header("Variables")]
+    public CharacterController controller;
+    private Vector3 movingDirection = Vector3.zero;
+    public LayerMask wallLayerMask;
+    public Transform cam;
+    private bool isCollidingWithWall = false;
+    float turnSmoothVelocity;
 
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
@@ -42,11 +48,9 @@ public class Player : Actor
     // Update is called once per frame
     void Update()
     {
-
-
-
         scheme.Update();
         Timer();
+        CharMovement();
     }
 
     public void UpdateMesh()
@@ -61,7 +65,6 @@ public class Player : Actor
             abilityCooldown.StopTimer();
         }
     }
-
 
     public void SetViewPortRect(string _name, int amount)
     {
@@ -141,25 +144,81 @@ public class Player : Actor
         scheme = null;
     }
 
-
-
     //Integrate the ScriptableObjects in these methods.
     public void Jump()
     {
-        //Reserved for Nako
+        if (controller.isGrounded && canMove)
+        {
+            movingDirection.y = character.jumpSpeed;
+        }
     }
 
-
-
-
-    public void Movement()
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        //Reserved for Nako
+        if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
+        {
+            Debug.Log("Collided with a wall!");
+            isCollidingWithWall = true;
+            character.gravity = 0f;
+        }
+    }
+    void FixedUpdate()
+    {
+        if (character != null && canMove)
+        {
+            if (isCollidingWithWall && !controller.isGrounded)
+            {
+
+                Debug.Log("Stopped colliding with a wall!");
+                character.gravity = 200f;
+                isCollidingWithWall = false;
+            }
+        }
+    }
+
+    public void Movement() 
+    {
+    
+    }
+    public void CharMovement()
+    {
+        if (character != null && canMove)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt);
+            float vertical = Input.GetAxisRaw("Vertical" + playerInt);
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+
+            movingDirection.y -= character.gravity * Time.deltaTime;
+            controller.Move(movingDirection * Time.deltaTime);
+
+            if (character.speed < character.maxSpeed)
+            {
+                character.speed += character.acceleration * Time.deltaTime;
+            }
+
+            if (!this.transform.hasChanged)
+            {
+                character.speed = 100f;
+            }
+            transform.hasChanged = false;
+
+            //transform.position.x = transform.position.x + speed*Time.deltaTime;
+
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, character.turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDir.normalized * character.speed * Time.deltaTime);
+            }
+        }
     }
 
     public void ExecuteAbility()
     {
-        if (!abilityCooldown.isActive)
+        if (!abilityCooldown.isActive && canMove)
         {
             switch (character.characterEnum)
             {

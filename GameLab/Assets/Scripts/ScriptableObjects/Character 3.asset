@@ -19,6 +19,11 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
-  abilityCooldown: 5
-  moveSpeed: 0
-  jumpHeight: 0
+  abilityCooldown: 10
+  speed: 6
+  jumpSpeed: 5
+  turnSmoothTime: 0.1
+  turnSmoothVelocity: 0
+  gravity: 10
+  maxSpeed: 70
+  acceleration: 5

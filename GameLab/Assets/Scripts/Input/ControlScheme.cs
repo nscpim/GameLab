@@ -33,6 +33,7 @@ public class ControlScheme
     {
         _input[(int)InputAction.Test].action = player.Movement;
         _input[(int)InputAction.Ability].action = player.ExecuteAbility;
+        _input[(int)InputAction.Jump].action = player.Jump;
     }
 
 }

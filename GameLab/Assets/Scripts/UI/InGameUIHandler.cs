@@ -44,7 +44,7 @@ public class InGameUIHandler : MonoBehaviour
     {
         countdownTimer = new Timer();
         matchTimerUpdater = new Timer();
-
+        GameManager.instance.SetCanMove(false);
         GameManager.instance.canSelect = true;
         SetupPanels(true);
         ResetSelection();
@@ -77,9 +77,9 @@ public class InGameUIHandler : MonoBehaviour
     {
         for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
         {
-            GameManager.instance.currentPlayers[i].character.moveSpeed = float.Parse(moveSpeedField.text);
+            GameManager.instance.currentPlayers[i].character.speed = float.Parse(moveSpeedField.text);
             GameManager.instance.currentPlayers[i].character.abilityCooldown = float.Parse(abilityCooldown.text);
-            GameManager.instance.currentPlayers[i].character.jumpHeight = float.Parse(jumpSpeed.text);
+            GameManager.instance.currentPlayers[i].character.jumpSpeed = float.Parse(jumpSpeed.text);
             GameManager.instance.currentPlayers[i].character.acceleration = float.Parse(acceleration.text);
             GameManager.instance.currentPlayers[i].character.gravity = float.Parse(gravity.text);
             GameManager.instance.currentPlayers[i].character.maxSpeed = float.Parse(maxSpeed.text);
@@ -112,6 +112,7 @@ public class InGameUIHandler : MonoBehaviour
             countdownText.transform.parent.gameObject.SetActive(false);
             matchTimerUpdater.SetTimer(1f);
             matchStarted = true;
+            GameManager.instance.SetCanMove(true);
             Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
@@ -218,5 +219,4 @@ public class InGameUIHandler : MonoBehaviour
     {
         text.text = message;
     }
-
 }

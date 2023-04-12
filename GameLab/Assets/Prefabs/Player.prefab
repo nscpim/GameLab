@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 2171159112391952256}
   - component: {fileID: 5350009985806099275}
   - component: {fileID: 6733709232715596240}
+  - component: {fileID: 7591339678226047643}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -281,7 +282,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 85423b02c5c55b540abdfa0387c4dd4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -317,7 +318,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &5350009985806099275
 CapsuleCollider:
@@ -349,9 +350,32 @@ MonoBehaviour:
   character: {fileID: 0}
   canSelectCharacter: 0
   canMove: 0
+  controller: {fileID: 7591339678226047643}
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  cam: {fileID: 5042959817838103191}
   lineRenderer: {fileID: 3611285892747781653}
   point: {fileID: 8783074532796940849}
   cameraPos: {fileID: 5042959817838103191}
   grabbable:
     serializedVersion: 2
     m_Bits: 64
+--- !u!143 &7591339678226047643
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783074532796941005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
