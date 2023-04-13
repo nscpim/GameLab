@@ -1,9 +1,12 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CineMachineHandler : MonoBehaviour
 {
+    public CinemachineFreeLook[] cameras;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +21,19 @@ public class CineMachineHandler : MonoBehaviour
 
     public void SetupCineMachines()
     {
+        for (int i = 0; i < GameManager.instance.GetAmountOfPlayers(); i++)
+        {
+            cameras[i].gameObject.SetActive(true);
+        }
+
         switch (GameManager.instance.GetAmountOfPlayers())
         {
-            case 1:
-                break;
             case 2:
+                cameras[0].Follow = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].LookAt = GameManager.instance.currentPlayers[0].transform;
+
+                cameras[1].Follow = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].LookAt = GameManager.instance.currentPlayers[1].transform;
                 break;
             case 3:
                 break;

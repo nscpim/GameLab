@@ -254,7 +254,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -621,7 +633,7 @@ GameObject:
   - component: {fileID: 34966044}
   - component: {fileID: 34966043}
   - component: {fileID: 34966042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48265082}
   - component: {fileID: 48265081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -824,7 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 55535255}
   - component: {fileID: 55535254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 80110578}
   - component: {fileID: 80110577}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +1320,7 @@ GameObject:
   - component: {fileID: 111214110}
   - component: {fileID: 111214109}
   - component: {fileID: 111214108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3370,7 +3382,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4116,7 +4140,7 @@ GameObject:
   - component: {fileID: 326547796}
   - component: {fileID: 326547795}
   - component: {fileID: 326547794}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4243,7 +4267,7 @@ GameObject:
   - component: {fileID: 343778117}
   - component: {fileID: 343778116}
   - component: {fileID: 343778115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4631,7 +4655,7 @@ GameObject:
   - component: {fileID: 377567983}
   - component: {fileID: 377567982}
   - component: {fileID: 377567981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4756,7 +4780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 391140919}
   - component: {fileID: 391140918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5132,7 +5156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 440041182}
   - component: {fileID: 440041181}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5352,7 +5376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &462724415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6420,13 +6444,13 @@ GameObject:
   m_Component:
   - component: {fileID: 598134084}
   - component: {fileID: 598134083}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3rd Person Camera:Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &598134083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6638,7 +6662,7 @@ GameObject:
   - component: {fileID: 649781808}
   - component: {fileID: 649781807}
   - component: {fileID: 649781806}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6763,7 +6787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 676061598}
   - component: {fileID: 676061597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7302,7 +7326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755005838}
   - component: {fileID: 755005837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7805,13 +7829,13 @@ GameObject:
   m_Component:
   - component: {fileID: 827249186}
   - component: {fileID: 827249185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 3rd Person Camera:Player 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &827249185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8836,7 +8860,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9580,7 +9616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975135837}
   - component: {fileID: 975135836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10040,7 +10076,7 @@ GameObject:
   - component: {fileID: 1010261072}
   - component: {fileID: 1010261071}
   - component: {fileID: 1010261070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10681,7 +10717,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11923,7 +11971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290209326}
   - component: {fileID: 1290209325}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12436,7 +12484,7 @@ GameObject:
   - component: {fileID: 1346916818}
   - component: {fileID: 1346916817}
   - component: {fileID: 1346916816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12859,13 +12907,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1383154776}
   - component: {fileID: 1383154775}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 3rd Person Camera:Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1383154775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14512,7 +14560,7 @@ GameObject:
   - component: {fileID: 1548607455}
   - component: {fileID: 1548607454}
   - component: {fileID: 1548607453}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14639,7 +14687,7 @@ GameObject:
   - component: {fileID: 1573204443}
   - component: {fileID: 1573204442}
   - component: {fileID: 1573204441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15645,7 +15693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1614970137}
   - component: {fileID: 1614970136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15979,7 +16027,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16209,7 +16269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1639022248}
   - component: {fileID: 1639022247}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17031,7 +17091,7 @@ GameObject:
   - component: {fileID: 1720812764}
   - component: {fileID: 1720812763}
   - component: {fileID: 1720812762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18705,6 +18765,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844805989}
   m_CullTransparentMesh: 1
+--- !u!1 &1847799148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847799149}
+  - component: {fileID: 1847799150}
+  m_Layer: 0
+  m_Name: CineMachineHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847799149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847799148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1059.7891, y: 121.89389, z: 242.7088}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847799150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847799148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5115a42c5e2f2a4f94abd84a73e9711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras:
+  - {fileID: 598134083}
+  - {fileID: 1383154775}
+  - {fileID: 827249185}
+  - {fileID: 1936037248}
 --- !u!1 &1853312801
 GameObject:
   m_ObjectHideFlags: 0
@@ -19142,13 +19251,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1936037249}
   - component: {fileID: 1936037248}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: 3rd Person Camera:Player 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1936037248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19439,7 +19548,7 @@ GameObject:
   - component: {fileID: 1973121599}
   - component: {fileID: 1973121598}
   - component: {fileID: 1973121597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20240,7 +20349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044247173}
   - component: {fileID: 2044247172}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20439,7 +20548,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1673053613}
+        m_TargetAssemblyTypeName: InGameUIHandler, Assembly-CSharp
+        m_MethodName: OnTextFieldChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []

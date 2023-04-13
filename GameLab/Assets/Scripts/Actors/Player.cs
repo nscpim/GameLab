@@ -42,6 +42,7 @@ public class Player : Actor
         mainCamera = GetComponentInChildren<Camera>();
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
         abilityCooldown = new Timer();
+        UpdateLayers();
 
     }
 
@@ -58,6 +59,28 @@ public class Player : Actor
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         filter.mesh = character.characterMesh;
     }
+
+    public void UpdateLayers()
+    {
+        switch (playerInt)
+        {
+            case 1:
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX" , "Ignore Raycast" , "UI", "Water", "Grabbable", "Wall", "P1Cam");
+                break;
+            case 2:
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P2Cam");
+                break;
+            case 3:
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P3Cam");
+                break;
+            case 4:
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P4Cam");
+                break;
+            default:
+                break;
+        }
+    }
+
     public void Timer()
     {
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
@@ -137,7 +160,7 @@ public class Player : Actor
         }
         scheme.AssignInput(this);
         this.scheme = scheme;
-        
+
     }
     public void ClearControlScheme()
     {
@@ -176,9 +199,9 @@ public class Player : Actor
         }
     }
 
-    public void Movement() 
+    public void Movement()
     {
-    
+
     }
     public void CharMovement()
     {
