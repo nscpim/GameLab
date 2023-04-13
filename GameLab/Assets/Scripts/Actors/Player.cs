@@ -137,7 +137,7 @@ public class Player : Actor
         }
         scheme.AssignInput(this);
         this.scheme = scheme;
-
+        
     }
     public void ClearControlScheme()
     {
@@ -186,6 +186,7 @@ public class Player : Actor
         {
             float horizontal = Input.GetAxisRaw("Horizontal" + playerInt);
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
+
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
 
