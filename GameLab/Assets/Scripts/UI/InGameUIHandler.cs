@@ -21,7 +21,7 @@ public class InGameUIHandler : MonoBehaviour
 
     [Header("VariableChangeUI")]
     public Transform variablesPanel;
-    public TMP_InputField moveSpeedField, abilityCooldown, jumpSpeed, gravity, maxSpeed, acceleration;
+    public TMP_InputField moveSpeedField, abilityCooldown, jumpSpeed, gravity, maxSpeed, acceleration, startingSpeed;
 
     private Timer countdownTimer;
 
@@ -83,6 +83,7 @@ public class InGameUIHandler : MonoBehaviour
             GameManager.instance.currentPlayers[i].character.acceleration = float.Parse(acceleration.text);
             GameManager.instance.currentPlayers[i].character.gravity = float.Parse(gravity.text);
             GameManager.instance.currentPlayers[i].character.maxSpeed = float.Parse(maxSpeed.text);
+            GameManager.instance.currentPlayers[i].character.startingSpeed = float.Parse(startingSpeed.text);
         }
     }
 

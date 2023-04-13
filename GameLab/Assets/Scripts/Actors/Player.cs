@@ -221,9 +221,9 @@ public class Player : Actor
                 character.speed += character.acceleration * Time.deltaTime;
             }
 
-            if (!this.transform.hasChanged)
+            if (!transform.hasChanged)
             {
-                character.speed = 100f;
+                character.speed = character.startingSpeed;
             }
             transform.hasChanged = false;
 

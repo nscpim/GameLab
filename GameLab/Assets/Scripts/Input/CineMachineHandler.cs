@@ -31,9 +31,14 @@ public class CineMachineHandler : MonoBehaviour
             case 2:
                 cameras[0].Follow = GameManager.instance.currentPlayers[0].transform;
                 cameras[0].LookAt = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].m_YAxis.m_InputAxisName = "VerticalCamera1";
+                cameras[0].m_XAxis.m_InputAxisName = "HorizontalCamera1";
+
 
                 cameras[1].Follow = GameManager.instance.currentPlayers[1].transform;
                 cameras[1].LookAt = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].m_YAxis.m_InputAxisName = "VerticalCamera2";
+                cameras[1].m_XAxis.m_InputAxisName = "HorizontalCamera2";
                 break;
             case 3:
                 break;
