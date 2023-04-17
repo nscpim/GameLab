@@ -181,7 +181,9 @@ public class Player : Actor
     public void Respawn()
     {
         print("DoTheThing");
-        this.transform.position = respawnPosition;
+        controller.enabled = false;
+        transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        controller.enabled = true;
     }
 
     public void Movement() 
