@@ -21,9 +21,8 @@ MonoBehaviour:
   characterMesh: {fileID: 0}
   abilityCooldown: 10
   speed: 6
-  jumpSpeed: 5
+  jumpSpeed: 15
   turnSmoothTime: 0.1
-  turnSmoothVelocity: 0
   gravity: 10
   maxSpeed: 70
   acceleration: 5

@@ -22,6 +22,7 @@ public class Player : Actor
     public Transform cam;
     private bool isCollidingWithWall = false;
     float turnSmoothVelocity;
+    public int currentCheckpoint = 0;
 
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;

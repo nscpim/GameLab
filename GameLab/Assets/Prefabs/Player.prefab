@@ -355,6 +355,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   cam: {fileID: 5042959817838103191}
+  currentCheckpoint: 0
   lineRenderer: {fileID: 3611285892747781653}
   point: {fileID: 8783074532796940849}
   cameraPos: {fileID: 5042959817838103191}

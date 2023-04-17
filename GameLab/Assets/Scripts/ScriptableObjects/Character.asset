@@ -20,7 +20,7 @@ MonoBehaviour:
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
   abilityCooldown: 10
-  speed: 100
+  speed: 100.65367
   jumpSpeed: 115
   turnSmoothTime: 0.1
   gravity: 200
