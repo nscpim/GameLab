@@ -23,6 +23,7 @@ public class Player : Actor
     private bool isCollidingWithWall = false;
     float turnSmoothVelocity;
     public int currentCheckpoint = 0;
+    public Vector3 respawnPosition;
 
     [Header("References")]
     [SerializeField] private LineRenderer lineRenderer;
@@ -175,6 +176,12 @@ public class Player : Actor
                 isCollidingWithWall = false;
             }
         }
+    }
+
+    public void Respawn()
+    {
+        print("DoTheThing");
+        this.transform.position = respawnPosition;
     }
 
     public void Movement() 

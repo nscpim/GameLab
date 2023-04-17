@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3611285892747781653}
   m_Layer: 0
   m_Name: LineRenderer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7992632634780335600}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +356,7 @@ MonoBehaviour:
     m_Bits: 128
   cam: {fileID: 5042959817838103191}
   currentCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 3611285892747781653}
   point: {fileID: 8783074532796940849}
   cameraPos: {fileID: 5042959817838103191}
