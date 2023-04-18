@@ -42,6 +42,18 @@ public class Player : Actor
     public bool isGrounded;
     public float raycastDistance = 0.2f;
 
+    [Header("Checkpoints")]
+    public int currentCheckpoint = 0;
+    public Vector3 respawnPosition;
+
+    public void Respawn()
+    {
+        print("DoTheThing");
+        controller.enabled = false;
+        transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        controller.enabled = true;
+    }
+
     //Start is called before the first frame update
     void Start()
     {
@@ -50,6 +62,7 @@ public class Player : Actor
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
         abilityCooldown = new Timer();
         UpdateLayers();
+        respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
 
     }
 
@@ -62,7 +75,7 @@ public class Player : Actor
         Dash();
         // UpdateMesh();
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
         {
             isGrounded = true;
         }
@@ -83,16 +96,16 @@ public class Player : Actor
         switch (playerInt)
         {
             case 1:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P1Cam");
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "P1Cam");
                 break;
             case 2:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P2Cam");
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "P2Cam");
                 break;
             case 3:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P3Cam");
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "P3Cam");
                 break;
             case 4:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P4Cam");
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "P4Cam");
                 break;
             default:
                 break;

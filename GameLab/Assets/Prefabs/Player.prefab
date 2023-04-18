@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2107372576128580520
 Transform:
   m_ObjectHideFlags: 0
@@ -400,6 +400,9 @@ MonoBehaviour:
   dashTime: 0.12
   dashCooldown: 2
   isGrounded: 0
+  raycastDistance: 1.5
+  currentCheckpoint: 0
+  respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!143 &7591339678226047643
 CharacterController:
   m_ObjectHideFlags: 0
