@@ -220,7 +220,7 @@ public class Player : Actor
     {
         if (character != null && canMove)
         {
-            if (isCollidingWithWall && !controller.isGrounded)
+            if (isCollidingWithWall && !isGrounded)
             {
 
                 Debug.Log("Stopped colliding with a wall!");
