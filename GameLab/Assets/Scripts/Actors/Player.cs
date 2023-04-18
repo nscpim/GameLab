@@ -58,6 +58,7 @@ public class Player : Actor
         Timer();
         CharMovement();
         Dash();
+       // UpdateMesh();
     }
 
     public void UpdateMesh()
@@ -242,7 +243,7 @@ public class Player : Actor
     {
         if (character != null && canMove)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt);
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
 
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -350,6 +351,23 @@ public class Player : Actor
         lineRenderer.SetPosition(0, point.position);
         lineRenderer.SetPosition(1, swingPoint);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.CompareTag("Slow Area"))
+        {
+            character.speed = 50f;
+            Debug.Log("Player entered the trigger!");
+        }
+
+        if (other.CompareTag("Fast Area"))
+        {
+           character.speed = 300f;
+            Debug.Log("Player entered the trigger!");
+        }
+    }
+
 
     public void AirControlToLeft()
     {
