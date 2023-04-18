@@ -25,8 +25,7 @@ public class InputManager : Manager
                {
                  new InputBinding() { axis = "Horizontal1" },
                  new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                 new InputBinding() { axis =  "Jump1"}
-
+                 new InputBinding() { axis =  "Jump1"},
                }
             },
             new ControlScheme()
@@ -35,7 +34,7 @@ public class InputManager : Manager
                {
                  new InputBinding() { axis = "Horizontal2" },
                  new InputBinding() { keyCode = KeyCode.A, strokeType = KeyStrokeType.down},
-                 new InputBinding() { axis =  "Jump2"}
+                 new InputBinding() { axis =  "Jump2"},
                }
             },
        };

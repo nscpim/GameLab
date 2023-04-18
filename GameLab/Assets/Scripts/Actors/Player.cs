@@ -34,6 +34,11 @@ public class Player : Actor
     private SpringJoint joint;
     private Vector3 currentGrapplePosition;
 
+    public float dashSpeed;
+    public float dashTime;
+    public float dashCooldown = 2;
+    private float nextDashTime = 0;
+
 
     //Start is called before the first frame update
     void Start()
@@ -52,6 +57,7 @@ public class Player : Actor
         scheme.Update();
         Timer();
         CharMovement();
+        Dash();
     }
 
     public void UpdateMesh()
@@ -199,8 +205,37 @@ public class Player : Actor
         }
     }
 
+
+
     public void Movement()
     {
+
+    }
+
+
+    public void Dash() 
+    {
+        if (Time.time > nextDashTime && canMove)
+        {
+            if (Input.GetButtonDown("Dash" + playerInt))
+            {
+                Debug.Log(playerInt + " Gets in here");
+                StartCoroutine(DashEnumerator());
+                nextDashTime = Time.time + dashCooldown;
+            }
+        }
+    }
+
+    IEnumerator DashEnumerator()
+    {
+        float startTime = Time.time;
+
+        while (Time.time < startTime + dashTime)
+        {
+            transform.Translate(Vector3.forward * dashSpeed);
+            //moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+            yield return null;
+        }
 
     }
     public void CharMovement()
