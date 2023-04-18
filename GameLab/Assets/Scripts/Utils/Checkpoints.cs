@@ -34,7 +34,7 @@ public class Checkpoints : MonoBehaviour
                         score.Add(playerID);
                         Debug.Log("Your placement :" + score.Count);
                         print("swag");
-                        placingText.text = "Your placing: " + score.Count;
+                        placingText.text = "player" + other.GetComponent<Player>().playerInt + "s placing: " + score.Count;
                         hasAddedScore[playerID] = true;
                     }
                 break;
