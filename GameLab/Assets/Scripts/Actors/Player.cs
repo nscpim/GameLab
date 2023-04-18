@@ -39,6 +39,8 @@ public class Player : Actor
     public float dashCooldown = 2;
     private float nextDashTime = 0;
 
+    public bool isGrounded;
+    public float raycastDistance = 0.2f;
 
     //Start is called before the first frame update
     void Start()
@@ -58,9 +60,18 @@ public class Player : Actor
         Timer();
         CharMovement();
         Dash();
-       // UpdateMesh();
-    }
+        // UpdateMesh();
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
 
+    }
     public void UpdateMesh()
     {
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
@@ -72,7 +83,7 @@ public class Player : Actor
         switch (playerInt)
         {
             case 1:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX" , "Ignore Raycast" , "UI", "Water", "Grabbable", "Wall", "P1Cam");
+                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P1Cam");
                 break;
             case 2:
                 cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "P2Cam");
@@ -177,7 +188,7 @@ public class Player : Actor
     //Integrate the ScriptableObjects in these methods.
     public void Jump()
     {
-        if (controller.isGrounded && canMove)
+        if (isGrounded && canMove)
         {
             movingDirection.y = character.jumpSpeed;
         }
@@ -214,7 +225,7 @@ public class Player : Actor
     }
 
 
-    public void Dash() 
+    public void Dash()
     {
         if (Time.time > nextDashTime && canMove)
         {
@@ -363,7 +374,7 @@ public class Player : Actor
 
         if (other.CompareTag("Fast Area"))
         {
-           character.speed = 300f;
+            character.speed = 300f;
             Debug.Log("Player entered the trigger!");
         }
     }
