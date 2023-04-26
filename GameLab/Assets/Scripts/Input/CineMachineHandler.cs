@@ -2,10 +2,12 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CineMachineHandler : MonoBehaviour
 {
     public CinemachineFreeLook[] cameras;
+    public TextMeshProUGUI[] playerTimeTexts;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class CineMachineHandler : MonoBehaviour
                 cameras[1].LookAt = GameManager.instance.currentPlayers[1].transform;
                 cameras[1].m_YAxis.m_InputAxisName = "VerticalCamera2";
                 cameras[1].m_XAxis.m_InputAxisName = "HorizontalCamera2";
-                
+               
                 break;
             case 3:
                 cameras[0].Follow = GameManager.instance.currentPlayers[0].transform;
@@ -83,6 +85,16 @@ public class CineMachineHandler : MonoBehaviour
                 break;
         }
 
+        SetupTexts(GameManager.instance.GetAmountOfPlayers());
+    }
+
+
+    public void SetupTexts(int amount) 
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            playerTimeTexts[i].gameObject.SetActive(true);
+        }
     }
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Checkpoints : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Checkpoints : MonoBehaviour
     public List<int> score = new List<int>();
     public UnityEngine.UI.Text placingText;
     private Dictionary<int, bool> hasAddedScore = new Dictionary<int, bool>();
+    public CineMachineHandler cineMachineHandler;
+    public InGameUIHandler inGameUIHandler;
 
 
     private void Start()
@@ -33,8 +36,10 @@ public class Checkpoints : MonoBehaviour
                     {
                         score.Add(playerID);
                         Debug.Log(other.name + " " + "Your placement :" + score.Count);
-                        
-                       // placingText.text = "player" + other.GetComponent<Player>().playerInt + "s placing: " + score.Count;
+                        float totalSeconds = inGameUIHandler.matchTimer;
+                        TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+                        cineMachineHandler.playerTimeTexts[playerID].text = "player" + other.GetComponent<Player>().playerInt + "s placing: " + score.Count +
+                            "/n" + " Time: " + time.ToString("mm':'ss");
                         hasAddedScore[playerID] = true;
                     }
                 break;
