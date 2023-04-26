@@ -13,12 +13,18 @@ MonoBehaviour:
   m_Name: Character 2
   m_EditorClassIdentifier: 
   characterName: 
-  characterID: 0
+  characterID: 3
   characterEnum: 2
-  description: 
+  description: Generic Description for the third character
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
-  abilityCooldown: 0
-  moveSpeed: 0
-  jumpHeight: 0
+  abilityCooldown: 10
+  secondAbilityCooldown: 5
+  speed: 100
+  jumpSpeed: 115
+  turnSmoothTime: 0.1
+  gravity: 200
+  maxSpeed: 300
+  acceleration: 10
+  startingSpeed: 100

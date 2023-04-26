@@ -31,8 +31,9 @@ public class ControlScheme
 
     public void AssignInput(Player player)
     {
-        _input[(int)InputAction.Test].action = player.Test;
         _input[(int)InputAction.Ability].action = player.ExecuteAbility;
+        _input[(int)InputAction.Jump].action = player.Jump;
+        _input[(int)InputAction.SecondAbility].action = player.ExecuteSecondAbility;
     }
 
 }

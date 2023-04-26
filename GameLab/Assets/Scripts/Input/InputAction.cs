@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum InputAction 
 {
-   Test,
-   Ability
+   Ability,
+   Jump,
+   SecondAbility,
 }
