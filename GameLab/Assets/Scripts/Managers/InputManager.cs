@@ -23,18 +23,18 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
+                 new InputBinding() { axis = "Ability1"},
                  new InputBinding() { axis =  "Jump1"},
+                 new InputBinding() { axis = "SecondAbility1"},
                }
             },
             new ControlScheme()
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.A, strokeType = KeyStrokeType.down},
+                 new InputBinding() { axis = "Ability2"},
                  new InputBinding() { axis =  "Jump2"},
+                 new InputBinding() { axis = "SecondAbility2"},
                }
             },
        };
@@ -47,9 +47,10 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                 new InputBinding() { axis =  "Jump1"}
+
+                 new InputBinding() { axis = "Ability1"},
+                 new InputBinding() { axis =  "Jump1"},
+                  new InputBinding() { axis = "SecondAbility1"},
                }
 
             },
@@ -57,10 +58,10 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                   new InputBinding() { axis =  "Jump2"}
 
+                   new InputBinding() { axis = "Ability2"},
+                   new InputBinding() { axis =  "Jump2"},
+                   new InputBinding() { axis = "SecondAbility2"},
                }
 
             },
@@ -68,9 +69,11 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal3" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                   new InputBinding() { axis =  "Jump3"}
+
+                   new InputBinding() { axis = "Ability3"},
+                   new InputBinding() { axis =  "Jump3"},
+                   new InputBinding() { axis = "SecondAbility3"},
+
                }
 
             },
@@ -84,9 +87,10 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                   new InputBinding() { axis =  "Jump1"}
+
+                   new InputBinding() { axis = "Ability1"},
+                   new InputBinding() { axis =  "Jump1"},
+                   new InputBinding() { axis = "SecondAbility1"},
                }
 
             },
@@ -94,9 +98,10 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                   new InputBinding() { axis =  "Jump2"}
+
+                   new InputBinding() { axis = "Ability2"},
+                   new InputBinding() { axis =  "Jump2"},
+                   new InputBinding() { axis = "SecondAbility2"},
 
                }
 
@@ -105,9 +110,10 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal3" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                   new InputBinding() { axis =  "Jump3"}
+
+                   new InputBinding() { axis = "Ability3"},
+                   new InputBinding() { axis =  "Jump3"},
+                   new InputBinding() { axis = "SecondAbility3"},
                }
 
             },
@@ -115,9 +121,10 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal4" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down},
-                 new InputBinding() { axis =  "Jump4"}
+
+                   new InputBinding() { axis = "Ability4"},
+                 new InputBinding() { axis =  "Jump4"},
+                 new InputBinding() { axis = "SecondAbility4"},
                }
             },
 

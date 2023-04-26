@@ -42,8 +42,42 @@ public class CineMachineHandler : MonoBehaviour
                 
                 break;
             case 3:
+                cameras[0].Follow = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].LookAt = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].m_YAxis.m_InputAxisName = "VerticalCamera1";
+                cameras[0].m_XAxis.m_InputAxisName = "HorizontalCamera1";
+
+
+                cameras[1].Follow = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].LookAt = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].m_YAxis.m_InputAxisName = "VerticalCamera2";
+                cameras[1].m_XAxis.m_InputAxisName = "HorizontalCamera2";
+
+                cameras[2].Follow = GameManager.instance.currentPlayers[2].transform;
+                cameras[2].LookAt = GameManager.instance.currentPlayers[2].transform;
+                cameras[2].m_YAxis.m_InputAxisName = "VerticalCamera3";
+                cameras[2].m_XAxis.m_InputAxisName = "HorizontalCamera3";
                 break;
             case 4:
+                cameras[0].Follow = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].LookAt = GameManager.instance.currentPlayers[0].transform;
+                cameras[0].m_YAxis.m_InputAxisName = "VerticalCamera1";
+                cameras[0].m_XAxis.m_InputAxisName = "HorizontalCamera1";
+
+                cameras[1].Follow = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].LookAt = GameManager.instance.currentPlayers[1].transform;
+                cameras[1].m_YAxis.m_InputAxisName = "VerticalCamera2";
+                cameras[1].m_XAxis.m_InputAxisName = "HorizontalCamera2";
+
+                cameras[2].Follow = GameManager.instance.currentPlayers[2].transform;
+                cameras[2].LookAt = GameManager.instance.currentPlayers[2].transform;
+                cameras[2].m_YAxis.m_InputAxisName = "VerticalCamera3";
+                cameras[2].m_XAxis.m_InputAxisName = "HorizontalCamera3";
+
+                cameras[3].Follow = GameManager.instance.currentPlayers[3].transform;
+                cameras[3].LookAt = GameManager.instance.currentPlayers[3].transform;
+                cameras[3].m_YAxis.m_InputAxisName = "VerticalCamera4";
+                cameras[3].m_XAxis.m_InputAxisName = "HorizontalCamera4";
                 break;
             default:
                 break;

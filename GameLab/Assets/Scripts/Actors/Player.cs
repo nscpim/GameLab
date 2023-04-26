@@ -13,6 +13,7 @@ public class Player : Actor
     private float timeStamp;
     public bool canSelectCharacter;
     private Timer abilityCooldown;
+    private Timer secondAbilityTimer;
     public bool canMove;
 
     [Header("Variables")]
@@ -63,6 +64,7 @@ public class Player : Actor
         abilityCooldown = new Timer();
         UpdateLayers();
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
+        secondAbilityTimer = new Timer();
 
     }
 
@@ -117,6 +119,12 @@ public class Player : Actor
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
         {
             abilityCooldown.StopTimer();
+        }
+
+
+        if (secondAbilityTimer.isActive && secondAbilityTimer.TimerDone())
+        {
+            secondAbilityTimer.StopTimer();
         }
     }
 
@@ -330,6 +338,37 @@ public class Player : Actor
             //Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
         }
     }
+
+    public void ExecuteSecondAbility()
+    {
+        if (!secondAbilityTimer.isActive && canMove)
+        {
+            switch (character.characterEnum)
+            {
+                case Character.Test:
+                    
+                    break;
+                case Character.Test1:
+
+                    break;
+                case Character.Test2:
+
+                    break;
+                case Character.Test3:
+
+                    break;
+                default:
+                    break;
+            }
+            secondAbilityTimer.SetTimer(character.abilityCooldown);
+        }
+
+        else
+        {
+            //Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
+        }
+    }
+
 
     public void StartSwing()
     {
