@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour
         System.Array values = System.Enum.GetValues(typeof(KeyCode));
         foreach (KeyCode code in values)
         {
-            if (Input.GetKeyDown(code)) { print(System.Enum.GetName(typeof(KeyCode), code)); }
+           // if (Input.GetKeyDown(code)) { print(System.Enum.GetName(typeof(KeyCode), code)); }
         }
     }
 }

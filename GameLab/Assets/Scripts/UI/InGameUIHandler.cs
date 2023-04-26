@@ -103,7 +103,7 @@ public class InGameUIHandler : MonoBehaviour
             toolTipPanel.SetActive(false);
             once = true;
             countdownTimer.SetTimer(GameManager.instance.matchCountdown);
-            Debug.Log("MATCH ABOUT TO START");
+           // Debug.Log("MATCH ABOUT TO START");
         }
 
         if (countdownTimer.isActive && countdownTimer.TimerDone())
@@ -113,7 +113,7 @@ public class InGameUIHandler : MonoBehaviour
             matchTimerUpdater.SetTimer(1f);
             matchStarted = true;
             GameManager.instance.SetCanMove(true);
-            Debug.Log("GAME STARTING");
+           // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
                 GameManager.instance.currentPlayers[i].canMove = true;

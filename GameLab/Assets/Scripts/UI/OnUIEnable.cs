@@ -8,7 +8,7 @@ public class OnUIEnable : MonoBehaviour
    
     public void OnEnable()
     {
-        Debug.Log("UI Setter");
+       // Debug.Log("UI Setter");
         GameManager.instance.eventSystem.SetSelectedGameObject(gameObject);
     }
     // Start is called before the first frame update

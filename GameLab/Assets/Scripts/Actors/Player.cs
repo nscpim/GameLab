@@ -48,7 +48,7 @@ public class Player : Actor
 
     public void Respawn()
     {
-        print("DoTheThing");
+       
         controller.enabled = false;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
         controller.enabled = true;
@@ -211,7 +211,7 @@ public class Player : Actor
     {
         if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
         {
-            Debug.Log("Collided with a wall!");
+           // Debug.Log("Collided with a wall!");
             isCollidingWithWall = true;
             character.gravity = 0f;
         }
@@ -223,7 +223,7 @@ public class Player : Actor
             if (isCollidingWithWall && !isGrounded)
             {
 
-                Debug.Log("Stopped colliding with a wall!");
+              //  Debug.Log("Stopped colliding with a wall!");
                 character.gravity = 200f;
                 isCollidingWithWall = false;
             }
@@ -244,7 +244,7 @@ public class Player : Actor
         {
             if (Input.GetButtonDown("Dash" + playerInt))
             {
-                Debug.Log(playerInt + " Gets in here");
+               // Debug.Log(playerInt + " Gets in here");
                 StartCoroutine(DashEnumerator());
                 nextDashTime = Time.time + dashCooldown;
             }
@@ -308,16 +308,16 @@ public class Player : Actor
             {
                 case Character.Test:
                     StartSwing();
-                    Debug.Log("Executed Ability, WOW!");
+                   
                     break;
                 case Character.Test1:
-                    Debug.Log("Executed Ability, WOW!");
+                    
                     break;
                 case Character.Test2:
-                    Debug.Log("Executed Ability, WOW!");
+                    
                     break;
                 case Character.Test3:
-                    Debug.Log("Executed Ability, WOW!");
+                  
                     break;
                 default:
                     break;
@@ -327,7 +327,7 @@ public class Player : Actor
 
         else
         {
-            Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
+            //Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
         }
     }
 
@@ -382,13 +382,13 @@ public class Player : Actor
         if (other.CompareTag("Slow Area"))
         {
             character.speed = 50f;
-            Debug.Log("Player entered the trigger!");
+           // Debug.Log("Player entered the trigger!");
         }
 
         if (other.CompareTag("Fast Area"))
         {
             character.speed = 300f;
-            Debug.Log("Player entered the trigger!");
+          //  Debug.Log("Player entered the trigger!");
         }
     }
 

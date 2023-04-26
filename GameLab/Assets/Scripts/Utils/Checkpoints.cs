@@ -24,7 +24,7 @@ public class Checkpoints : MonoBehaviour
 
                 other.GetComponent<Player>().currentCheckpoint = this.currentCheckpoint;
                 other.GetComponent<Player>().respawnPosition = this.transform.position;
-                Debug.Log(other.GetComponent<Player>().currentCheckpoint);
+               // Debug.Log(other.GetComponent<Player>().currentCheckpoint);
                 break;
 
                 case "FinishLine":
@@ -33,15 +33,15 @@ public class Checkpoints : MonoBehaviour
                     {
                         score.Add(playerID);
                         Debug.Log(other.name + " " + "Your placement :" + score.Count);
-                        print("swag");
+                        
                        // placingText.text = "player" + other.GetComponent<Player>().playerInt + "s placing: " + score.Count;
                         hasAddedScore[playerID] = true;
                     }
                 break;
 
                 case "Respawn":
-                    Debug.Log(other.GetComponent<Player>().respawnPosition);
-                    print("deez");
+                   // Debug.Log(other.GetComponent<Player>().respawnPosition);
+                  
                     other.GetComponent<Player>().Respawn();
                 break;
             }
