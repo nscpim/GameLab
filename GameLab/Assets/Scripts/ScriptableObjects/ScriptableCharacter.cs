@@ -24,9 +24,20 @@ public class ScriptableCharacter : ScriptableObject
     //Cooldown of the ability.
     public float abilityCooldown;
     //Movement speed of the character.
-    public float moveSpeed;
+    public float speed;
     //Jump height of the character.
-    public float jumpHeight;
+    public float jumpSpeed;
+
+    public float turnSmoothTime = 0.1f;
+
+    public float gravity;
+
+    public float maxSpeed;
+
+    public float acceleration;
+
+    public float startingSpeed;
+
 
     // Start is called before the first frame update
     public void Awake()
