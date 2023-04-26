@@ -283,7 +283,8 @@ public class Player : Actor
 
             if (!transform.hasChanged)
             {
-                character.speed = character.startingSpeed;
+                character.speed = 50f; 
+                Debug.Log ("Reset Speed");
             }
             transform.hasChanged = false;
 

@@ -36,7 +36,7 @@ public class ScriptableCharacter : ScriptableObject
 
     public float acceleration;
 
-    public float startingSpeed;
+    //public float startingSpeed;
 
 
     // Start is called before the first frame update
