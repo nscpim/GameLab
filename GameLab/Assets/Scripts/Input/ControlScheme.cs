@@ -29,7 +29,7 @@ public class ControlScheme
         }
     }
 
-    public void AssignInput(Player player)
+    public void AssignInput(ThirdPersonMovement player)
     {
         _input[(int)InputAction.Ability].action = player.ExecuteAbility;
         _input[(int)InputAction.Jump].action = player.Jump;

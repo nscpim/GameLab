@@ -23,7 +23,7 @@ public class ThirdPersonDash : MonoBehaviour
     {
         if (Time.time > nextDashTime)
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift))
+            if(Input.GetButtonDown("Dash" + GetComponent<ThirdPersonMovement>().playerInt))
             {
                 StartCoroutine(Dash());
                 nextDashTime = Time.time + dashCooldown;

@@ -9,6 +9,7 @@ TagManager:
   - Fast Area
   - FinishLine
   - Checkpoint
+  - Jump Pad
   layers:
   - Default
   - TransparentFX
