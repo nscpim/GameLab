@@ -6,15 +6,15 @@ using UnityEngine;
 public class Player : Actor
 {
     private ControlScheme scheme;
-    private Camera mainCamera;
     public int playerInt;
+    private Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
-    private Vector3 moveDirection = Vector3.zero;
     private float timeStamp;
     public bool canSelectCharacter;
     private Timer abilityCooldown;
     private Timer secondAbilityTimer;
     public bool canMove;
+    private Vector3 moveDirection = Vector3.zero;
 
     [Header("Variables")]
     public CharacterController controller;
@@ -197,7 +197,7 @@ public class Player : Actor
         {
             ClearControlScheme();
         }
-        scheme.AssignInput(this);
+       // scheme.AssignInput(this);
         this.scheme = scheme;
 
     }

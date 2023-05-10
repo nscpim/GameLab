@@ -25,20 +25,20 @@ public class Checkpoints : MonoBehaviour
             {
                 case "Checkpoint":
 
-                other.GetComponent<Player>().currentCheckpoint = this.currentCheckpoint;
-                other.GetComponent<Player>().respawnPosition = this.transform.position;
+                other.GetComponent<ThirdPersonMovement>().currentCheckpoint = this.currentCheckpoint;
+                other.GetComponent<ThirdPersonMovement>().respawnPosition = this.transform.position;
                // Debug.Log(other.GetComponent<Player>().currentCheckpoint);
                 break;
 
                 case "FinishLine":
-                    int playerID = other.GetComponent<Player>().playerInt;
+                    int playerID = other.GetComponent<ThirdPersonMovement>().playerInt;
                     if (!hasAddedScore.ContainsKey(playerID) || !hasAddedScore[playerID])
                     {
                         score.Add(playerID);
                         Debug.Log(other.name + " " + "Your placement :" + score.Count);
                         float totalSeconds = inGameUIHandler.matchTimer;
                         TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-                        cineMachineHandler.playerTimeTexts[playerID].text = "player" + other.GetComponent<Player>().playerInt + "s placing: " + score.Count +
+                        cineMachineHandler.playerTimeTexts[playerID].text = "player" + other.GetComponent<ThirdPersonMovement>().playerInt + "s placing: " + score.Count +
                             "/n" + " Time: " + time.ToString("mm':'ss");
                         hasAddedScore[playerID] = true;
                     }
@@ -47,7 +47,7 @@ public class Checkpoints : MonoBehaviour
                 case "Respawn":
                    // Debug.Log(other.GetComponent<Player>().respawnPosition);
                   
-                    other.GetComponent<Player>().Respawn();
+                    other.GetComponent<ThirdPersonMovement>().Respawn();
                 break;
             }
         }
