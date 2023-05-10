@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         GetInput();
     }
 
+
     /// <summary>
     /// Method for loading a level.
     /// </summary>
