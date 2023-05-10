@@ -7,11 +7,11 @@ using UnityEngine.TextCore.Text;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public float speed = 6f;
+    public float speed = 30f;
     public Transform cam; 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
-    public float jumpSpeed = 2.0f;
+    public float jumpSpeed = 20.0f;
     public float gravity = 10.0f;
     private Vector3 movingDirection = Vector3.zero;
     public float maxSpeed = 70f;
@@ -261,7 +261,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && canMove)
         {
-            movingDirection.y = character.jumpSpeed;
+            movingDirection.y = jumpSpeed;
         }
     }
 
@@ -281,19 +281,24 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
-            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+            Vector3 direction = new Vector3(-horizontal, 0f, -vertical).normalized;
 
-            movingDirection.y -= character.gravity * Time.deltaTime;
+            movingDirection.y -= gravity * Time.deltaTime;
             controller.Move(movingDirection * Time.deltaTime);
 
-            if (character.speed < character.maxSpeed)
+            if (speed <= maxSpeed)
             {
-                character.speed += character.acceleration * Time.deltaTime;
+                speed += acceleration * Time.deltaTime;
+            }
+            if (speed > maxSpeed)
+            {
+                Debug.Log("Gets here");
+                speed = maxSpeed;
             }
 
             if (!transform.hasChanged)
             {
-                speed = 50f;
+                speed = 30f;
                 Debug.Log("Reset Speed");
             }
             transform.hasChanged = false;
@@ -305,10 +310,10 @@ public class ThirdPersonMovement : MonoBehaviour
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, character.turnSmoothTime);
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                controller.Move(moveDir.normalized * character.speed * Time.deltaTime);
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
         }
 

@@ -31,7 +31,7 @@ public class Checkpoints : MonoBehaviour
                 break;
 
                 case "FinishLine":
-                    int playerID = other.GetComponent<Player>().playerInt;
+                    int playerID = other.GetComponent<ThirdPersonMovement>().playerInt;
                     if (!hasAddedScore.ContainsKey(playerID) || !hasAddedScore[playerID])
                     {
                         score.Add(playerID);
