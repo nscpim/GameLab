@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class Checkpoints : MonoBehaviour
 {
     public int currentCheckpoint;
     public List<int> score = new List<int>();
-    public UnityEngine.UI.Text placingText;
+    public TextMeshProUGUI placingText;
     private Dictionary<int, bool> hasAddedScore = new Dictionary<int, bool>();
     public CineMachineHandler cineMachineHandler;
     public InGameUIHandler inGameUIHandler;

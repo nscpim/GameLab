@@ -26,6 +26,7 @@ public class InputManager : Manager
                  new InputBinding() { axis = "Ability1"},
                  new InputBinding() { axis =  "Jump1"},
                  new InputBinding() { axis = "SecondAbility1"},
+
                }
             },
             new ControlScheme()
@@ -35,6 +36,7 @@ public class InputManager : Manager
                  new InputBinding() { axis = "Ability2"},
                  new InputBinding() { axis =  "Jump2"},
                  new InputBinding() { axis = "SecondAbility2"},
+
                }
             },
        };
@@ -51,6 +53,7 @@ public class InputManager : Manager
                  new InputBinding() { axis = "Ability1"},
                  new InputBinding() { axis =  "Jump1"},
                   new InputBinding() { axis = "SecondAbility1"},
+
                }
 
             },
@@ -62,6 +65,7 @@ public class InputManager : Manager
                    new InputBinding() { axis = "Ability2"},
                    new InputBinding() { axis =  "Jump2"},
                    new InputBinding() { axis = "SecondAbility2"},
+
                }
 
             },
@@ -73,6 +77,7 @@ public class InputManager : Manager
                    new InputBinding() { axis = "Ability3"},
                    new InputBinding() { axis =  "Jump3"},
                    new InputBinding() { axis = "SecondAbility3"},
+
 
                }
 
@@ -91,6 +96,7 @@ public class InputManager : Manager
                    new InputBinding() { axis = "Ability1"},
                    new InputBinding() { axis =  "Jump1"},
                    new InputBinding() { axis = "SecondAbility1"},
+
                }
 
             },
@@ -103,6 +109,7 @@ public class InputManager : Manager
                    new InputBinding() { axis =  "Jump2"},
                    new InputBinding() { axis = "SecondAbility2"},
 
+
                }
 
             },
@@ -114,6 +121,7 @@ public class InputManager : Manager
                    new InputBinding() { axis = "Ability3"},
                    new InputBinding() { axis =  "Jump3"},
                    new InputBinding() { axis = "SecondAbility3"},
+
                }
 
             },
@@ -125,6 +133,7 @@ public class InputManager : Manager
                    new InputBinding() { axis = "Ability4"},
                  new InputBinding() { axis =  "Jump4"},
                  new InputBinding() { axis = "SecondAbility4"},
+
                }
             },
 

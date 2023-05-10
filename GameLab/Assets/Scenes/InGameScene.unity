@@ -8075,6 +8075,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 461303049, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 461303049, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 461303049, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
     - target: {fileID: 548701213, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5181
@@ -8087,6 +8099,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3470
       objectReference: {fileID: 0}
+    - target: {fileID: 548701215, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 548701215, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 548701215, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
     - target: {fileID: 831218362, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_Size.x
       value: 1972.8175
@@ -8111,14 +8135,106 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 327.2546
       objectReference: {fileID: 0}
+    - target: {fileID: 831218363, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 831218363, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 831218363, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
     - target: {fileID: 831218364, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -5811
       objectReference: {fileID: 0}
+    - target: {fileID: 894412776, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 894412776, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 894412776, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 938377375, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 938377375, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 938377375, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 977263385, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 977263385, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 977263385, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 1348902493, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 1348902493, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
     - target: {fileID: 1348902493, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: cineMachineHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 1835439235, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 1835439235, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 1835439235, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 1860051042, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 1860051042, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 1860051042, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
+    - target: {fileID: 1952548072, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: placingText
+      value: 
+      objectReference: {fileID: 1894640224}
+    - target: {fileID: 1952548072, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: inGameUIHandler
+      value: 
+      objectReference: {fileID: 1526313798}
+    - target: {fileID: 1952548072, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: cineMachineHandler
+      value: 
+      objectReference: {fileID: 1887568189}
     - target: {fileID: 495385253495877980, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_Layer
       value: 12
