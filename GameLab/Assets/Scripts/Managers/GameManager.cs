@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Players")]
     //Initial player object
-    public Player player;
+    public ThirdPersonMovement player;
     //Referenced Players *pls do not touch*
-    public List<Player> currentPlayers = new List<Player>();
+    public List<ThirdPersonMovement> currentPlayers = new List<ThirdPersonMovement>();
     //All the available character Objects.
     public ScriptableCharacter[] characters;
     //Spawnpoint for the players
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
     /// Add player to the currentplayers list
     /// </summary>
     /// <param name="player"></param>
-    public void AddToGameManager(Player player)
+    public void AddToGameManager(ThirdPersonMovement player)
     {
         currentPlayers.Add(player);
     }

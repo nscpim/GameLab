@@ -23,6 +23,7 @@ public class ScriptableCharacter : ScriptableObject
     public Mesh characterMesh;
     //Cooldown of the ability.
     public float abilityCooldown;
+    public float secondAbilityCooldown;
     //Movement speed of the character.
     public float speed;
     //Jump height of the character.
