@@ -332,7 +332,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Pause()
     {
-        if (Input.GetButtonDown("Pause" + playerInt))
+        if (Input.GetButtonDown("Pause"))
         {
             Debug.Log("Paused");
             GameManager.Pause();
