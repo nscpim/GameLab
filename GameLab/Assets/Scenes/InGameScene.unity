@@ -8075,6 +8075,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 461303048, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69903964
+      objectReference: {fileID: 0}
+    - target: {fileID: 461303048, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461303048, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.71508294
+      objectReference: {fileID: 0}
+    - target: {fileID: 461303048, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461303048, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -91.3
+      objectReference: {fileID: 0}
     - target: {fileID: 461303049, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: placingText
       value: 
@@ -8087,6 +8107,10 @@ PrefabInstance:
       propertyPath: cineMachineHandler
       value: 
       objectReference: {fileID: 1887568189}
+    - target: {fileID: 461303050, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_Size.x
+      value: 71.4
+      objectReference: {fileID: 0}
     - target: {fileID: 548701213, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5181
@@ -8163,6 +8187,30 @@ PrefabInstance:
       propertyPath: cineMachineHandler
       value: 
       objectReference: {fileID: 1887568189}
+    - target: {fileID: 894412777, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_Size.x
+      value: -98.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 894412778, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.995562
+      objectReference: {fileID: 0}
+    - target: {fileID: 894412778, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 894412778, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.09410833
+      objectReference: {fileID: 0}
+    - target: {fileID: 894412778, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 894412778, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 10.8
+      objectReference: {fileID: 0}
     - target: {fileID: 938377375, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: placingText
       value: 
@@ -8211,6 +8259,30 @@ PrefabInstance:
       propertyPath: cineMachineHandler
       value: 
       objectReference: {fileID: 1887568189}
+    - target: {fileID: 1835439236, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_Size.x
+      value: -109.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835439237, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.24226062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835439237, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835439237, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9702112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835439237, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835439237, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 151.96
+      objectReference: {fileID: 0}
     - target: {fileID: 1860051042, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: placingText
       value: 
@@ -8223,6 +8295,30 @@ PrefabInstance:
       propertyPath: cineMachineHandler
       value: 
       objectReference: {fileID: 1887568189}
+    - target: {fileID: 1860051043, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_Size.x
+      value: -80.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860051044, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.42909285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860051044, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860051044, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9032604
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860051044, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860051044, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 129.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1952548072, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: placingText
       value: 

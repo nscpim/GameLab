@@ -169,7 +169,7 @@ CharacterController:
   m_Height: 3.5
   m_Radius: 0.76
   m_SlopeLimit: 45
-  m_StepOffset: 0.4
+  m_StepOffset: 1.21
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.83, z: -0.13}
@@ -197,8 +197,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   launchSpeed: 500
-  prefabToSpawn: {fileID: 8171102419909516150, guid: d0cbb86cdefdf4e46b62e29fc58cc7ee, type: 3}
+  prefabToSpawn: {fileID: 6469723026913261903, guid: 5138927542b7ca14b9d35098ebb315aa, type: 3}
   playerInt: 0
+  respawnRotation: {x: 0, y: 0, z: 0, w: 0}
   character: {fileID: 0}
   canSelectCharacter: 0
   canMove: 0

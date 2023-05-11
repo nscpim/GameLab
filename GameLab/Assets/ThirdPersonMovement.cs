@@ -21,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public GameObject prefabToSpawn;
     public int playerInt;
     public ControlScheme scheme;
+    public Quaternion respawnRotation;
 
     private Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -29,6 +30,8 @@ public class ThirdPersonMovement : MonoBehaviour
     private Timer abilityCooldown;
     private Timer secondAbilityTimer;
     public bool canMove;
+    private bool canPause;
+    private Timer pauseTimer;
 
 
     public bool isGrounded;
@@ -49,7 +52,9 @@ public class ThirdPersonMovement : MonoBehaviour
         abilityCooldown = new Timer();
         UpdateLayers();
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
+        respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
+        pauseTimer = new Timer();
     }
 
     public void SetViewPortRect(string _name, int amount)
@@ -118,6 +123,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateLayers()
     {
+
         switch (playerInt)
         {
             case 1:
@@ -156,6 +162,13 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             secondAbilityTimer.StopTimer();
         }
+
+
+        if (pauseTimer.isActive && pauseTimer.TimerDone())
+        {
+            pauseTimer.StopTimer();
+        }
+
     }
 
 
@@ -166,6 +179,7 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
+                    //SpawnPrefab();
                     Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
@@ -253,6 +267,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.enabled = false;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        transform.localRotation = respawnRotation;
         controller.enabled = true;
     }
 
@@ -270,7 +285,6 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         scheme.Update();
         Timer();
-        Pause();
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
         {
@@ -282,7 +296,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (canMove)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.4f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -332,12 +346,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Pause()
     {
-        if (Input.GetButtonDown("Pause"))
-        {
-            Debug.Log("Paused");
-            GameManager.Pause();
-        }
-      
+        GameManager.Pause();
+        Debug.Log("Paused");
     }
 
 

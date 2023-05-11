@@ -34,6 +34,7 @@ public class ControlScheme
         _input[(int)InputAction.Ability].action = player.ExecuteAbility;
         _input[(int)InputAction.Jump].action = player.Jump;
         _input[(int)InputAction.SecondAbility].action = player.ExecuteSecondAbility;
+        _input[(int)InputAction.Pause].action = player.Pause;
     }
 
 }
