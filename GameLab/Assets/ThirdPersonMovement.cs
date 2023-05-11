@@ -23,6 +23,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public ControlScheme scheme;
     public Quaternion respawnRotation;
 
+    private Timer spawnTimer;
+    private GameObject objectSpawnedIn;
+
     private Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
     private float timeStamp;
@@ -54,7 +57,7 @@ public class ThirdPersonMovement : MonoBehaviour
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
         respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
-        pauseTimer = new Timer();
+        spawnTimer = new Timer();
     }
 
     public void SetViewPortRect(string _name, int amount)
@@ -164,9 +167,10 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
 
-        if (pauseTimer.isActive && pauseTimer.TimerDone())
+        if (spawnTimer.isActive && spawnTimer.TimerDone())
         {
-            pauseTimer.StopTimer();
+            spawnTimer.StopTimer();
+            Destroy(objectSpawnedIn);
         }
 
     }
@@ -179,7 +183,7 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
-                    //SpawnPrefab();
+                    SpawnPrefab();
                     Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
@@ -408,6 +412,8 @@ public class ThirdPersonMovement : MonoBehaviour
         // Instantiate the prefab at the current object's position
         GameObject newPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         newPrefab.SetActive(true);
+        objectSpawnedIn = newPrefab;
+        spawnTimer.SetTimer(5f);
     }
 
 

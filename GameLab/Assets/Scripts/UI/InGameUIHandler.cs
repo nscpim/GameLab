@@ -137,7 +137,7 @@ public class InGameUIHandler : MonoBehaviour
             matchTimerUpdater.StopTimer();
             float totalSeconds = matchTimer;
             TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-            GameManager.GetManager<UIManager>().UpdateUI(matchTimerText, time.ToString("mm':'ss"));
+            GameManager.GetManager<UIManager>().UpdateUI(matchTimerText, time.ToString("mm':'ss':'ms"));
             matchTimerUpdater.SetTimer(1f);
         }
 
