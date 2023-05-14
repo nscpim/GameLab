@@ -30,7 +30,7 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject pausePanel;
     public GameObject toolTipPanel;
 
-    public float matchTimer = 0f;
+    public float matchTimer;
     private Timer matchTimerUpdater;
 
     public bool matchStarted = false;
@@ -45,6 +45,7 @@ public class InGameUIHandler : MonoBehaviour
         matchTimerUpdater = new Timer();
         GameManager.instance.SetCanMove(false);
         GameManager.instance.canSelect = true;
+        matchTimer = 0f;
         SetupPanels(true);
         ResetSelection();
         //Dont forget to disable movement code 
@@ -127,6 +128,8 @@ public class InGameUIHandler : MonoBehaviour
 
         SetActivePanel(pausePanel, GameManager.paused);
 
+
+       
         if (matchStarted)
         {
             matchTimer += Time.deltaTime;
@@ -137,7 +140,7 @@ public class InGameUIHandler : MonoBehaviour
             matchTimerUpdater.StopTimer();
             float totalSeconds = matchTimer;
             TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-            GameManager.GetManager<UIManager>().UpdateUI(matchTimerText, time.ToString("mm':'ss':'ms"));
+            GameManager.GetManager<UIManager>().UpdateUI(matchTimerText, time.ToString("mm':'ss"));
             matchTimerUpdater.SetTimer(1f);
         }
 
