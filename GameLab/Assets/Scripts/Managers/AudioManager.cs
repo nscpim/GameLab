@@ -126,7 +126,7 @@ public class AudioManager : Manager
 
     public override void Pause(bool pause)
     {
-        base.Pause(pause);
+     
     }
 }
 

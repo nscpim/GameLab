@@ -8,7 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 30f;
-    public Transform cam; 
+    public Transform cam;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
@@ -21,6 +21,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public GameObject prefabToSpawn;
     public int playerInt;
     public ControlScheme scheme;
+    public Quaternion respawnRotation;
+
+    private Timer spawnTimer;
+    private GameObject objectSpawnedIn;
 
     private Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -29,6 +33,8 @@ public class ThirdPersonMovement : MonoBehaviour
     private Timer abilityCooldown;
     private Timer secondAbilityTimer;
     public bool canMove;
+    private bool canPause;
+    private Timer pauseTimer;
 
 
     public bool isGrounded;
@@ -49,7 +55,9 @@ public class ThirdPersonMovement : MonoBehaviour
         abilityCooldown = new Timer();
         UpdateLayers();
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
+        respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
+        spawnTimer = new Timer();
     }
 
     public void SetViewPortRect(string _name, int amount)
@@ -118,6 +126,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateLayers()
     {
+
         switch (playerInt)
         {
             case 1:
@@ -156,6 +165,14 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             secondAbilityTimer.StopTimer();
         }
+
+
+        if (spawnTimer.isActive && spawnTimer.TimerDone())
+        {
+            spawnTimer.StopTimer();
+            Destroy(objectSpawnedIn);
+        }
+
     }
 
 
@@ -166,6 +183,8 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
+                    SpawnPrefab();
+                    Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
 
@@ -195,7 +214,7 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
-
+                    Debug.Log("Second ability sjjeeesh");
                     break;
                 case Character.Test1:
 
@@ -252,10 +271,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.enabled = false;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        transform.localRotation = respawnRotation;
         controller.enabled = true;
     }
 
-   
+
 
     public void Jump()
     {
@@ -268,6 +288,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
         scheme.Update();
+        Timer();
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
         {
@@ -279,9 +300,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (canMove)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.4f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
-            Vector3 direction = new Vector3(-horizontal, 0f, vertical).normalized;
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
             movingDirection.y -= gravity * Time.deltaTime;
             controller.Move(movingDirection * Time.deltaTime);
@@ -317,7 +338,7 @@ public class ThirdPersonMovement : MonoBehaviour
             }
         }
 
-       
+
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -325,30 +346,34 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log("Wow");
         }
     }
-    
+
+
+    public void Pause()
+    {
+        GameManager.Pause();
+        Debug.Log("Paused");
+    }
 
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        
+
         if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
         {
-            
+
             Debug.Log("Collided with a wall!");
             isCollidingWithWall = true;
             gravity = 0f;
-
-
         }
 
     }
 
     void FixedUpdate()
     {
-        
+
         if (isCollidingWithWall && !controller.isGrounded)
         {
-            
+
             Debug.Log("Stopped colliding with a wall!");
             gravity = 200f;
             isCollidingWithWall = false;
@@ -357,7 +382,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
+
         if (other.CompareTag("Slow Area"))
         {
             speed = 50f;
@@ -387,6 +412,8 @@ public class ThirdPersonMovement : MonoBehaviour
         // Instantiate the prefab at the current object's position
         GameObject newPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         newPrefab.SetActive(true);
+        objectSpawnedIn = newPrefab;
+        spawnTimer.SetTimer(5f);
     }
 
 

@@ -7,4 +7,5 @@ public enum InputAction
    Ability,
    Jump,
    SecondAbility,
+   Pause
 }

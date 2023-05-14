@@ -116,12 +116,6 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Update();
         }
-        //Add OR for controller input
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-
         GetInput();
     }
 
