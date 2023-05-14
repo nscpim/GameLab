@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Slow Area
+  - Fast Area
+  - FinishLine
+  - Checkpoint
+  - Jump Pad
   layers:
   - Default
   - TransparentFX
@@ -11,14 +17,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grabbable
+  - Wall
+  - P1Cam
+  - P2Cam
+  - P3Cam
+  - P4Cam
+  - Ground
+  - Post
   - 
   - 
   - 

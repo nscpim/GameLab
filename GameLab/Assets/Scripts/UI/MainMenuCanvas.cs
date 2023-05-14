@@ -6,12 +6,6 @@ using UnityEngine.UI;
 
 public class MainMenuCanvas : MonoBehaviour
 {
-    public GameObject[] menuButtons;
-    // Start is called before the first frame update
-    public void Start()
-    {
-        SetButtonStartPoint();
-    }
 
     // Update is called once per frame
     public void Update()
@@ -26,9 +20,5 @@ public class MainMenuCanvas : MonoBehaviour
     }
 
 
-    public void SetButtonStartPoint() 
-    {
-        GameManager.instance.eventSystem.SetSelectedGameObject(menuButtons[0]);
-    }
 
 }

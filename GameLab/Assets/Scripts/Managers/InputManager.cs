@@ -11,7 +11,7 @@ public class InputManager : Manager
 
     }
 
-    public void SetPlayerSchemes() 
+    public void SetPlayerSchemes()
     {
         switch (GameManager.instance.GetAmountOfPlayers())
         {
@@ -23,22 +23,28 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+                 new InputBinding() { axis = "Ability1"},
+                 new InputBinding() { axis =  "Jump1"},
+                 new InputBinding() { axis = "SecondAbility1"},
+                 new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
+
+
                }
             },
             new ControlScheme()
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+                 new InputBinding() { axis = "Ability2"},
+                 new InputBinding() { axis =  "Jump2"},
+                 new InputBinding() { axis = "SecondAbility2"},
+                 new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
                }
             },
        };
                 break;
-                //3 Players array
+            //3 Players array
             case 3:
                 schemes = new ControlScheme[]
 {
@@ -46,8 +52,11 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                 new InputBinding() { axis = "Ability1"},
+                 new InputBinding() { axis =  "Jump1"},
+                 new InputBinding() { axis = "SecondAbility1"},
+                 new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
                }
 
             },
@@ -55,8 +64,11 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                   new InputBinding() { axis = "Ability2"},
+                   new InputBinding() { axis =  "Jump2"},
+                   new InputBinding() { axis = "SecondAbility2"},
+                   new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
                }
 
@@ -65,14 +77,19 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal3" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                   new InputBinding() { axis = "Ability3"},
+                   new InputBinding() { axis =  "Jump3"},
+                   new InputBinding() { axis = "SecondAbility3"},
+                   new InputBinding() { keyCode = KeyCode.Joystick3Button7, strokeType = KeyStrokeType.down},
+
+
                }
 
             },
         };
                 break;
-                //4 Players Array
+            //4 Players Array
             case 4:
                 schemes = new ControlScheme[]
        {
@@ -80,8 +97,11 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal1" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                   new InputBinding() { axis = "Ability1"},
+                   new InputBinding() { axis =  "Jump1"},
+                   new InputBinding() { axis = "SecondAbility1"},
+                   new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
                }
 
             },
@@ -89,8 +109,11 @@ public class InputManager : Manager
             {
                _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal2" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                   new InputBinding() { axis = "Ability2"},
+                   new InputBinding() { axis =  "Jump2"},
+                   new InputBinding() { axis = "SecondAbility2"},
+                   new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
                }
 
@@ -99,8 +122,12 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal3" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                   new InputBinding() { axis = "Ability3"},
+                   new InputBinding() { axis =  "Jump3"},
+                   new InputBinding() { axis = "SecondAbility3"},
+                   new InputBinding() { keyCode = KeyCode.Joystick3Button7, strokeType = KeyStrokeType.down},
+
                }
 
             },
@@ -108,8 +135,12 @@ public class InputManager : Manager
             {
             _input = new InputBinding[]
                {
-                 new InputBinding() { axis = "Horizontal4" },
-                 new InputBinding() { keyCode = KeyCode.Q, strokeType = KeyStrokeType.down}
+
+                 new InputBinding() { axis = "Ability4"},
+                 new InputBinding() { axis =  "Jump4"},
+                 new InputBinding() { axis = "SecondAbility4"},
+                 new InputBinding() { keyCode = KeyCode.Joystick4Button7, strokeType = KeyStrokeType.down},
+
                }
             },
 
@@ -129,7 +160,7 @@ public class InputManager : Manager
 
     // Update is called once per frame
     public override void Update()
-    { 
+    {
         if (!GameManager.GetInGame())
         {
             return;
@@ -143,8 +174,8 @@ public class InputManager : Manager
                 continue;
             }
             schemes[i].isActive = true;
-            Player player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.player.transform.position.x + (i * 10), GameManager.instance.player.transform.position.y, GameManager.instance.player.transform.position.z), GameManager.instance.transform.rotation);
-           
+
+            ThirdPersonMovement player = Object.Instantiate(GameManager.instance.player, new Vector3(GameManager.instance.spawnPoints[i].transform.position.x, GameManager.instance.spawnPoints[i].transform.position.y, GameManager.instance.spawnPoints[i].transform.position.z), GameManager.instance.player.transform.rotation);
             player.name = GameManager.instance.player.name = "Player: " + (i + 1);
             player.playerInt = i + 1;
             GameManager.instance.AddToGameManager(player);
@@ -152,12 +183,8 @@ public class InputManager : Manager
             {
                 Object.Destroy(player.GetComponentInChildren<AudioListener>());
             }
-            player.GetComponent<Player>().SetControlScheme(schemes[i]);
-           
-            if (GameManager.GetInGame())
-            {
-                GameManager.Pause(false);
-            }
+            player.GetComponent<ThirdPersonMovement>().SetControlScheme(schemes[i]);
+            Debug.Log("Test");
         }
     }
 }
