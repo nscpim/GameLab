@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,11 +18,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Players")]
     //Initial player object
-    public Player player;
+    public ThirdPersonMovement player;
     //Referenced Players *pls do not touch*
-    public List<Player> currentPlayers = new List<Player>();
+    public List<ThirdPersonMovement> currentPlayers = new List<ThirdPersonMovement>();
     //All the available character Objects.
     public ScriptableCharacter[] characters;
+    //Spawnpoint for the players
+    public List<Transform> spawnPoints;
+
 
     [Header("UI")]
     //integer with the amount of players.
@@ -34,6 +39,11 @@ public class GameManager : MonoBehaviour
     //Input Module for the event system.
     public StandaloneInputModule inputModule;
 
+
+    [Header("Level")]
+    public int matchCountdown;
+  
+
     //Instance of this class
     public static GameManager instance { get; private set; }
 
@@ -42,12 +52,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public GameManager()
     {
+
         instance = this;
 
         managers = new Manager[]
         {
             new InputManager(),
             new AudioManager(),
+            new UIManager(),
         };
     }
 
@@ -80,13 +92,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+
     /// <summary>
     /// Start of all the managers.
     /// </summary>
     public void Start()
     {
         DontDestroyOnLoad(gameObject);
+       
 
         for (int i = 0; i < managers.Length; i++)
         {
@@ -103,7 +116,9 @@ public class GameManager : MonoBehaviour
         {
             managers[i].Update();
         }
+        GetInput();
     }
+
 
     /// <summary>
     /// Method for loading a level.
@@ -116,6 +131,7 @@ public class GameManager : MonoBehaviour
         {
             inGame = true;
             paused = false;
+            
         }
         else
         {
@@ -128,13 +144,13 @@ public class GameManager : MonoBehaviour
     /// Method for pausing the game.
     /// </summary>
     /// <param name="value"></param>
-    public static void Pause(bool value)
+    public static void Pause()
     {
-        paused = value;
+        paused = !paused;
 
         for (int i = 0; i < managers.Length; i++)
         {
-            managers[i].Pause(value);
+            managers[i].Pause(paused);
         }
     }
 
@@ -169,7 +185,7 @@ public class GameManager : MonoBehaviour
     /// Add player to the currentplayers list
     /// </summary>
     /// <param name="player"></param>
-    public void AddToGameManager(Player player)
+    public void AddToGameManager(ThirdPersonMovement player)
     {
         currentPlayers.Add(player);
     }
@@ -196,8 +212,27 @@ public class GameManager : MonoBehaviour
     public void SetInputModule(int order)
     {
         inputModule.horizontalAxis = "Horizontal" + order;
+        inputModule.verticalAxis = "Vertical" + order;
+        inputModule.submitButton = "Submit" + order;
     }
 
+    public void SetCanMove(bool value) 
+    {
+        for (int i = 0; i < currentPlayers.Count; i++)
+        {
+            currentPlayers[i].canMove = value;
+        }
+    }
+
+
+    public void GetInput()
+    {
+        System.Array values = System.Enum.GetValues(typeof(KeyCode));
+        foreach (KeyCode code in values)
+        {
+           // if (Input.GetKeyDown(code)) { print(System.Enum.GetName(typeof(KeyCode), code)); }
+        }
+    }
 }
 
 /// <summary>
