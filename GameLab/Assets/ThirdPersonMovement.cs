@@ -328,7 +328,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (canMove)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.4f;
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
