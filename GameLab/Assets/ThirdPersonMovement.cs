@@ -8,7 +8,6 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 30f;
-    public Transform cam;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
@@ -26,7 +25,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private Timer spawnTimer;
     private GameObject objectSpawnedIn;
 
-    private Camera mainCamera;
+    public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
     private float timeStamp;
     public bool canSelectCharacter;
@@ -50,15 +49,41 @@ public class ThirdPersonMovement : MonoBehaviour
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
-        mainCamera = GetComponentInChildren<Camera>();
-        SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+        if (CineMachineHandler.instance != null)
+        {
+            mainCamera = CineMachineHandler.instance.brainCams[playerInt];
+            SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+        }
+        else
+        {
+            Invoke("TryCineMachineSetup", 0.5f);
+        }
         abilityCooldown = new Timer();
-        UpdateLayers();
+      
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
         respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
         spawnTimer = new Timer();
     }
+
+    public void TryCineMachineSetup() 
+    {
+        try
+        {
+            Debug.Log("Main Camera");
+            mainCamera = CineMachineHandler.instance.brainCams[playerInt - 1];
+            SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+            UpdateLayers();
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message);
+            throw;
+        }
+    
+    
+    }
+
 
     public void SetViewPortRect(string _name, int amount)
     {
@@ -130,16 +155,16 @@ public class ThirdPersonMovement : MonoBehaviour
         switch (playerInt)
         {
             case 1:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P1Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P1Cam");
                 break;
             case 2:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P2Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P2Cam");
                 break;
             case 3:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P3Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P3Cam");
                 break;
             case 4:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P4Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P4Cam");
                 break;
             default:
                 break;
@@ -268,10 +293,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
-
+        Vector3 oldPos = transform.position;
+        Vector3 newPos = respawnPosition;
         controller.enabled = false;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
-        transform.localRotation = respawnRotation;
+        transform.rotation = respawnRotation;
+        CineMachineHandler.instance.cameras[playerInt].PreviousStateIsValid = false;
+        CineMachineHandler.instance.cameras[playerInt].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
     }
 
@@ -330,7 +358,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             if (direction.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;

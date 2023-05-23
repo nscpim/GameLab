@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> spawnPoints;
 
 
+
     [Header("UI")]
     //integer with the amount of players.
     [HideInInspector] public int amountOfPlayers;

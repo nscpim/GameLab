@@ -27,7 +27,7 @@ public class Checkpoints : MonoBehaviour
                 case "Checkpoint":
                 other.GetComponent<ThirdPersonMovement>().currentCheckpoint = this.currentCheckpoint;
                 other.GetComponent<ThirdPersonMovement>().respawnPosition = this.transform.position;
-                    other.GetComponent<ThirdPersonMovement>().respawnRotation = this.transform.localRotation;
+                other.GetComponent<ThirdPersonMovement>().respawnRotation = this.transform.rotation;
                // Debug.Log(other.GetComponent<Player>().currentCheckpoint);
                 break;
 

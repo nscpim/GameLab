@@ -6,12 +6,17 @@ using TMPro;
 
 public class CineMachineHandler : MonoBehaviour
 {
+    public static CineMachineHandler instance { get; private set; } 
+
     public CinemachineFreeLook[] cameras;
+    //Player Cameras
+    public Camera[] brainCams;
     public TextMeshProUGUI[] playerTimeTexts;
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         SetupCineMachines();
     }
 
@@ -26,6 +31,7 @@ public class CineMachineHandler : MonoBehaviour
         for (int i = 0; i < GameManager.instance.GetAmountOfPlayers(); i++)
         {
             cameras[i].gameObject.SetActive(true);
+            brainCams[i].gameObject.SetActive(true);
         }
 
         switch (GameManager.instance.GetAmountOfPlayers())
