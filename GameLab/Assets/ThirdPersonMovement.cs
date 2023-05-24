@@ -207,7 +207,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (respawnTimer.isActive && respawnTimer.TimerDone())
         {
             respawnTimer.StopTimer();
-            CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+            ChangeCameras();
         }
 
     }
@@ -305,12 +305,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
-        respawnTimer.SetTimer(0.2f);
+        respawnTimer.SetTimer(4f);
         Vector3 oldPos = transform.position;
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
         print("Test Respawn");
-        CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.LockToTarget;
         CineMachineHandler.instance.cameras[playerInt].Follow = GameManager.instance.currentPlayers[playerInt].transform;
         CineMachineHandler.instance.cameras[playerInt].LookAt = GameManager.instance.currentPlayers[playerInt].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
@@ -318,8 +317,16 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt].PreviousStateIsValid = false;
         CineMachineHandler.instance.cameras[playerInt].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
+        CineMachineHandler.instance.simpleCameras[playerInt-1].gameObject.SetActive(true);
+        CineMachineHandler.instance.cameras[playerInt-1].gameObject.SetActive(false);
     }
 
+
+    public void ChangeCameras() 
+    {
+        CineMachineHandler.instance.simpleCameras[playerInt-1].gameObject.SetActive(false);
+        CineMachineHandler.instance.cameras[playerInt-1].gameObject.SetActive(true);
+    }
 
 
     public void Jump()
