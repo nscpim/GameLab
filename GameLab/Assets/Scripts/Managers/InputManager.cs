@@ -24,7 +24,7 @@ public class InputManager : Manager
             _input = new InputBinding[]
                {
                  new InputBinding() { axis = "Ability1"},
-                 new InputBinding() { axis =  "Jump1"},
+                 new InputBinding() { keyCode = KeyCode.Joystick1Button0, strokeType = KeyStrokeType.down},
                  new InputBinding() { axis = "SecondAbility1"},
                  new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
 
@@ -36,7 +36,7 @@ public class InputManager : Manager
                _input = new InputBinding[]
                {
                  new InputBinding() { axis = "Ability2"},
-                 new InputBinding() { axis =  "Jump2"},
+                new InputBinding() { keyCode = KeyCode.Joystick2Button0, strokeType = KeyStrokeType.down},
                  new InputBinding() { axis = "SecondAbility2"},
                  new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
@@ -54,7 +54,7 @@ public class InputManager : Manager
                {
 
                  new InputBinding() { axis = "Ability1"},
-                 new InputBinding() { axis =  "Jump1"},
+               new InputBinding() { keyCode = KeyCode.Joystick1Button0, strokeType = KeyStrokeType.down},
                  new InputBinding() { axis = "SecondAbility1"},
                  new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
                }
@@ -66,7 +66,7 @@ public class InputManager : Manager
                {
 
                    new InputBinding() { axis = "Ability2"},
-                   new InputBinding() { axis =  "Jump2"},
+                   new InputBinding() { keyCode = KeyCode.Joystick2Button0, strokeType = KeyStrokeType.down},
                    new InputBinding() { axis = "SecondAbility2"},
                    new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
@@ -79,7 +79,7 @@ public class InputManager : Manager
                {
 
                    new InputBinding() { axis = "Ability3"},
-                   new InputBinding() { axis =  "Jump3"},
+                  new InputBinding() { keyCode = KeyCode.Joystick3Button0, strokeType = KeyStrokeType.down},
                    new InputBinding() { axis = "SecondAbility3"},
                    new InputBinding() { keyCode = KeyCode.Joystick3Button7, strokeType = KeyStrokeType.down},
 
@@ -99,7 +99,7 @@ public class InputManager : Manager
                {
 
                    new InputBinding() { axis = "Ability1"},
-                   new InputBinding() { axis =  "Jump1"},
+                 new InputBinding() { keyCode = KeyCode.Joystick1Button0, strokeType = KeyStrokeType.down},
                    new InputBinding() { axis = "SecondAbility1"},
                    new InputBinding() { keyCode = KeyCode.Joystick1Button7, strokeType = KeyStrokeType.down},
                }
@@ -111,7 +111,7 @@ public class InputManager : Manager
                {
 
                    new InputBinding() { axis = "Ability2"},
-                   new InputBinding() { axis =  "Jump2"},
+                 new InputBinding() { keyCode = KeyCode.Joystick2Button0, strokeType = KeyStrokeType.down},
                    new InputBinding() { axis = "SecondAbility2"},
                    new InputBinding() { keyCode = KeyCode.Joystick2Button7, strokeType = KeyStrokeType.down},
 
@@ -124,7 +124,7 @@ public class InputManager : Manager
                {
 
                    new InputBinding() { axis = "Ability3"},
-                   new InputBinding() { axis =  "Jump3"},
+                  new InputBinding() { keyCode = KeyCode.Joystick3Button0, strokeType = KeyStrokeType.down},
                    new InputBinding() { axis = "SecondAbility3"},
                    new InputBinding() { keyCode = KeyCode.Joystick3Button7, strokeType = KeyStrokeType.down},
 
@@ -137,7 +137,7 @@ public class InputManager : Manager
                {
 
                  new InputBinding() { axis = "Ability4"},
-                 new InputBinding() { axis =  "Jump4"},
+               new InputBinding() { keyCode = KeyCode.Joystick4Button0, strokeType = KeyStrokeType.down},
                  new InputBinding() { axis = "SecondAbility4"},
                  new InputBinding() { keyCode = KeyCode.Joystick4Button7, strokeType = KeyStrokeType.down},
 

@@ -8,7 +8,7 @@ public class Checkpoints : MonoBehaviour
 {
     public int currentCheckpoint;
     public List<int> score = new List<int>();
-    public TextMeshProUGUI placingText;
+   // public TextMeshProUGUI placingText;
     private Dictionary<int, bool> hasAddedScore = new Dictionary<int, bool>();
     public CineMachineHandler cineMachineHandler;
     public InGameUIHandler inGameUIHandler;
@@ -27,7 +27,7 @@ public class Checkpoints : MonoBehaviour
                 case "Checkpoint":
                 other.GetComponent<ThirdPersonMovement>().currentCheckpoint = this.currentCheckpoint;
                 other.GetComponent<ThirdPersonMovement>().respawnPosition = this.transform.position;
-                    other.GetComponent<ThirdPersonMovement>().respawnRotation = this.transform.localRotation;
+                other.GetComponent<ThirdPersonMovement>().respawnRotation = this.transform.rotation;
                // Debug.Log(other.GetComponent<Player>().currentCheckpoint);
                 break;
 
