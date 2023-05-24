@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.008019214, g: 0.0033592635, b: 0.0020859449, a: 1}
+  m_IndirectSpecularColor: {r: 0.057566784, g: 0.029460428, b: 0.008858815, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3537,7 +3537,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 3
+  m_BindingMode: 1
   m_SplineCurvature: 0.359
   m_Orbits:
   - m_Height: 17.6
@@ -5938,7 +5938,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 3
+  m_BindingMode: 1
   m_SplineCurvature: 0.359
   m_Orbits:
   - m_Height: 17.6
@@ -9832,7 +9832,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 3
+  m_BindingMode: 1
   m_SplineCurvature: 0.359
   m_Orbits:
   - m_Height: 17.6
@@ -21401,7 +21401,7 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 3
+  m_BindingMode: 1
   m_SplineCurvature: 0.359
   m_Orbits:
   - m_Height: 17.6

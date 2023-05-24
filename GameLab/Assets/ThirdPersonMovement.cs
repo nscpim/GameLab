@@ -8,7 +8,6 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 30f;
-    public Transform cam; 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
@@ -21,16 +20,23 @@ public class ThirdPersonMovement : MonoBehaviour
     public GameObject prefabToSpawn;
     public int playerInt;
     public ControlScheme scheme;
-    bool canJump = true;
+    public Quaternion respawnRotation;
 
-    private Camera mainCamera;
+    public bool canJump;
+
+    private Timer spawnTimer;
+    private GameObject objectSpawnedIn;
+
+    public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
     private float timeStamp;
     public bool canSelectCharacter;
     private Timer abilityCooldown;
     private Timer secondAbilityTimer;
     public bool canMove;
-
+    private bool canPause;
+    private Timer pauseTimer;
+    private Timer respawnTimer;
 
     public bool isGrounded;
     public float raycastDistance = 1.5f;
@@ -39,19 +45,50 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
 
+
+
     private bool isCollidingWithWall = false;
     void Start()
     {
+        respawnTimer = new Timer();
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
-        mainCamera = GetComponentInChildren<Camera>();
-        SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+        if (CineMachineHandler.instance != null)
+        {
+            mainCamera = CineMachineHandler.instance.brainCams[playerInt];
+            SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+        }
+        else
+        {
+            Invoke("TryCineMachineSetup", 0.5f);
+        }
         abilityCooldown = new Timer();
-        UpdateLayers();
+
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
+        respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
+        spawnTimer = new Timer();
     }
+
+    public void TryCineMachineSetup()
+    {
+        try
+        {
+            Debug.Log("Main Camera");
+            mainCamera = CineMachineHandler.instance.brainCams[playerInt - 1];
+            SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
+            UpdateLayers();
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message);
+            throw;
+        }
+
+
+    }
+
 
     public void SetViewPortRect(string _name, int amount)
     {
@@ -119,19 +156,20 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateLayers()
     {
+
         switch (playerInt)
         {
             case 1:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P1Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P1Cam");
                 break;
             case 2:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P2Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P2Cam");
                 break;
             case 3:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P3Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P3Cam");
                 break;
             case 4:
-                cam.GetComponent<Camera>().cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P4Cam");
+                mainCamera.cullingMask = LayerMask.GetMask("Default", "TransparentFX", "Ignore Raycast", "UI", "Water", "Grabbable", "Wall", "Ground", "Post", "P4Cam");
                 break;
             default:
                 break;
@@ -157,6 +195,21 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             secondAbilityTimer.StopTimer();
         }
+
+
+        if (spawnTimer.isActive && spawnTimer.TimerDone())
+        {
+            spawnTimer.StopTimer();
+            Destroy(objectSpawnedIn);
+        }
+
+
+        if (respawnTimer.isActive && respawnTimer.TimerDone())
+        {
+            respawnTimer.StopTimer();
+            CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+        }
+
     }
 
 
@@ -167,6 +220,8 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
+                    SpawnPrefab();
+                    Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
 
@@ -196,7 +251,7 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
-
+                    Debug.Log("Second ability sjjeeesh");
                     break;
                 case Character.Test1:
 
@@ -250,13 +305,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
-
+        respawnTimer.SetTimer(0.2f);
+        Vector3 oldPos = transform.position;
+        Vector3 newPos = respawnPosition;
         controller.enabled = false;
+        print("Test Respawn");
+        CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.LockToTarget;
+        CineMachineHandler.instance.cameras[playerInt].Follow = GameManager.instance.currentPlayers[playerInt].transform;
+        CineMachineHandler.instance.cameras[playerInt].LookAt = GameManager.instance.currentPlayers[playerInt].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        transform.rotation = respawnRotation;
+        CineMachineHandler.instance.cameras[playerInt].PreviousStateIsValid = false;
+        CineMachineHandler.instance.cameras[playerInt].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
     }
 
-   
+
 
     public void Jump()
     {
@@ -264,8 +328,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             movingDirection.y = jumpSpeed;
         }
-        
-        if (!isGrounded) 
+        if (!isGrounded)
         {
             gravity = 165f;
             movingDirection.y -= gravity * Time.deltaTime;
@@ -275,26 +338,31 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             canJump = true;
         }
-        
     }
 
     void Update()
     {
+
+
+
         scheme.Update();
+        Timer();
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
         {
             isGrounded = true;
+            canJump = true;
         }
         else
         {
             isGrounded = false;
+            canJump = false;
         }
         if (canMove)
         {
             float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
-            Vector3 direction = new Vector3(-horizontal, 0f, vertical).normalized;
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
             movingDirection.y -= gravity * Time.deltaTime;
             controller.Move(movingDirection * Time.deltaTime);
@@ -322,7 +390,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             if (direction.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -330,7 +398,7 @@ public class ThirdPersonMovement : MonoBehaviour
             }
         }
 
-       
+
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -339,40 +407,44 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+
+    public void Pause()
+    {
+        GameManager.Pause();
+        Debug.Log("Paused");
+    }
+
+
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        
+
         if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
         {
-            
+
             Debug.Log("Collided with a wall!");
             isCollidingWithWall = true;
             gravity = 0f;
-
-
         }
 
     }
 
     void FixedUpdate()
     {
-        
+
         if (isCollidingWithWall && !controller.isGrounded)
         {
-            
+
             Debug.Log("Stopped colliding with a wall!");
             gravity = 200f;
             isCollidingWithWall = false;
             canJump = true;
             isGrounded = true;
-
-
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        
+
         if (other.CompareTag("Slow Area"))
         {
             speed = 50f;
@@ -402,6 +474,8 @@ public class ThirdPersonMovement : MonoBehaviour
         // Instantiate the prefab at the current object's position
         GameObject newPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         newPrefab.SetActive(true);
+        objectSpawnedIn = newPrefab;
+        spawnTimer.SetTimer(5f);
     }
 
 
