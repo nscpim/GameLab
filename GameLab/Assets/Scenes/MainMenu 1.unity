@@ -25261,7 +25261,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 614
+  m_RootOrder: 615
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1800846262
 MonoBehaviour:
@@ -31124,7 +31124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 615
+  m_RootOrder: 614
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5954406565035198518
 BoxCollider:

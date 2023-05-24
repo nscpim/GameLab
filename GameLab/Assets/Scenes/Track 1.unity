@@ -11742,6 +11742,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8572751496044218580, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+      propertyPath: m_TagString
+      value: Jump Pad
+      objectReference: {fileID: 0}
     - target: {fileID: 8810167657353099041, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -20491,6 +20495,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000095668}
   m_CullTransparentMesh: 1
+--- !u!1 &2009103871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8572751496044218580, guid: 5813f1554e28d5948b1ed88373b3b85e, type: 3}
+  m_PrefabInstance: {fileID: 1235772219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2009103873
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009103871}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2844374100844859250, guid: d40b26686864497499e8f44dd459057a, type: 3}
 --- !u!1 &2025175513
 GameObject:
   m_ObjectHideFlags: 0
