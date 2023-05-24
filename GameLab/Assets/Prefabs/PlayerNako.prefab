@@ -84,7 +84,7 @@ MonoBehaviour:
   canSelectCharacter: 0
   canMove: 0
   isGrounded: 0
-  raycastDistance: 2.5
+  raycastDistance: 3
   currentCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6019887579904295623
