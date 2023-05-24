@@ -310,12 +310,12 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
         print("Test Respawn");
-        CineMachineHandler.instance.cameras[playerInt].Follow = GameManager.instance.currentPlayers[playerInt].transform;
-        CineMachineHandler.instance.cameras[playerInt].LookAt = GameManager.instance.currentPlayers[playerInt].transform;
+        CineMachineHandler.instance.cameras[playerInt-1].Follow = GameManager.instance.currentPlayers[playerInt-1].transform;
+        CineMachineHandler.instance.cameras[playerInt-1].LookAt = GameManager.instance.currentPlayers[playerInt-1].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
         transform.rotation = respawnRotation;
-        CineMachineHandler.instance.cameras[playerInt].PreviousStateIsValid = false;
-        CineMachineHandler.instance.cameras[playerInt].OnTargetObjectWarped(transform, oldPos - newPos);
+        CineMachineHandler.instance.cameras[playerInt-1].PreviousStateIsValid = false;
+        CineMachineHandler.instance.cameras[playerInt-1].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
         CineMachineHandler.instance.simpleCameras[playerInt-1].gameObject.SetActive(true);
         CineMachineHandler.instance.cameras[playerInt-1].gameObject.SetActive(false);
@@ -337,7 +337,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (!isGrounded)
         {
-            gravity = 165f;
+            gravity = 200f;
             movingDirection.y -= gravity * Time.deltaTime;
             canJump = false;
         }

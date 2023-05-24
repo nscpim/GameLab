@@ -8,7 +8,7 @@ public class Checkpoints : MonoBehaviour
 {
     public int currentCheckpoint;
     public List<int> score = new List<int>();
-    public TextMeshProUGUI placingText;
+   // public TextMeshProUGUI placingText;
     private Dictionary<int, bool> hasAddedScore = new Dictionary<int, bool>();
     public CineMachineHandler cineMachineHandler;
     public InGameUIHandler inGameUIHandler;

@@ -50,9 +50,9 @@ CharacterController:
   m_Radius: 0.76
   m_SlopeLimit: 45
   m_StepOffset: 1.21
-  m_SkinWidth: 0.08
+  m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.73, z: -0.13}
+  m_Center: {x: 0, y: 0.96, z: -0.13}
 --- !u!114 &6019887579904295620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   speed: 50
   turnSmoothTime: 0.1
   jumpSpeed: 115
-  gravity: 100
+  gravity: 200
   maxSpeed: 115
   acceleration: 30
   wallLayerMask:
@@ -85,7 +85,7 @@ MonoBehaviour:
   canSelectCharacter: 0
   canMove: 0
   isGrounded: 0
-  raycastDistance: 3
+  raycastDistance: 4
   currentCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &6019887579904295623

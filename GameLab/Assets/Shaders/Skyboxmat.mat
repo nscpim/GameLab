@@ -80,7 +80,7 @@ Material:
     m_Floats:
     - Density: 27.2
     - Height: 0.31
-    - Stars: 78.08
+    - Stars: 379.4
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -109,9 +109,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Bot: {r: 0, g: 0, b: 0, a: 0}
-    - Tilling: {r: 8, g: 4, b: 0, a: 0}
-    - Top: {r: 0.5283019, g: 0.38465032, b: 0.20683517, a: 0.98039216}
+    - Bot: {r: 0.16037738, g: 0.1051531, b: 0.1051531, a: 0}
+    - Tilling: {r: 19.72, g: 332.21, b: 0, a: 0}
+    - Top: {r: 0.19250624, g: 0.26093557, b: 0.3962264, a: 0.98039216}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
