@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
-    public float gravity = 10.0f;
+    public float gravity = 5f;
     private Vector3 movingDirection = Vector3.zero;
     public float maxSpeed = 70f;
     public float acceleration = 5;
@@ -21,6 +21,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public int playerInt;
     public ControlScheme scheme;
     public Quaternion respawnRotation;
+
+    public bool canJump;
 
     private Timer spawnTimer;
     private GameObject objectSpawnedIn;
@@ -34,7 +36,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool canMove;
     private bool canPause;
     private Timer pauseTimer;
-
+    private Timer respawnTimer;
 
     public bool isGrounded;
     public float raycastDistance = 1.5f;
@@ -43,9 +45,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
 
+
+
     private bool isCollidingWithWall = false;
     void Start()
     {
+        respawnTimer = new Timer();
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
@@ -59,14 +64,14 @@ public class ThirdPersonMovement : MonoBehaviour
             Invoke("TryCineMachineSetup", 0.5f);
         }
         abilityCooldown = new Timer();
-      
+
         respawnPosition = GameManager.instance.spawnPoints[0].transform.position;
         respawnRotation = GameManager.instance.spawnPoints[0].transform.rotation;
         secondAbilityTimer = new Timer();
         spawnTimer = new Timer();
     }
 
-    public void TryCineMachineSetup() 
+    public void TryCineMachineSetup()
     {
         try
         {
@@ -80,8 +85,8 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log(e.Message);
             throw;
         }
-    
-    
+
+
     }
 
 
@@ -198,6 +203,13 @@ public class ThirdPersonMovement : MonoBehaviour
             Destroy(objectSpawnedIn);
         }
 
+
+        if (respawnTimer.isActive && respawnTimer.TimerDone())
+        {
+            respawnTimer.StopTimer();
+            CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+        }
+
     }
 
 
@@ -293,9 +305,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
+        respawnTimer.SetTimer(0.2f);
         Vector3 oldPos = transform.position;
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
+        print("Test Respawn");
+        CineMachineHandler.instance.cameras[playerInt].m_BindingMode = Cinemachine.CinemachineTransposer.BindingMode.LockToTarget;
+        CineMachineHandler.instance.cameras[playerInt].Follow = GameManager.instance.currentPlayers[playerInt].transform;
+        CineMachineHandler.instance.cameras[playerInt].LookAt = GameManager.instance.currentPlayers[playerInt].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
         transform.rotation = respawnRotation;
         CineMachineHandler.instance.cameras[playerInt].PreviousStateIsValid = false;
@@ -307,24 +324,39 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded && canMove)
+        if (isGrounded && canMove && canJump)
         {
             movingDirection.y = jumpSpeed;
+        }
+        if (!isGrounded)
+        {
+            gravity = 165f;
+            movingDirection.y -= gravity * Time.deltaTime;
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
         }
     }
 
     void Update()
     {
+
+
+
         scheme.Update();
         Timer();
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, raycastDistance, 1 << LayerMask.NameToLayer("Ground")))
         {
             isGrounded = true;
+            canJump = true;
         }
         else
         {
             isGrounded = false;
+            canJump = false;
         }
         if (canMove)
         {
@@ -358,7 +390,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             if (direction.magnitude >= 0.1f)
             {
-                float targetAngle = Mathf.Atan2(direction.x , direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
@@ -405,6 +437,8 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log("Stopped colliding with a wall!");
             gravity = 200f;
             isCollidingWithWall = false;
+            canJump = true;
+            isGrounded = true;
         }
     }
 

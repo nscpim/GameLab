@@ -52,7 +52,7 @@ CharacterController:
   m_StepOffset: 1.21
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.97, z: -0.13}
+  m_Center: {x: 0, y: 0.73, z: -0.13}
 --- !u!114 &6019887579904295620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   speed: 50
   turnSmoothTime: 0.1
   jumpSpeed: 115
-  gravity: 200
+  gravity: 100
   maxSpeed: 115
   acceleration: 30
   wallLayerMask:
@@ -79,6 +79,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 6469723026913261903, guid: 5138927542b7ca14b9d35098ebb315aa, type: 3}
   playerInt: 0
   respawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  canJump: 0
   mainCamera: {fileID: 0}
   character: {fileID: 0}
   canSelectCharacter: 0
