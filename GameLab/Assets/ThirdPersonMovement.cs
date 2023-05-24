@@ -12,7 +12,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
-    public float gravity = 10.0f;
+    public float gravity = 5f;
     private Vector3 movingDirection = Vector3.zero;
     public float maxSpeed = 70f;
     public float acceleration = 5;
@@ -21,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public GameObject prefabToSpawn;
     public int playerInt;
     public ControlScheme scheme;
+    bool canJump = true;
 
     private Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -259,10 +260,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (isGrounded && canMove)
+        if (isGrounded && canMove && canJump)
         {
             movingDirection.y = jumpSpeed;
         }
+        
+        if (!isGrounded) 
+        {
+            gravity = 165f;
+            movingDirection.y -= gravity * Time.deltaTime;
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
+        }
+        
     }
 
     void Update()
@@ -281,7 +294,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
-            Vector3 direction = new Vector3(-horizontal, 0f, -vertical).normalized;
+            Vector3 direction = new Vector3(-horizontal, 0f, vertical).normalized;
 
             movingDirection.y -= gravity * Time.deltaTime;
             controller.Move(movingDirection * Time.deltaTime);
@@ -350,6 +363,10 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log("Stopped colliding with a wall!");
             gravity = 200f;
             isCollidingWithWall = false;
+            canJump = true;
+            isGrounded = true;
+
+
         }
     }
 
