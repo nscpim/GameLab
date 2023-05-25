@@ -44,7 +44,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
-
+    
 
 
     private bool isCollidingWithWall = false;
