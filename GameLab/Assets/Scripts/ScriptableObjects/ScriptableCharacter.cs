@@ -21,6 +21,8 @@ public class ScriptableCharacter : ScriptableObject
     public Image characterImage;
     //Mesh of the character.
     public Mesh characterMesh;
+    //Character Model
+    public GameObject characterPrefab;
     //Cooldown of the ability.
     public float abilityCooldown;
     public float secondAbilityCooldown;

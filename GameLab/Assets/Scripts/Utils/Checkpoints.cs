@@ -39,7 +39,7 @@ public class Checkpoints : MonoBehaviour
                         Debug.Log(other.name + " " + "Your placement :" + score.Count);
                         float totalSeconds = inGameUIHandler.matchTimer;
                         TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
-                        cineMachineHandler.playerTimeTexts[playerID].text = "player: " + other.GetComponent<ThirdPersonMovement>().playerInt + "'s placing: " + score.Count +
+                        cineMachineHandler.playerTimeTexts[playerID-1].text = "player: " + other.GetComponent<ThirdPersonMovement>().playerInt + "'s placing: " + score.Count +
                              " Time: " + time.ToString("mm':'ss':'ms");
                         hasAddedScore[playerID] = true;
                     }

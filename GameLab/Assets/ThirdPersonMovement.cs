@@ -224,13 +224,13 @@ public class ThirdPersonMovement : MonoBehaviour
                     Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
-
+                    SpawnPrefab();
                     break;
                 case Character.Test2:
-
+                    SpawnPrefab();
                     break;
                 case Character.Test3:
-
+                    SpawnPrefab();
                     break;
                 default:
                     break;
@@ -305,7 +305,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
-        respawnTimer.SetTimer(4f);
+        respawnTimer.SetTimer(3f);
         Vector3 oldPos = transform.position;
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
