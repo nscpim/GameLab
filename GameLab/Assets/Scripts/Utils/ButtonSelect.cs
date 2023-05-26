@@ -11,6 +11,10 @@ public class ButtonSelect : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnSelect(BaseEventData eventData)
     {
         toolTipPanel.SetActive(true);
+        if (GameManager.instance.GetAmountOfPlayers() == 3 || GameManager.instance.GetAmountOfPlayers() == 4)
+        {
+            toolTipPanel.transform.position = new Vector3(eventData.selectedObject.transform.position.x + 70, eventData.selectedObject.transform.position.y + 70f, eventData.selectedObject.transform.position.z);
+        }
         toolTipPanel.transform.position = new Vector3(eventData.selectedObject.transform.position.x, eventData.selectedObject.transform.position.y + 70f, eventData.selectedObject.transform.position.z);
         toolTipText.text = GameManager.instance.characters[eventData.selectedObject.GetComponent<Order>().order].description;  
     }
