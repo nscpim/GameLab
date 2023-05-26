@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313d7270f1e1e5e49b04e825665b1cf9, type: 3}
   m_Name: Character
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Etienne
   characterID: 1
   characterEnum: 0
-  description: IM THE FIRST CHARACTER EVER CREATED!!!1
+  description: 'Silent and Stylish. The mysterious Freerunning pro wins to create
+    new highlight reels.
+
+'
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
@@ -27,4 +30,3 @@ MonoBehaviour:
   gravity: 10
   maxSpeed: 70
   acceleration: 5
-  startingSpeed: 100
