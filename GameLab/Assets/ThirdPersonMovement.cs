@@ -18,6 +18,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask wallLayerMask;
     public float launchSpeed;
     public GameObject prefabToSpawn;
+    public GameObject secondAbility;
     public int playerInt;
     public ControlScheme scheme;
     public Quaternion respawnRotation;
@@ -25,7 +26,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool canJump;
 
     private Timer spawnTimer;
+    private Timer secondSpawnTimer;
     private GameObject objectSpawnedIn;
+    private GameObject secondObjectSpawnedIn;
 
     public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -51,6 +54,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Start()
     {
         respawnTimer = new Timer();
+        secondSpawnTimer = new Timer();
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
@@ -203,6 +207,11 @@ public class ThirdPersonMovement : MonoBehaviour
             Destroy(objectSpawnedIn);
         }
 
+        if (secondSpawnTimer.isActive && secondSpawnTimer.TimerDone())
+        {
+            secondSpawnTimer.StopTimer();
+            Destroy(secondObjectSpawnedIn);
+        }
 
         if (respawnTimer.isActive && respawnTimer.TimerDone())
         {
@@ -251,16 +260,16 @@ public class ThirdPersonMovement : MonoBehaviour
             switch (character.characterEnum)
             {
                 case Character.Test:
-                    Debug.Log("Second ability sjjeeesh");
+                    SpawnSecondPrefab();
                     break;
                 case Character.Test1:
-
+                    SpawnSecondPrefab();
                     break;
                 case Character.Test2:
-
+                    SpawnSecondPrefab();
                     break;
                 case Character.Test3:
-
+                    SpawnSecondPrefab();
                     break;
                 default:
                     break;
@@ -468,9 +477,11 @@ public class ThirdPersonMovement : MonoBehaviour
             speed = 300f;
             Debug.Log("Player entered the trigger!");
         }
-
-
     }
+    //Reset and rework this
+
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -490,10 +501,12 @@ public class ThirdPersonMovement : MonoBehaviour
         spawnTimer.SetTimer(5f);
     }
 
-
-
-
-
-
-
+    void SpawnSecondPrefab()
+    {
+        // Instantiate the prefab at the current object's position
+        GameObject newPrefab = Instantiate(secondAbility, transform.TransformPoint(-Vector3.forward * 20), Quaternion.identity);
+        newPrefab.SetActive(true);
+        secondObjectSpawnedIn = newPrefab;
+        secondSpawnTimer.SetTimer(5f);
+    }
 }

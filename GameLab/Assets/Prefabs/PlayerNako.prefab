@@ -76,7 +76,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   launchSpeed: 500
-  prefabToSpawn: {fileID: 6469723026913261903, guid: 5138927542b7ca14b9d35098ebb315aa, type: 3}
+  prefabToSpawn: {fileID: 5957105489197288540, guid: 42afe787135162a4396b470c2430c652, type: 3}
+  secondAbility: {fileID: 8038673653539609449, guid: 4f2dadb4f497bcf4593f4a6643ff7716, type: 3}
   playerInt: 0
   respawnRotation: {x: 0, y: 0, z: 0, w: 0}
   canJump: 0
