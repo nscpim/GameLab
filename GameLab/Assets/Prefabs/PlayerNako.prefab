@@ -69,7 +69,7 @@ MonoBehaviour:
   speed: 50
   turnSmoothTime: 0.1
   jumpSpeed: 115
-  gravity: 200
+  gravity: 130
   maxSpeed: 115
   acceleration: 30
   wallLayerMask:

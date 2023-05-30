@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public float jumpSpeed = 20.0f;
-    public float gravity = 5f;
+    public float gravity = 130f;
     private Vector3 movingDirection = Vector3.zero;
     public float maxSpeed = 70f;
     public float acceleration = 5;
@@ -44,7 +44,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
-    
+
 
 
     private bool isCollidingWithWall = false;
@@ -310,22 +310,22 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
         print("Test Respawn");
-        CineMachineHandler.instance.cameras[playerInt-1].Follow = GameManager.instance.currentPlayers[playerInt-1].transform;
-        CineMachineHandler.instance.cameras[playerInt-1].LookAt = GameManager.instance.currentPlayers[playerInt-1].transform;
+        CineMachineHandler.instance.cameras[playerInt - 1].Follow = GameManager.instance.currentPlayers[playerInt - 1].transform;
+        CineMachineHandler.instance.cameras[playerInt - 1].LookAt = GameManager.instance.currentPlayers[playerInt - 1].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
         transform.rotation = respawnRotation;
-        CineMachineHandler.instance.cameras[playerInt-1].PreviousStateIsValid = false;
-        CineMachineHandler.instance.cameras[playerInt-1].OnTargetObjectWarped(transform, oldPos - newPos);
+        CineMachineHandler.instance.cameras[playerInt - 1].PreviousStateIsValid = false;
+        CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
-        CineMachineHandler.instance.simpleCameras[playerInt-1].gameObject.SetActive(true);
-        CineMachineHandler.instance.cameras[playerInt-1].gameObject.SetActive(false);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
 
-    public void ChangeCameras() 
+    public void ChangeCameras()
     {
-        CineMachineHandler.instance.simpleCameras[playerInt-1].gameObject.SetActive(false);
-        CineMachineHandler.instance.cameras[playerInt-1].gameObject.SetActive(true);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(false);
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(true);
     }
 
 
@@ -333,17 +333,19 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && canMove && canJump)
         {
-            movingDirection.y = jumpSpeed;
+            movingDirection.y = 100f;
+            gravity = 130f;
         }
         if (!isGrounded)
         {
             gravity = 200f;
-            movingDirection.y -= gravity * Time.deltaTime;
+           //movingDirection.y -= gravity * Time.deltaTime;
             canJump = false;
         }
         else
         {
             canJump = true;
+            gravity = 130f;
         }
     }
 
@@ -372,13 +374,16 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
             movingDirection.y -= gravity * Time.deltaTime;
+            movingDirection.y = Mathf.Clamp(movingDirection.y, -gravity, float.MaxValue);
             controller.Move(movingDirection * Time.deltaTime);
+
+           
 
             if (speed <= maxSpeed)
             {
                 speed += acceleration * Time.deltaTime;
             }
-            if (speed > maxSpeed)
+            if (speed >= maxSpeed)
             {
                 Debug.Log("Gets here");
                 speed = maxSpeed;
@@ -442,7 +447,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
 
             Debug.Log("Stopped colliding with a wall!");
-            gravity = 200f;
+            gravity = 130f;
             isCollidingWithWall = false;
             canJump = true;
             isGrounded = true;
