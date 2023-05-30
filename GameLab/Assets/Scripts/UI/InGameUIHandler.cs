@@ -83,7 +83,7 @@ public class InGameUIHandler : MonoBehaviour
             GameManager.instance.currentPlayers[i].character.acceleration = float.Parse(acceleration.text);
             GameManager.instance.currentPlayers[i].character.gravity = float.Parse(gravity.text);
             GameManager.instance.currentPlayers[i].character.maxSpeed = float.Parse(maxSpeed.text);
-            GameManager.instance.currentPlayers[i].character.startingSpeed = float.Parse(startingSpeed.text);
+            //GameManager.instance.currentPlayers[i].character.startingSpeed = float.Parse(startingSpeed.text);
         }
     }
 

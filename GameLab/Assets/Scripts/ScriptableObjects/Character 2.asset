@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313d7270f1e1e5e49b04e825665b1cf9, type: 3}
   m_Name: Character 2
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Sahin
   characterID: 3
   characterEnum: 2
-  description: Generic Description for the third character
+  description: Winning too much made him bored. The world champion wants to dominate
+    a new sport.
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
@@ -27,4 +28,3 @@ MonoBehaviour:
   gravity: 200
   maxSpeed: 300
   acceleration: 10
-  startingSpeed: 100

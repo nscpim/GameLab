@@ -59,7 +59,8 @@ public class Player : Actor
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        mainCamera = GetComponentInChildren<Camera>();
+        mainCamera = CineMachineHandler.instance.brainCams[playerInt -= 1].GetComponent<Camera>();
+        mainCamera.gameObject.SetActive(true);
         SetViewPortRect(gameObject.name, GameManager.instance.GetAmountOfPlayers());
         abilityCooldown = new Timer();
         UpdateLayers();
@@ -291,7 +292,8 @@ public class Player : Actor
 
             if (!transform.hasChanged)
             {
-                character.speed = character.startingSpeed;
+                character.speed = 50f; 
+                Debug.Log ("Reset Speed");
             }
             transform.hasChanged = false;
 

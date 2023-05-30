@@ -21,6 +21,11 @@ public class ScriptableCharacter : ScriptableObject
     public Image characterImage;
     //Mesh of the character.
     public Mesh characterMesh;
+    
+    
+    
+    //Character Model
+    public GameObject characterPrefab;
     //Cooldown of the ability.
     public float abilityCooldown;
     public float secondAbilityCooldown;
@@ -37,7 +42,7 @@ public class ScriptableCharacter : ScriptableObject
 
     public float acceleration;
 
-    public float startingSpeed;
+    //public float startingSpeed;
 
 
     // Start is called before the first frame update
