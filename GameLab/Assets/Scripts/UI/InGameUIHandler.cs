@@ -114,6 +114,7 @@ public class InGameUIHandler : MonoBehaviour
             matchTimerUpdater.SetTimer(1f);
             matchStarted = true;
             GameManager.instance.SetCanMove(true);
+            GameManager.GetManager<AudioManager>().PlayMusic("ingame");
            // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
