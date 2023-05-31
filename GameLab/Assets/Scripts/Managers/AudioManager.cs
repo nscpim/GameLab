@@ -99,8 +99,8 @@ public class AudioManager : Manager
     public void PlayMusic(string clipName, float fadeLength = 1f)
     {
         activeMusicSourceIndex = 1 - activeMusicSourceIndex;
-        musicSources[activeMusicSourceIndex].clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(clipName);
-        musicSources[activeMusicSourceIndex].Play();
+        musicSources[activeMusicSourceIndex - 1].clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(clipName);
+        musicSources[activeMusicSourceIndex - 1].Play();
     }
     //Creates the Sound that must be played with the given name that it gets from the audiolibrary and destroys it right after it has been played.
     public void PlaySound(string soundName)

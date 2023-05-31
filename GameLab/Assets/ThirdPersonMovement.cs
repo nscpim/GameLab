@@ -342,8 +342,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && canMove && canJump)
         {
-            movingDirection.y = 100f;
-            gravity = 130f;
+            movingDirection.y = 80f;
+            gravity = 200f;
         }
         if (!isGrounded)
         {

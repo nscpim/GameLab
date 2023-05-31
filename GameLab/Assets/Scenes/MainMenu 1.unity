@@ -11306,7 +11306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faf2cd3b758e8246912337a1d85f638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioGroups: []
+  audioGroups:
+  - name: ingame
+    clips:
+    - {fileID: 8300000, guid: daaa27bdc87073f48b88fd402ca1b239, type: 3}
 --- !u!114 &850194485
 MonoBehaviour:
   m_ObjectHideFlags: 0
