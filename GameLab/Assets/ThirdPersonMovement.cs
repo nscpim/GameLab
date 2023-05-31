@@ -492,7 +492,7 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log("Player entered the trigger!");
         }
 
-        if (other.CompareTag("Fast Area"))
+        if (other.CompareTag("Fast Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() == playerInt)
         {
             speed = 300f;
             Debug.Log("Player entered the trigger!");
@@ -516,6 +516,8 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         // Instantiate the prefab at the current object's position
         GameObject newPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+        newPrefab.AddComponent<CheckPlayer>();
+        newPrefab.GetComponent<CheckPlayer>().SetPlayerInt(playerInt);
         newPrefab.SetActive(true);
         objectSpawnedIn = newPrefab;
         spawnTimer.SetTimer(5f);
