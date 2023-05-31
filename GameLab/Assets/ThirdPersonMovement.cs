@@ -23,6 +23,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public ControlScheme scheme;
     public Quaternion respawnRotation;
 
+    public Animator _anim;
     public bool canJump;
 
     private Timer spawnTimer;
@@ -405,7 +406,26 @@ public class ThirdPersonMovement : MonoBehaviour
             }
             transform.hasChanged = false;
 
+
+            //// Carla wrote this 
+            //_anim.SetFloat("speedMovement", 0f);
+
+            if (speed == 30f)
+            {
+                _anim.SetFloat("speedMovement", 0f);
+            }
+            if (speed > 30f && speed < maxSpeed)
+            {
+                _anim.SetFloat("speedMovement", 0.3f);
+            }
+            if (speed >= maxSpeed)
+            {
+                _anim.SetFloat("speedMovement", 1.0f);
+            }
+
             //transform.position.x = transform.position.x + speed*Time.deltaTime;
+
+
 
 
 

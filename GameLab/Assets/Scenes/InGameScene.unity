@@ -516,7 +516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 4
+  m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &14757008
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 3
+  m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &124753395
@@ -4056,7 +4056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 1
+  m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -4522,7 +4522,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 2
+  m_text: 'Flor
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -4657,7 +4659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 3
+  m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -4723,7 +4725,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &378782725
@@ -9710,7 +9712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 3
+  m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -11487,7 +11489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 4
+  m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -11553,7 +11555,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &987477626
@@ -17112,7 +17114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 1
+  m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -17178,7 +17180,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1396192558
@@ -17247,7 +17249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 4
+  m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -18085,7 +18087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 4
+  m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -19926,7 +19928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 3
+  m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -20922,7 +20924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 2
+  m_text: Flor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -22058,7 +22060,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 2
+  m_text: 'Flor
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -22124,7 +22128,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1737674514
@@ -22273,7 +22277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 1
+  m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -22339,7 +22343,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1750833345
@@ -23355,7 +23359,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 1
+  m_text: 'Etienne
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -26563,7 +26569,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character 2
+  m_text: 'Flor
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
@@ -26629,7 +26637,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2078502872
