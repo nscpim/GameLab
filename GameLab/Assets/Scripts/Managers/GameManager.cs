@@ -222,6 +222,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < currentPlayers.Count; i++)
         {
             currentPlayers[i].canMove = value;
+            currentPlayers[i].GetComponent<ThirdPersonDash>().canDash = value;
         }
     }
 

@@ -218,6 +218,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             respawnTimer.StopTimer();
             ChangeCameras();
+            this.canMove = true;
         }
 
     }
@@ -315,7 +316,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
-        respawnTimer.SetTimer(3f);
+        this.canMove = false;
+        respawnTimer.SetTimer(2f);
         Vector3 oldPos = transform.position;
         Vector3 newPos = respawnPosition;
         controller.enabled = false;
