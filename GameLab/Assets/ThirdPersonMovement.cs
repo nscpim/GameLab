@@ -19,11 +19,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public float launchSpeed;
     public GameObject prefabToSpawn;
     public GameObject secondAbility;
+    public GameObject characterPrefab;
     public int playerInt;
     public ControlScheme scheme;
     public Quaternion respawnRotation;
 
-    public Animator _anim;
+    private Animator _anim;
     public bool canJump;
 
     private Timer spawnTimer;
@@ -41,7 +42,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool canPause;
     private Timer pauseTimer;
     private Timer respawnTimer;
-
+    public bool respawning;
     public bool isGrounded;
     public float raycastDistance = 1.5f;
 
@@ -184,8 +185,21 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateMesh()
     {
-        MeshFilter filter = gameObject.GetComponent<MeshFilter>();
-        filter.mesh = character.characterMesh;
+
+        //NOTE: Put characters in scene already || let players spawn in with all models but only enable model that has been chosen.
+        //Change character prefab
+        Destroy(gameObject.transform.GetChild(0).gameObject);
+        Destroy(gameObject.GetComponent<Animator>());
+        GameObject characterPrefab = character.characterPrefab.gameObject;
+        GameObject prefabSpawnable = GameObject.Instantiate(characterPrefab);
+        Destroy(prefabSpawnable.GetComponent<ThirdPersonMovement>());
+        Destroy(prefabSpawnable.GetComponent<CharacterController>());
+        Destroy(prefabSpawnable.GetComponent<ThirdPersonDash>());
+        prefabSpawnable.transform.SetParent(gameObject.transform, false);
+        prefabSpawnable.transform.position = prefabSpawnable.transform.parent.transform.position;
+        prefabSpawnable.transform.localScale = new Vector3(1, 1, 1);
+        _anim = prefabSpawnable.GetComponent<Animator>();
+
     }
 
     public void Timer()
@@ -219,8 +233,8 @@ public class ThirdPersonMovement : MonoBehaviour
             respawnTimer.StopTimer();
             ChangeCameras();
             this.canMove = true;
+            respawning = false;
         }
-
     }
 
 
@@ -248,10 +262,9 @@ public class ThirdPersonMovement : MonoBehaviour
             }
             abilityCooldown.SetTimer(character.abilityCooldown);
         }
-
         else
         {
-            //Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
+            Debug.Log(gameObject.name + " Your first ability is on cooldown: " + abilityCooldown.TimeLeft());
         }
     }
 
@@ -278,10 +291,9 @@ public class ThirdPersonMovement : MonoBehaviour
             }
             secondAbilityTimer.SetTimer(character.abilityCooldown);
         }
-
         else
         {
-            //Debug.Log(gameObject.name + " Your ability is on cooldown:" + abilityCooldown.TimeLeft());
+            Debug.Log(gameObject.name + " Your second ability is on cooldown: " + abilityCooldown.TimeLeft());
         }
     }
 
@@ -300,7 +312,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public void SelectedCharacter(Character selection)
     {
         character = GameManager.instance.characters[(int)selection];
-        //UpdateMesh();
+        UpdateMesh();
         //+1 because arrays start at 0, but we need the actual number of players here.
         if (GameManager.instance.order <= GameManager.instance.amountOfPlayers)
         {
@@ -316,20 +328,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void Respawn()
     {
+        _anim.SetFloat("speedMovement", 0f);
+        Vector3 old = transform.position;
+        Vector3 newPos;
+        respawning = true;
         this.canMove = false;
-        respawnTimer.SetTimer(2f);
-        Vector3 oldPos = transform.position;
-        Vector3 newPos = respawnPosition;
+        respawnTimer.SetTimer(3f);
+        speed = 30f;
         controller.enabled = false;
         print("Test Respawn");
-        CineMachineHandler.instance.cameras[playerInt - 1].Follow = GameManager.instance.currentPlayers[playerInt - 1].transform;
-        CineMachineHandler.instance.cameras[playerInt - 1].LookAt = GameManager.instance.currentPlayers[playerInt - 1].transform;
         transform.position = new Vector3(respawnPosition.x, respawnPosition.y, respawnPosition.z);
+        newPos = transform.position;
         transform.rotation = respawnRotation;
-        CineMachineHandler.instance.cameras[playerInt - 1].PreviousStateIsValid = false;
-        CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(transform, oldPos - newPos);
         controller.enabled = true;
         CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
+        CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
@@ -345,7 +359,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && canMove && canJump)
         {
-            movingDirection.y = 80f;
+            movingDirection.y = 70f;
             gravity = 200f;
         }
         if (!isGrounded)
@@ -364,8 +378,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
 
-
-
+        gameObject.transform.GetChild(0).rotation = gameObject.transform.rotation;
         scheme.Update();
         Timer();
         RaycastHit hit;
@@ -379,9 +392,17 @@ public class ThirdPersonMovement : MonoBehaviour
             isGrounded = false;
             canJump = false;
         }
+
+        if (GameManager.instance.currentMatchCountdown >= 9 || respawning)
+        {
+            movingDirection.y -= gravity * Time.deltaTime;
+            movingDirection.y = Mathf.Clamp(movingDirection.y, -gravity, float.MaxValue);
+            controller.Move(movingDirection * Time.deltaTime);
+        }
+
         if (canMove)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.5f;
+            float horizontal = Input.GetAxisRaw("Horizontal" + playerInt) * 0.4f;
             float vertical = Input.GetAxisRaw("Vertical" + playerInt);
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -488,7 +509,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if (other.CompareTag("Slow Area"))
+        if (other.CompareTag("Slow Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() != playerInt)
         {
             speed = 50f;
             Debug.Log("Player entered the trigger!");
@@ -528,7 +549,9 @@ public class ThirdPersonMovement : MonoBehaviour
     void SpawnSecondPrefab()
     {
         // Instantiate the prefab at the current object's position
-        GameObject newPrefab = Instantiate(secondAbility, transform.TransformPoint(-Vector3.forward * 20), Quaternion.identity);
+        GameObject newPrefab = Instantiate(secondAbility, transform.TransformPoint(-Vector3.forward * 1), Quaternion.identity);
+        newPrefab.AddComponent<CheckPlayer>();
+        newPrefab.GetComponent<CheckPlayer>().SetPlayerInt(playerInt);
         newPrefab.SetActive(true);
         secondObjectSpawnedIn = newPrefab;
         secondSpawnTimer.SetTimer(5f);

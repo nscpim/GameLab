@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4342,7 +4342,6 @@ GameObject:
   m_Component:
   - component: {fileID: 363415853}
   - component: {fileID: 363415852}
-  - component: {fileID: 363415854}
   m_Layer: 9
   m_Name: 3rd Person Camera:Player 2 (1)
   m_TagString: Untagged
@@ -4383,7 +4382,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -4408,8 +4407,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -4472,19 +4471,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363415854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363415851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &374339779
 GameObject:
   m_ObjectHideFlags: 0
@@ -5486,7 +5472,6 @@ GameObject:
   m_Component:
   - component: {fileID: 450594759}
   - component: {fileID: 450594758}
-  - component: {fileID: 450594757}
   m_Layer: 9
   m_Name: 3rd Person Camera:Player 2 (2)
   m_TagString: Untagged
@@ -5494,19 +5479,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &450594757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 450594756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &450594758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5565,8 +5537,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -5589,7 +5561,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_Heading:
     m_Definition: 3
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 1
@@ -5861,7 +5833,7 @@ MonoBehaviour:
   m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6123,7 +6095,7 @@ MonoBehaviour:
   m_text: Flor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6919,7 +6891,6 @@ GameObject:
   m_Component:
   - component: {fileID: 580927469}
   - component: {fileID: 580927468}
-  - component: {fileID: 580927467}
   m_Layer: 8
   m_Name: 3rd Person Camera:Player 1 (2)
   m_TagString: Untagged
@@ -6927,19 +6898,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &580927467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 580927466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &580927468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6998,8 +6956,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -7022,7 +6980,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_Heading:
     m_Definition: 3
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 1
@@ -7539,7 +7497,6 @@ GameObject:
   m_Component:
   - component: {fileID: 655152817}
   - component: {fileID: 655152818}
-  - component: {fileID: 655152819}
   m_Layer: 8
   m_Name: 3rd Person Camera:Player 1 (1)
   m_TagString: Untagged
@@ -7598,7 +7555,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -7623,8 +7580,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -7669,19 +7626,6 @@ MonoBehaviour:
   - {fileID: 1716119786}
   - {fileID: 2048308397}
   - {fileID: 1029048391}
---- !u!114 &655152819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655152815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &658804006
 GameObject:
   m_ObjectHideFlags: 3
@@ -9873,7 +9817,7 @@ MonoBehaviour:
   m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10596,7 +10540,7 @@ MonoBehaviour:
   m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11962,7 +11906,7 @@ MonoBehaviour:
   m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12365,7 +12309,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1023508822}
   - component: {fileID: 1023508821}
-  - component: {fileID: 1023508823}
   m_Layer: 10
   m_Name: 3rd Person Camera:Player 3 (1)
   m_TagString: Untagged
@@ -12406,7 +12349,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -12431,8 +12374,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -12495,19 +12438,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1023508823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1023508820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &1023643180
 GameObject:
   m_ObjectHideFlags: 3
@@ -12987,7 +12917,7 @@ MonoBehaviour:
   m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13386,7 +13316,7 @@ MonoBehaviour:
   m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13599,7 +13529,7 @@ MonoBehaviour:
   m_text: Flor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14673,7 +14603,7 @@ MonoBehaviour:
   m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16042,7 +15972,7 @@ MonoBehaviour:
   m_text: Sahin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16340,7 +16270,7 @@ MonoBehaviour:
   m_text: Flor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16475,7 +16405,7 @@ MonoBehaviour:
   m_text: Flor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16610,7 +16540,7 @@ MonoBehaviour:
   m_text: Etienne
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17537,7 +17467,7 @@ MonoBehaviour:
   m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23415,7 +23345,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1822816722}
   - component: {fileID: 1822816721}
-  - component: {fileID: 1822816720}
   m_Layer: 11
   m_Name: 3rd Person Camera:Player 4 (2)
   m_TagString: Untagged
@@ -23423,19 +23352,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1822816720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822816719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &1822816721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23494,8 +23410,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -23518,7 +23434,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_Heading:
     m_Definition: 3
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 1
@@ -23782,7 +23698,7 @@ MonoBehaviour:
   m_text: Milena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6147934490582128153, guid: 1883eb08f1df4c9409d36f23ff8e324a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24382,7 +24298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1906678408}
   - component: {fileID: 1906678407}
-  - component: {fileID: 1906678406}
   m_Layer: 10
   m_Name: 3rd Person Camera:Player 3 (2)
   m_TagString: Untagged
@@ -24390,19 +24305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1906678406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906678405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &1906678407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24461,8 +24363,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -24485,7 +24387,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_Heading:
     m_Definition: 3
-    m_VelocityFilterStrength: 4
+    m_VelocityFilterStrength: 0
     m_Bias: 0
   m_RecenterToTargetHeading:
     m_enabled: 1
@@ -26101,7 +26003,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2022282324}
   - component: {fileID: 2022282323}
-  - component: {fileID: 2022282325}
   m_Layer: 11
   m_Name: 3rd Person Camera:Player 4 (1)
   m_TagString: Untagged
@@ -26142,7 +26043,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
-    m_InheritPosition: 0
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -26167,8 +26068,8 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
     m_enabled: 1
-    m_WaitTime: 1
-    m_RecenteringTime: 2
+    m_WaitTime: 0
+    m_RecenteringTime: 0
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
@@ -26231,19 +26132,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2022282325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022282322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f012572096522479e68a3cfcb6e6ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!1 &2029821657
 GameObject:
   m_ObjectHideFlags: 0

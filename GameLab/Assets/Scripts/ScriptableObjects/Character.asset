@@ -22,6 +22,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 0}
   characterImage: {fileID: 0}
   characterMesh: {fileID: 0}
+  characterPrefab: {fileID: 2568916285085465980, guid: 525f5c67382317c45b269b64a9296dae, type: 3}
   abilityCooldown: 10
   secondAbilityCooldown: 5
   speed: 70.0267

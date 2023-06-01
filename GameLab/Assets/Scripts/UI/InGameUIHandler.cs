@@ -91,6 +91,9 @@ public class InGameUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        GameManager.instance.currentMatchCountdown = countdownTimer.TimeLeft();
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             activeState = !activeState;
