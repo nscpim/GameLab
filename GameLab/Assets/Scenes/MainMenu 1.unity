@@ -11335,7 +11335,7 @@ MonoBehaviour:
   order: 1
   eventSystem: {fileID: 850194487}
   inputModule: {fileID: 850194486}
-  matchCountdown: 10
+  matchCountdown: 1
   currentMatchCountdown: 0
 --- !u!114 &850194486
 MonoBehaviour:
