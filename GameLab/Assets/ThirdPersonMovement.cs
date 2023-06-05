@@ -268,7 +268,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             abilityCooldown.SetTimer(character.abilityCooldown);
-            GameManager.GetManager<AudioManager>().PlaySound("speedup", true, transform.position, true, transform.gameObject);
+            GameManager.GetManager<AudioManager>().PlaySound("speedup", false, transform.position, false, transform.gameObject);
         }
         else
         {
@@ -298,7 +298,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             secondAbilityTimer.SetTimer(character.abilityCooldown);
-            GameManager.GetManager<AudioManager>().PlaySound("slowdown", true, transform.position, true, transform.gameObject);
+            GameManager.GetManager<AudioManager>().PlaySound("slowdown", false, transform.position, false, transform.gameObject);
         }
         else
         {
@@ -361,7 +361,7 @@ public class ThirdPersonMovement : MonoBehaviour
         this.canMove = false;
         respawnTimer.SetTimer(3f);
         cutOffTime.SetTimer(2.5f);
-        GameManager.GetManager<AudioManager>().PlaySound("respawn", true, transform.position, true, transform.gameObject);
+        GameManager.GetManager<AudioManager>().PlaySound("respawn", false, transform.position, false, transform.gameObject);
         speed = 30f;
         controller.enabled = false;
         print("Test Respawn");
@@ -389,7 +389,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             movingDirection.y = 80f;
             gravity = 200f;
-            GameManager.GetManager<AudioManager>().PlaySound("jump", true, transform.position, true, transform.gameObject);
+            GameManager.GetManager<AudioManager>().PlaySound("jump", false, transform.position, false, transform.gameObject);
         }
         if (!isGrounded)
         {
@@ -439,8 +439,6 @@ public class ThirdPersonMovement : MonoBehaviour
             movingDirection.y = Mathf.Clamp(movingDirection.y, -gravity, float.MaxValue);
             controller.Move(movingDirection * Time.deltaTime);
 
-           
-
             if (speed <= maxSpeed)
             {
                 speed += acceleration * Time.deltaTime;
@@ -477,10 +475,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
             //transform.position.x = transform.position.x + speed*Time.deltaTime;
 
-
-
-
-
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
@@ -513,7 +507,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
         {
-
             Debug.Log("Collided with a wall!");
             isCollidingWithWall = true;
             gravity = 0f;
