@@ -103,16 +103,45 @@ public class AudioManager : Manager
         musicSources[activeMusicSourceIndex - 1].Play();
     }
     //Creates the Sound that must be played with the given name that it gets from the audiolibrary and destroys it right after it has been played.
-    public void PlaySound(string soundName)
+    public void PlaySound(string soundName, bool spatialSound, Vector3 pos, bool follow, GameObject parent)
     {
         GameObject sourceObj = new GameObject();
         AudioSource source = sourceObj.AddComponent<AudioSource>();
         source.name = "AudioClip";
         source.clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(soundName);
+        if (spatialSound)
+        {
+            source.spatialBlend = 1;
+            source.maxDistance = 40f;
+            source.rolloffMode = AudioRolloffMode.Logarithmic;
+            sourceObj.transform.position = pos;
+        }
+
+        if (follow)
+        {
+            sourceObj.transform.SetParent(parent.transform);
+        }
+
         source.Play();
         SFXSources.Add(source);
         GameObject.Destroy(sourceObj, source.clip.length);
     }
+
+
+    public bool IsAlreadyPlaying(string name)
+    {
+        for (int i = 0; i < SFXSources.Count; i++)
+        {
+            if (SFXSources[i].name == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
     public void StopPlaying()
     {

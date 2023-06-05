@@ -31,6 +31,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private Timer secondSpawnTimer;
     private GameObject objectSpawnedIn;
     private GameObject secondObjectSpawnedIn;
+    private Timer cutOffTime;
 
     public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -57,6 +58,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         respawnTimer = new Timer();
         secondSpawnTimer = new Timer();
+        cutOffTime = new Timer();
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
@@ -228,10 +230,15 @@ public class ThirdPersonMovement : MonoBehaviour
             Destroy(secondObjectSpawnedIn);
         }
 
+        if (cutOffTime.isActive && cutOffTime.TimerDone())
+        {
+            cutOffTime.StopTimer();
+            ChangeCameras();
+        }
+
         if (respawnTimer.isActive && respawnTimer.TimerDone())
         {
             respawnTimer.StopTimer();
-            ChangeCameras();
             this.canMove = true;
             respawning = false;
         }
@@ -261,6 +268,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             abilityCooldown.SetTimer(character.abilityCooldown);
+            GameManager.GetManager<AudioManager>().PlaySound("speedup", true, transform.position, true, transform.gameObject);
         }
         else
         {
@@ -290,6 +298,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             secondAbilityTimer.SetTimer(character.abilityCooldown);
+            GameManager.GetManager<AudioManager>().PlaySound("slowdown", true, transform.position, true, transform.gameObject);
         }
         else
         {
@@ -305,7 +314,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         scheme.AssignInput(this);
         this.scheme = scheme;
-
     }
 
 
@@ -317,6 +325,24 @@ public class ThirdPersonMovement : MonoBehaviour
         if (GameManager.instance.order <= GameManager.instance.amountOfPlayers)
         {
             GameManager.instance.SelectedPlayer();
+        }
+      
+        switch (character.characterName)
+        {
+            case "Etienne":
+                GameManager.GetManager<AudioManager>().PlaySound("etienne", false, transform.position, false, transform.gameObject);
+                break;
+            case "Flor":
+                GameManager.GetManager<AudioManager>().PlaySound("flor", false, transform.position, false, transform.gameObject);
+                break;
+            case "Sahin":
+                GameManager.GetManager<AudioManager>().PlaySound("sahin", false, transform.position, false, transform.gameObject);
+                break;
+            case "Milena":
+                GameManager.GetManager<AudioManager>().PlaySound("milena", false, transform.position, false, transform.gameObject);
+                break;
+            default:
+                break;
         }
     }
     public void ClearControlScheme()
@@ -334,6 +360,8 @@ public class ThirdPersonMovement : MonoBehaviour
         respawning = true;
         this.canMove = false;
         respawnTimer.SetTimer(3f);
+        cutOffTime.SetTimer(2.5f);
+        GameManager.GetManager<AudioManager>().PlaySound("respawn", true, transform.position, true, transform.gameObject);
         speed = 30f;
         controller.enabled = false;
         print("Test Respawn");
@@ -359,8 +387,9 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (isGrounded && canMove && canJump)
         {
-            movingDirection.y = 70f;
+            movingDirection.y = 80f;
             gravity = 200f;
+            GameManager.GetManager<AudioManager>().PlaySound("jump", true, transform.position, true, transform.gameObject);
         }
         if (!isGrounded)
         {
