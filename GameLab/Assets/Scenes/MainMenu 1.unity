@@ -11342,7 +11342,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6584ebfde1f44bc49a039bb689d4fb97, type: 3}
   - name: milena
     clips:
-    - {fileID: 8300000, guid: 74ad69ff7cf233740bcb7dec0861db67, type: 3}
+    - {fileID: 8300000, guid: f489b77b7aa88e74a9f1712971011f1f, type: 3}
   - name: respawn
     clips:
     - {fileID: 8300000, guid: eeecb3a85559dfc418cd458ad376718e, type: 3}
