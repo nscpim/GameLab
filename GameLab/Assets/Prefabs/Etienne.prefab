@@ -90,6 +90,7 @@ MonoBehaviour:
   respawning: 0
   isGrounded: 0
   raycastDistance: 4
+  attached: 0
   currentCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8976654661707921509
