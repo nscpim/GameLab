@@ -242,6 +242,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             respawnTimer.StopTimer();
             this.canMove = true;
+            gameObject.GetComponent<ThirdPersonDash>().canDash = true;
             respawning = false;
         }
     }
@@ -361,6 +362,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 newPos;
         respawning = true;
         this.canMove = false;
+        gameObject.GetComponent<ThirdPersonDash>().canDash = false;
         respawnTimer.SetTimer(3f);
         cutOffTime.SetTimer(2.5f);
         GameManager.GetManager<AudioManager>().PlaySound("respawn", false, transform.position, false, transform.gameObject);
