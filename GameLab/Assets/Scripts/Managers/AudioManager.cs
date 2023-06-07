@@ -98,9 +98,8 @@ public class AudioManager : Manager
     //gets the audio from the AudioLibrary with the given name and Plays the music.
     public void PlayMusic(string clipName, float fadeLength = 1f)
     {
-        activeMusicSourceIndex = 1 - activeMusicSourceIndex;
-        musicSources[activeMusicSourceIndex - 1].clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(clipName);
-        musicSources[activeMusicSourceIndex - 1].Play();
+        musicSources[activeMusicSourceIndex].clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(clipName);
+        musicSources[activeMusicSourceIndex].Play();
     }
     //Creates the Sound that must be played with the given name that it gets from the audiolibrary and destroys it right after it has been played.
     public void PlaySound(string soundName, bool spatialSound, Vector3 pos, bool follow, GameObject parent)
@@ -145,7 +144,10 @@ public class AudioManager : Manager
 
     public void StopPlaying()
     {
-        musicSources[activeMusicSourceIndex].Stop();
+        foreach (AudioSource item in musicSources)
+        {
+            item.Stop();
+        }
     }
 
     public void CancelSound()

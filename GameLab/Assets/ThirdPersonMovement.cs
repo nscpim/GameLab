@@ -47,6 +47,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool isGrounded;
     public float raycastDistance = 1.5f;
 
+    public bool attached;
+
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
@@ -512,6 +514,14 @@ public class ThirdPersonMovement : MonoBehaviour
             gravity = 0f;
         }
 
+        if (hit.gameObject.CompareTag("Platform"))
+        {
+            attached = true;
+            this.transform.parent = hit.transform;
+
+        }
+
+
     }
 
     void FixedUpdate()
@@ -525,6 +535,11 @@ public class ThirdPersonMovement : MonoBehaviour
             isCollidingWithWall = false;
             canJump = true;
             isGrounded = true;
+        }
+        if (attached && !controller.isGrounded)
+        {
+            attached = false;
+            this.transform.parent = null;
         }
     }
 
@@ -545,6 +560,16 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     //Reset and rework this
 
+
+   
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            this.transform.parent = null;
+        }
+           
+    }
 
 
 

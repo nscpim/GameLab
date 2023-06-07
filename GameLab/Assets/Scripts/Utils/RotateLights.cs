@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RotateLights : MonoBehaviour
 {
+
+    public float rotationvalue;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,6 @@ public class RotateLights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       transform.Rotate(0, 0.5f, 0, Space.World);
+       transform.Rotate(0, rotationvalue, 0, Space.World);
     }
 }

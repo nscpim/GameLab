@@ -108,6 +108,7 @@ public class InGameUIHandler : MonoBehaviour
             GameManager.instance.canSelect = false;
             toolTipPanel.SetActive(false);
             once = true;
+            GameManager.GetManager<AudioManager>().StopPlaying();
             countdownTimer.SetTimer(GameManager.instance.matchCountdown);
             // Debug.Log("MATCH ABOUT TO START");
         }
@@ -120,6 +121,7 @@ public class InGameUIHandler : MonoBehaviour
             matchStarted = true;
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
+            
             // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {

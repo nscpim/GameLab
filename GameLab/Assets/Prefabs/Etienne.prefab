@@ -53,7 +53,7 @@ CharacterController:
   m_StepOffset: 1.21
   m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.91, z: -0.01}
+  m_Center: {x: 0, y: 1, z: -0.01}
 --- !u!114 &7905058470400851244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  launchSpeed: 500
+  launchSpeed: 300
   prefabToSpawn: {fileID: 5957105489197288540, guid: 42afe787135162a4396b470c2430c652, type: 3}
   secondAbility: {fileID: 8038673653539609449, guid: 4f2dadb4f497bcf4593f4a6643ff7716, type: 3}
   characterPrefab: {fileID: 0}
@@ -198,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 1630794972795428178, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e97f4938333c0bd47a8f7684e0a0b544, type: 2}
+      objectReference: {fileID: 2100000, guid: bfc32f22843ab65408fed5f949c54c2a, type: 2}
     - target: {fileID: 5866666021909216657, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Controller
       value: 
