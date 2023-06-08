@@ -18,6 +18,12 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons3players;
     public GameObject[] buttons4players;
 
+
+    [Header("Abilities")]
+    public GameObject[] Abilities2Players;
+    public GameObject[] Abilities3Players;
+    public GameObject[] Abilities4Players;
+
     [Header("VariableChangeUI")]
     public Transform variablesPanel;
     public TMP_InputField moveSpeedField, abilityCooldown, jumpSpeed, gravity, maxSpeed, acceleration, startingSpeed;
@@ -37,6 +43,8 @@ public class InGameUIHandler : MonoBehaviour
     private bool activeState = false;
 
     public TextMeshProUGUI matchTimerText;
+
+    public bool[] soundBools;
 
     // Start is called before the first frame updates
     void Start()
@@ -91,6 +99,9 @@ public class InGameUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        GameManager.instance.currentMatchCountdown = countdownTimer.TimeLeft();
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             activeState = !activeState;
@@ -103,8 +114,9 @@ public class InGameUIHandler : MonoBehaviour
             GameManager.instance.canSelect = false;
             toolTipPanel.SetActive(false);
             once = true;
+            GameManager.GetManager<AudioManager>().StopPlaying();
             countdownTimer.SetTimer(GameManager.instance.matchCountdown);
-           // Debug.Log("MATCH ABOUT TO START");
+            // Debug.Log("MATCH ABOUT TO START");
         }
 
         if (countdownTimer.isActive && countdownTimer.TimerDone())
@@ -115,7 +127,29 @@ public class InGameUIHandler : MonoBehaviour
             matchStarted = true;
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
-           // Debug.Log("GAME STARTING");
+
+            switch (GameManager.instance.amountOfPlayers)
+            {
+                case 2:
+                    Abilities2Players[0].gameObject.SetActive(true);
+                    Abilities2Players[1].gameObject.SetActive(false);
+                    Abilities2Players[2].gameObject.SetActive(false);
+                    break;
+                case 3:
+                    Abilities2Players[0].gameObject.SetActive(false);
+                    Abilities2Players[1].gameObject.SetActive(true);
+                    Abilities2Players[2].gameObject.SetActive(false);
+                    break;
+                case 4:
+                    Abilities2Players[0].gameObject.SetActive(false);
+                    Abilities2Players[1].gameObject.SetActive(false);
+                    Abilities2Players[2].gameObject.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+
+            // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
                 GameManager.instance.currentPlayers[i].canMove = true;
@@ -126,11 +160,48 @@ public class InGameUIHandler : MonoBehaviour
         {
             UpdateUI(Mathf.RoundToInt(countdownTimer.TimeLeft()).ToString(), countdownText);
         }
-
+        if (countdownTimer.isActive)
+        {
+            switch (Mathf.RoundToInt(countdownTimer.TimeLeft()))
+            {
+                case 3:
+                    if (!soundBools[0])
+                    {
+                        soundBools[0] = true;
+                        Debug.Log("Played Audio 3");
+                        GameManager.GetManager<AudioManager>().PlaySound("three", false, Vector3.zero, false, null);
+                    }
+                    break;
+                case 2:
+                    if (!soundBools[1])
+                    {
+                        soundBools[1] = true;
+                        Debug.Log("Played Audio 2");
+                        GameManager.GetManager<AudioManager>().PlaySound("two", false, Vector3.zero, false, null);
+                    }
+                    break;
+                case 1:
+                    if (!soundBools[2])
+                    {
+                        soundBools[2] = true;
+                        Debug.Log("Played Audio 1");
+                        GameManager.GetManager<AudioManager>().PlaySound("one", false, Vector3.zero, false, null);
+                    }
+                    break;
+                case 0:
+                    if (!soundBools[3])
+                    {
+                        soundBools[3] = true;
+                        Debug.Log("Played Audio 0");
+                        GameManager.GetManager<AudioManager>().PlaySound("sprint", false, Vector3.zero, false, null);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         SetActivePanel(pausePanel, GameManager.paused);
 
-
-       
         if (matchStarted)
         {
             matchTimer += Time.deltaTime;

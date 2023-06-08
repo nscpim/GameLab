@@ -9,6 +9,7 @@ public class ThirdPersonDash : MonoBehaviour
     public float dashTime;
     public float dashCooldown = 2;
     private float nextDashTime = 0;
+    public bool canDash;
 
     
     
@@ -33,14 +34,16 @@ public class ThirdPersonDash : MonoBehaviour
 
     IEnumerator Dash()
     {
-        float startTime = Time.time;
-
-        while(Time.time < startTime + dashTime)
+        if (canDash)
         {
-            transform.Translate(Vector3.forward * dashSpeed);
-            //moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
-            yield return null;
-        }
+            float startTime = Time.time;
 
+            while (Time.time < startTime + dashTime)
+            {
+                transform.Translate(Vector3.forward * dashSpeed);
+                //moveScript.controller.Move(moveScript.moveDir * dashSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
     }
 }

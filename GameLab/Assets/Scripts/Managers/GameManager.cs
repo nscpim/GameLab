@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Level")]
     public int matchCountdown;
+    public float currentMatchCountdown;
   
 
     //Instance of this class
@@ -100,12 +101,13 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         DontDestroyOnLoad(gameObject);
-       
+      
 
         for (int i = 0; i < managers.Length; i++)
         {
             managers[i].Start();
         }
+        GetManager<AudioManager>().PlayMusic("menu");
     }
 
     /// <summary>
@@ -222,6 +224,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < currentPlayers.Count; i++)
         {
             currentPlayers[i].canMove = value;
+            currentPlayers[i].GetComponent<ThirdPersonDash>().canDash = value;
         }
     }
 

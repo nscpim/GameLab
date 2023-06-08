@@ -532,7 +532,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 4
-    joyNum: 2
+    joyNum: 16
   - serializedVersion: 3
     m_Name: VerticalCamera3
     descriptiveName: 
@@ -548,7 +548,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 4
-    joyNum: 3
+    joyNum: 16
   - serializedVersion: 3
     m_Name: VerticalCamera4
     descriptiveName: 
@@ -564,7 +564,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 4
-    joyNum: 4
+    joyNum: 16
   - serializedVersion: 3
     m_Name: HorizontalCamera1
     descriptiveName: 
@@ -580,7 +580,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: HorizontalCamera2
     descriptiveName: 
@@ -594,9 +594,9 @@ InputManager:
     sensitivity: 3
     snap: 0
     invert: 0
-    type: 2
-    axis: 3
-    joyNum: 2
+    type: 0
+    axis: 20
+    joyNum: 15
   - serializedVersion: 3
     m_Name: HorizontalCamera3
     descriptiveName: 
@@ -612,7 +612,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 3
+    joyNum: 16
   - serializedVersion: 3
     m_Name: HorizontalCamera4
     descriptiveName: 
@@ -628,7 +628,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 4
+    joyNum: 16
   - serializedVersion: 3
     m_Name: Dash1
     descriptiveName: 

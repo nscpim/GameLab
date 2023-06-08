@@ -10,6 +10,8 @@ TagManager:
   - FinishLine
   - Checkpoint
   - Jump Pad
+  - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX
