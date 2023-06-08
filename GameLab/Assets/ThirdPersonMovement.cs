@@ -31,6 +31,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private Timer secondSpawnTimer;
     private GameObject objectSpawnedIn;
     private GameObject secondObjectSpawnedIn;
+    private Timer cutOffTime;
 
     public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
@@ -46,6 +47,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool isGrounded;
     public float raycastDistance = 1.5f;
 
+    public bool attached;
+
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
@@ -57,6 +60,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         respawnTimer = new Timer();
         secondSpawnTimer = new Timer();
+        cutOffTime = new Timer();
         DontDestroyOnLoad(this);
         controller = GetComponent<CharacterController>();
         prefabToSpawn.SetActive(false);
@@ -228,11 +232,17 @@ public class ThirdPersonMovement : MonoBehaviour
             Destroy(secondObjectSpawnedIn);
         }
 
+        if (cutOffTime.isActive && cutOffTime.TimerDone())
+        {
+            cutOffTime.StopTimer();
+            ChangeCameras();
+        }
+
         if (respawnTimer.isActive && respawnTimer.TimerDone())
         {
             respawnTimer.StopTimer();
-            ChangeCameras();
             this.canMove = true;
+            gameObject.GetComponent<ThirdPersonDash>().canDash = true;
             respawning = false;
         }
     }
@@ -261,6 +271,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             abilityCooldown.SetTimer(character.abilityCooldown);
+            GameManager.GetManager<AudioManager>().PlaySound("speedup", false, transform.position, false, transform.gameObject);
         }
         else
         {
@@ -290,6 +301,7 @@ public class ThirdPersonMovement : MonoBehaviour
                     break;
             }
             secondAbilityTimer.SetTimer(character.abilityCooldown);
+            GameManager.GetManager<AudioManager>().PlaySound("slowdown", false, transform.position, false, transform.gameObject);
         }
         else
         {
@@ -305,7 +317,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         scheme.AssignInput(this);
         this.scheme = scheme;
-
     }
 
 
@@ -317,6 +328,24 @@ public class ThirdPersonMovement : MonoBehaviour
         if (GameManager.instance.order <= GameManager.instance.amountOfPlayers)
         {
             GameManager.instance.SelectedPlayer();
+        }
+      
+        switch (character.characterName)
+        {
+            case "Etienne":
+                GameManager.GetManager<AudioManager>().PlaySound("etienne", false, transform.position, false, transform.gameObject);
+                break;
+            case "Flor":
+                GameManager.GetManager<AudioManager>().PlaySound("flor", false, transform.position, false, transform.gameObject);
+                break;
+            case "Sahin":
+                GameManager.GetManager<AudioManager>().PlaySound("sahin", false, transform.position, false, transform.gameObject);
+                break;
+            case "Milena":
+                GameManager.GetManager<AudioManager>().PlaySound("milena", false, transform.position, false, transform.gameObject);
+                break;
+            default:
+                break;
         }
     }
     public void ClearControlScheme()
@@ -333,7 +362,10 @@ public class ThirdPersonMovement : MonoBehaviour
         Vector3 newPos;
         respawning = true;
         this.canMove = false;
+        gameObject.GetComponent<ThirdPersonDash>().canDash = false;
         respawnTimer.SetTimer(3f);
+        cutOffTime.SetTimer(2.5f);
+        GameManager.GetManager<AudioManager>().PlaySound("respawn", false, transform.position, false, transform.gameObject);
         speed = 30f;
         controller.enabled = false;
         print("Test Respawn");
@@ -361,6 +393,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             movingDirection.y = 80f;
             gravity = 200f;
+            GameManager.GetManager<AudioManager>().PlaySound("jump", false, transform.position, false, transform.gameObject);
         }
         if (!isGrounded)
         {
@@ -410,8 +443,6 @@ public class ThirdPersonMovement : MonoBehaviour
             movingDirection.y = Mathf.Clamp(movingDirection.y, -gravity, float.MaxValue);
             controller.Move(movingDirection * Time.deltaTime);
 
-           
-
             if (speed <= maxSpeed)
             {
                 speed += acceleration * Time.deltaTime;
@@ -448,10 +479,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
             //transform.position.x = transform.position.x + speed*Time.deltaTime;
 
-
-
-
-
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
@@ -484,11 +511,18 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (wallLayerMask == (wallLayerMask | (1 << hit.gameObject.layer)))
         {
-
             Debug.Log("Collided with a wall!");
             isCollidingWithWall = true;
             gravity = 0f;
         }
+
+        if (hit.gameObject.CompareTag("Platform"))
+        {
+            attached = true;
+            this.transform.parent = hit.transform;
+
+        }
+
 
     }
 
@@ -503,6 +537,11 @@ public class ThirdPersonMovement : MonoBehaviour
             isCollidingWithWall = false;
             canJump = true;
             isGrounded = true;
+        }
+        if (attached && !controller.isGrounded)
+        {
+            attached = false;
+            this.transform.parent = null;
         }
     }
 
@@ -523,6 +562,16 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     //Reset and rework this
 
+
+   
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            this.transform.parent = null;
+        }
+           
+    }
 
 
 

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 04a48dcf85e0c8546ad7eb09adb3daa7, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 79802b0406f6c8e4b98dc42310caf2fe, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11310,6 +11310,48 @@ MonoBehaviour:
   - name: ingame
     clips:
     - {fileID: 8300000, guid: daaa27bdc87073f48b88fd402ca1b239, type: 3}
+  - name: three
+    clips:
+    - {fileID: 8300000, guid: 31550a9a5ffbdaa4e867a61f9b5275ed, type: 3}
+  - name: two
+    clips:
+    - {fileID: 8300000, guid: dbab79a13da2efd408061e172fdad02a, type: 3}
+  - name: one
+    clips:
+    - {fileID: 8300000, guid: eda13ff064b665f4e8ce21c412d5e56a, type: 3}
+  - name: sprint
+    clips:
+    - {fileID: 8300000, guid: 2c4a17ccf07492f4b9e91e65a30a284f, type: 3}
+  - name: speedup
+    clips:
+    - {fileID: 8300000, guid: 271d488251e585840b854df673515602, type: 3}
+  - name: slowdown
+    clips:
+    - {fileID: 8300000, guid: 55fd8962f7538fb4d91f6b0edf9022b7, type: 3}
+  - name: jump
+    clips:
+    - {fileID: 8300000, guid: 4f7b951695a678d4f877b653d4473e15, type: 3}
+  - name: etienne
+    clips:
+    - {fileID: 8300000, guid: 8dd3e9e46d435ef4f8d8c75ffb832c45, type: 3}
+  - name: flor
+    clips:
+    - {fileID: 8300000, guid: d588df8188dfaa140b31b05eb1dd73e6, type: 3}
+  - name: sahin
+    clips:
+    - {fileID: 8300000, guid: 6584ebfde1f44bc49a039bb689d4fb97, type: 3}
+  - name: milena
+    clips:
+    - {fileID: 8300000, guid: f489b77b7aa88e74a9f1712971011f1f, type: 3}
+  - name: respawn
+    clips:
+    - {fileID: 8300000, guid: eeecb3a85559dfc418cd458ad376718e, type: 3}
+  - name: cannon
+    clips:
+    - {fileID: 8300000, guid: 52b7ab8d04beaa74dbb812258f9e36dd, type: 3}
+  - name: menu
+    clips:
+    - {fileID: 8300000, guid: 436f7a8c14be8924399b090c2aa10888, type: 3}
 --- !u!114 &850194485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11335,7 +11377,7 @@ MonoBehaviour:
   order: 1
   eventSystem: {fileID: 850194487}
   inputModule: {fileID: 850194486}
-  matchCountdown: 1
+  matchCountdown: 4
   currentMatchCountdown: 0
 --- !u!114 &850194486
 MonoBehaviour:

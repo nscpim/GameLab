@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2568916285085465980}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.577, y: 0.04028654, z: -7.156528}
-  m_LocalScale: {x: 4.760274, y: 4.760274, z: 4.760274}
+  m_LocalScale: {x: 4.7, y: 4.7, z: 4.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2606500879290504862}
@@ -47,13 +47,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.84
+  m_Height: 1.92
   m_Radius: 0.26
   m_SlopeLimit: 45
   m_StepOffset: 1.21
   m_SkinWidth: 1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.91, z: -0.01}
+  m_Center: {x: 0, y: 1.13, z: -0.01}
 --- !u!114 &7905058470400851244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   respawning: 0
   isGrounded: 0
   raycastDistance: 4
+  attached: 0
   currentCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8976654661707921509
@@ -182,11 +183,11 @@ PrefabInstance:
     - target: {fileID: -7823293702887809713, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e97f4938333c0bd47a8f7684e0a0b544, type: 2}
+      objectReference: {fileID: 2100000, guid: bfc32f22843ab65408fed5f949c54c2a, type: 2}
     - target: {fileID: -4790141867476305986, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e97f4938333c0bd47a8f7684e0a0b544, type: 2}
+      objectReference: {fileID: 2100000, guid: bfc32f22843ab65408fed5f949c54c2a, type: 2}
     - target: {fileID: 919132149155446097, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Name
       value: Etienne Model
@@ -198,7 +199,7 @@ PrefabInstance:
     - target: {fileID: 1630794972795428178, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e97f4938333c0bd47a8f7684e0a0b544, type: 2}
+      objectReference: {fileID: 2100000, guid: bfc32f22843ab65408fed5f949c54c2a, type: 2}
     - target: {fileID: 5866666021909216657, guid: cdd141d5af6c16340ba91c6826994b68, type: 3}
       propertyPath: m_Controller
       value: 

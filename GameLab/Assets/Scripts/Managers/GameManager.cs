@@ -101,12 +101,13 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         DontDestroyOnLoad(gameObject);
-       
+      
 
         for (int i = 0; i < managers.Length; i++)
         {
             managers[i].Start();
         }
+        GetManager<AudioManager>().PlayMusic("menu");
     }
 
     /// <summary>
