@@ -516,7 +516,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 4
-    joyNum: 16
+    joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalCamera2
     descriptiveName: 
@@ -580,7 +580,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 16
+    joyNum: 1
   - serializedVersion: 3
     m_Name: HorizontalCamera2
     descriptiveName: 
