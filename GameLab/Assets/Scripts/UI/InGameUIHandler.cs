@@ -128,7 +128,7 @@ public class InGameUIHandler : MonoBehaviour
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
 
-            switch (GameManager.instance.amountOfPlayers)
+           /* switch (GameManager.instance.amountOfPlayers)
             {
                 case 2:
                     Abilities2Players[0].gameObject.SetActive(true);
@@ -148,6 +148,7 @@ public class InGameUIHandler : MonoBehaviour
                 default:
                     break;
             }
+           */
 
             // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
