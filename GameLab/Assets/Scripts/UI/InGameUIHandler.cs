@@ -18,6 +18,12 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons3players;
     public GameObject[] buttons4players;
 
+
+    [Header("Abilities")]
+    public GameObject[] Abilities2Players;
+    public GameObject[] Abilities3Players;
+    public GameObject[] Abilities4Players;
+
     [Header("VariableChangeUI")]
     public Transform variablesPanel;
     public TMP_InputField moveSpeedField, abilityCooldown, jumpSpeed, gravity, maxSpeed, acceleration, startingSpeed;
@@ -121,7 +127,28 @@ public class InGameUIHandler : MonoBehaviour
             matchStarted = true;
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
-            
+
+            switch (GameManager.instance.amountOfPlayers)
+            {
+                case 2:
+                    Abilities2Players[0].gameObject.SetActive(true);
+                    Abilities2Players[1].gameObject.SetActive(false);
+                    Abilities2Players[2].gameObject.SetActive(false);
+                    break;
+                case 3:
+                    Abilities2Players[0].gameObject.SetActive(false);
+                    Abilities2Players[1].gameObject.SetActive(true);
+                    Abilities2Players[2].gameObject.SetActive(false);
+                    break;
+                case 4:
+                    Abilities2Players[0].gameObject.SetActive(false);
+                    Abilities2Players[1].gameObject.SetActive(false);
+                    Abilities2Players[2].gameObject.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+
             // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
             {
