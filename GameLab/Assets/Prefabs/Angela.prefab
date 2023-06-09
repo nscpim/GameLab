@@ -1369,7 +1369,7 @@ MonoBehaviour:
     m_Bits: 128
   launchSpeed: 300
   prefabToSpawn: {fileID: 5957105489197288540, guid: 42afe787135162a4396b470c2430c652, type: 3}
-  secondAbility: {fileID: 8038673653539609449, guid: 4f2dadb4f497bcf4593f4a6643ff7716, type: 3}
+  secondAbility: {fileID: 2533675641218306800, guid: 5cd369e73f1514b43b1d021a3ab20da3, type: 3}
   characterPrefab: {fileID: 0}
   playerInt: 0
   respawnRotation: {x: 0, y: 0, z: 0, w: 0}

@@ -7,16 +7,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 5_Aura_Base_1
+  m_Name: 17_Spiral Purple Pink
   m_Shader: {fileID: 4800000, guid: 6eb86e4931b506a408fd1477edec61ea, type: 3}
   m_ValidKeywords:
   - ADDITIVECONFIG_ON
+  - ALPHAFADETRANSPARENCYTOO_ON
   - COLORRAMPGRAD_ON
   - COLORRAMP_ON
+  - GLOW_ON
   - PREMULTIPLYCOLOR_ON
   - SHAPE1CONTRAST_ON
-  - SHAPE2CONTRAST_ON
   - SHAPE2_ON
+  - SHAPE3_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorRampTexGradient:
-        m_Texture: {fileID: 529195378150309946}
+        m_Texture: {fileID: 4475058952330713125}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistNormalMap:
@@ -56,8 +58,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ef2d075270368e145ab4d78fbc5565bc, type: 3}
-        m_Scale: {x: 7, y: 1}
+        m_Texture: {fileID: 2800000, guid: 681f874d59abb334c965fe5f72a606f3, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 2800000, guid: c644f12d7def3a543a6c3ec049bb87f9, type: 3}
@@ -72,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape2Tex:
-        m_Texture: {fileID: 2800000, guid: c894103bc99f8374d95c4bdea51a3583, type: 3}
+        m_Texture: {fileID: 2800000, guid: 86bcb483f11b6c94fb965c6643d82454, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape3DistortTex:
@@ -80,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape3Tex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 76ba854393aba634893a750ec98ef712, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShapeDistortTex:
@@ -97,13 +99,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
+    - _Alpha: 0.427
     - _AlphaBrightness: 0
     - _AlphaContrast: 1
     - _AlphaCutoffValue: 0.25
-    - _AlphaFadeAmount: 0
-    - _AlphaFadePow: 1
-    - _AlphaFadeSmooth: 0
+    - _AlphaFadeAmount: -0.1
+    - _AlphaFadePow: 0.63
+    - _AlphaFadeSmooth: 0.881
     - _AlphaStepMax: 0.075
     - _AlphaStepMin: 0
     - _BlurIntensity: 4.5
@@ -113,7 +115,7 @@ Material:
     - _ColorGradingMidPoint: 0.5
     - _ColorMask: 15
     - _ColorRampBlend: 1
-    - _ColorRampLuminosity: -0.43
+    - _ColorRampLuminosity: -0.126
     - _CullingOption: 0
     - _DebugShape: 1
     - _DepthGlow: 0
@@ -137,7 +139,7 @@ Material:
     - _FadeScrollYSpeed: 0
     - _FadeTransition: 0.075
     - _FishEyeUvAmount: 0.35
-    - _Glow: 0
+    - _Glow: 0.8
     - _GlowGlobal: 1
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
@@ -180,9 +182,9 @@ Material:
     - _ShakeUvY: 1
     - _Shape1MaskPow: 1
     - _Shape2AlphaWeight: 2
-    - _Shape2Brightness: 0.1
+    - _Shape2Brightness: 0
     - _Shape2ColorWeight: 2
-    - _Shape2Contrast: 1.88
+    - _Shape2Contrast: 1
     - _Shape2DistortAmount: 0.5
     - _Shape2DistortXSpeed: 0.1
     - _Shape2DistortYSpeed: 0.1
@@ -202,7 +204,7 @@ Material:
     - _Shape3XSpeed: 0
     - _Shape3YSpeed: 0
     - _ShapeAlphaWeight: 1
-    - _ShapeBrightness: -0.206
+    - _ShapeBrightness: -0.239
     - _ShapeColorWeight: 1
     - _ShapeContrast: 1
     - _ShapeDistortAmount: 0.5
@@ -210,8 +212,8 @@ Material:
     - _ShapeDistortYSpeed: 0.1
     - _ShapeRotationOffset: 0
     - _ShapeRotationSpeed: 0
-    - _ShapeXSpeed: 0
-    - _ShapeYSpeed: -0.1
+    - _ShapeXSpeed: -0.4
+    - _ShapeYSpeed: 0
     - _SoftFactor: 0.5
     - _SrcMode: 1
     - _TextureScrollXSpeed: 1
@@ -243,20 +245,20 @@ Material:
     - _DepthGlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 1, g: 0, b: 0.84019756, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!28 &529195378150309946
+--- !u!28 &4475058952330713125
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _ColorRampTexGradientTex{"mode":0,"colorKeys":[{"color":{"r":0.13598684966564179,"g":0.043387334793806079,"b":0.23584908246994019,"a":1.0},"time":0.0},{"color":{"r":0.3035367727279663,"g":0.10196078568696976,"b":0.5176470875740051,"a":1.0},"time":0.45433738827705386},{"color":{"r":0.8301886916160584,"g":0.31719475984573367,"b":0.7235137224197388,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_Name: _ColorRampTexGradientTex{"mode":0,"colorKeys":[{"color":{"r":0.9905660152435303,"g":0.03270738571882248,"b":0.9351837038993836,"a":1.0},"time":0.0},{"color":{"r":0.9811320900917053,"g":0.31007474660873415,"b":0.8784335255622864,"a":1.0},"time":0.5479514598846436},{"color":{"r":1.0,"g":0.43867921829223635,"b":0.8833342790603638,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -291,7 +293,7 @@ Texture2D:
   m_ColorSpace: 0
   m_PlatformBlob: 
   image data: 256
-  _typelessdata: 230b3cff240c3fff260c41ff270d44ff290d46ff2a0e49ff2c0e4bff2d0f4eff2f0f50ff301053ff321055ff331158ff35115aff36125dff38125fff391362ff3b1364ff3c1467ff3e1469ff3f156cff41166eff421671ff441773ff451776ff471878ff48187bff49197dff4b1980ff4c1a82ff4f1b85ff531c86ff571e88ff5b1f89ff5f218bff62238cff66248eff6a268fff6e2791ff722992ff762b94ff7a2c95ff7e2e97ff822f98ff86319aff89339bff8d349dff91369fff9537a0ff9939a2ff9d3ba3ffa13ca5ffa53ea6ffa93fa8ffad41a9ffb143abffb444acffb846aeffbc47afffc049b1ffc44ab2ffc84cb4ffcc4eb5ffd04fb7ffd451b8ff
+  _typelessdata: fd08eefffd0aeefffc0ceefffc0eedfffc11edfffc13ecfffc15ecfffc17ecfffc19ebfffc1bebfffc1deafffc1feafffc21e9fffc23e9fffc25e9fffc27e8fffb29e8fffb2be7fffb2de7fffb2fe7fffb31e6fffb33e6fffb35e5fffb37e5fffb3ae4fffb3ce4fffb3ee4fffb40e3fffb42e3fffb44e2fffb46e2fffa48e1fffa4ae1fffa4ce1fffa4ee0fffa50e0fffa51e0fffb52e0fffb53e0fffb54e0fffb55e0fffb57e0fffb58e0fffc59e0fffc5ae0fffc5be0fffc5ce1fffc5de1fffc5fe1fffd60e1fffd61e1fffd62e1fffd63e1fffd64e1fffd65e1fffe67e1fffe68e1fffe69e1fffe6ae1fffe6be1fffe6ce1ffff6ee1ffff6fe1ffff70e1ff
   m_StreamData:
     serializedVersion: 2
     offset: 0

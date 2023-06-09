@@ -189,8 +189,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateMesh()
     {
-
-        //NOTE: Put characters in scene already || let players spawn in with all models but only enable model that has been chosen.
         //Change character prefab
         Destroy(gameObject.transform.GetChild(0).gameObject);
         Destroy(gameObject.GetComponent<Animator>());
@@ -203,6 +201,8 @@ public class ThirdPersonMovement : MonoBehaviour
         prefabSpawnable.transform.position = prefabSpawnable.transform.parent.transform.position;
         prefabSpawnable.transform.localScale = new Vector3(1, 1, 1);
         _anim = prefabSpawnable.GetComponent<Animator>();
+        prefabToSpawn = character.Ability1;
+        secondAbility = character.Ability2;
 
     }
 

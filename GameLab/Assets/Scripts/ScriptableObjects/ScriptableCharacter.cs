@@ -21,8 +21,10 @@ public class ScriptableCharacter : ScriptableObject
     public Image characterImage;
     //Mesh of the character.
     public Mesh characterMesh;
-    
-    
+
+    public GameObject Ability1;
+    public GameObject Ability2;
+
     
     //Character Model
     public GameObject characterPrefab;
