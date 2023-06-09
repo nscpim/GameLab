@@ -551,13 +551,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Slow Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() != playerInt)
         {
             speed = 50f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: " + playerInt + " entered the trigger!  slow down, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
 
         if (other.CompareTag("Fast Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() == playerInt)
         {
             speed = 300f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: "+ playerInt + " entered the trigger! Speed Up, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
     }
     //Reset and rework this
@@ -580,6 +580,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Jump Pad"))
         {
             movingDirection.y = launchSpeed;
+            GameManager.GetManager<AudioManager>().PlaySound("jumppad", false, Vector3.zero, false, null);
             Debug.Log("Player entered the jump pad trigger!");
         }
     }
