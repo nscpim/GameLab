@@ -4723,7 +4723,7 @@ MonoBehaviour:
     m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: VerticalCamera2
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -4747,7 +4747,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera2
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -5877,7 +5877,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera2
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -7408,7 +7408,7 @@ MonoBehaviour:
     m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: VerticalCamera1
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -7432,7 +7432,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera1
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -8032,7 +8032,7 @@ MonoBehaviour:
     m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: VerticalCamera1
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -8056,7 +8056,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera1
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -13741,7 +13741,7 @@ MonoBehaviour:
     m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: VerticalCamera3
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -13765,7 +13765,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera3
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -25562,7 +25562,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera4
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -26515,7 +26515,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera3
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
@@ -28196,7 +28196,7 @@ MonoBehaviour:
     m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: VerticalCamera4
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
@@ -28220,7 +28220,7 @@ MonoBehaviour:
     m_MaxSpeed: 50
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: VerticalCamera
+    m_InputAxisName: HorizontalCamera4
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -90
