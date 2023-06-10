@@ -249,6 +249,7 @@ MonoBehaviour:
   dashSpeed: 3
   dashTime: 0.12
   dashCooldown: 2
+  nextDashTime: 0
   canDash: 0
 --- !u!95 &7197838264155471255
 Animator:

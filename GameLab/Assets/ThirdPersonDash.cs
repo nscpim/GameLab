@@ -8,7 +8,7 @@ public class ThirdPersonDash : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float dashCooldown = 2;
-    private float nextDashTime = 0;
+    public float nextDashTime = 0;
     public bool canDash;
 
     

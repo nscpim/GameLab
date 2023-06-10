@@ -208,6 +208,15 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
 
+    public int ReturnAbilityCooldown() 
+    {
+        return Mathf.RoundToInt(abilityCooldown.TimeLeft());
+    }
+
+    public int ReturnSecondAbilityCooldown() 
+    {
+        return Mathf.RoundToInt(secondAbilityTimer.TimeLeft());
+    }
 
 
     public void Timer()
@@ -216,6 +225,9 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             abilityCooldown.StopTimer();
         }
+
+        
+
 
 
         if (secondAbilityTimer.isActive && secondAbilityTimer.TimerDone())
