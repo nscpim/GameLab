@@ -125,6 +125,10 @@ public class InGameUIHandler : MonoBehaviour
             countdownText.transform.parent.gameObject.SetActive(false);
             matchTimerUpdater.SetTimer(1f);
             matchStarted = true;
+            foreach (ThirdPersonMovement i in GameManager.instance.currentPlayers)
+            {
+                i.ChangeCameras();
+            }
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
 

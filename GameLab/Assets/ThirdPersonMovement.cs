@@ -55,6 +55,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
 
+
     private bool isCollidingWithWall = false;
     void Start()
     {
@@ -206,6 +207,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
+
+
+
     public void Timer()
     {
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
@@ -347,6 +351,8 @@ public class ThirdPersonMovement : MonoBehaviour
             default:
                 break;
         }
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
     public void ClearControlScheme()
     {
@@ -373,9 +379,9 @@ public class ThirdPersonMovement : MonoBehaviour
         newPos = transform.position;
         transform.rotation = respawnRotation;
         controller.enabled = true;
-        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.simpleCameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
         CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
@@ -408,9 +414,18 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    public void ReachedEnd() 
+    {
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(false);
+        CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
+        speed = 30f;
+        this.canMove = false;
+
+    }
+
     void Update()
     {
-
         gameObject.transform.GetChild(0).rotation = gameObject.transform.rotation;
         scheme.Update();
         Timer();

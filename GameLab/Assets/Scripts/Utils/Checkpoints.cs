@@ -12,6 +12,7 @@ public class Checkpoints : MonoBehaviour
     private Dictionary<int, bool> hasAddedScore = new Dictionary<int, bool>();
     public CineMachineHandler cineMachineHandler;
     public InGameUIHandler inGameUIHandler;
+    
 
 
     private void Start()
@@ -42,6 +43,8 @@ public class Checkpoints : MonoBehaviour
                         cineMachineHandler.playerTimeTexts[playerID-1].text = "player: " + other.GetComponent<ThirdPersonMovement>().playerInt + "'s placing: " + score.Count +
                              " Time: " + time.ToString("mm':'ss':'ms");
                         hasAddedScore[playerID] = true;
+                        ThirdPersonMovement player = other.gameObject.GetComponent<ThirdPersonMovement>();
+                        player.Invoke(nameof(player.ReachedEnd), 3);
                     }
                 break;
 
