@@ -55,6 +55,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
 
+
     private bool isCollidingWithWall = false;
     void Start()
     {
@@ -189,8 +190,6 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void UpdateMesh()
     {
-
-        //NOTE: Put characters in scene already || let players spawn in with all models but only enable model that has been chosen.
         //Change character prefab
         Destroy(gameObject.transform.GetChild(0).gameObject);
         Destroy(gameObject.GetComponent<Animator>());
@@ -203,8 +202,13 @@ public class ThirdPersonMovement : MonoBehaviour
         prefabSpawnable.transform.position = prefabSpawnable.transform.parent.transform.position;
         prefabSpawnable.transform.localScale = new Vector3(1, 1, 1);
         _anim = prefabSpawnable.GetComponent<Animator>();
+        prefabToSpawn = character.Ability1;
+        secondAbility = character.Ability2;
 
     }
+
+
+
 
     public void Timer()
     {
@@ -347,6 +351,8 @@ public class ThirdPersonMovement : MonoBehaviour
             default:
                 break;
         }
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
     public void ClearControlScheme()
     {
@@ -373,9 +379,9 @@ public class ThirdPersonMovement : MonoBehaviour
         newPos = transform.position;
         transform.rotation = respawnRotation;
         controller.enabled = true;
-        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.simpleCameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
         CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
@@ -408,9 +414,18 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    public void ReachedEnd() 
+    {
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(false);
+        CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
+        speed = 30f;
+        this.canMove = false;
+
+    }
+
     void Update()
     {
-
         gameObject.transform.GetChild(0).rotation = gameObject.transform.rotation;
         scheme.Update();
         Timer();
@@ -551,13 +566,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Slow Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() != playerInt)
         {
             speed = 50f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: " + playerInt + " entered the trigger!  slow down, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
 
         if (other.CompareTag("Fast Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() == playerInt)
         {
             speed = 300f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: "+ playerInt + " entered the trigger! Speed Up, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
     }
     //Reset and rework this
@@ -580,6 +595,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Jump Pad"))
         {
             movingDirection.y = launchSpeed;
+            GameManager.GetManager<AudioManager>().PlaySound("jumppad", false, Vector3.zero, false, null);
             Debug.Log("Player entered the jump pad trigger!");
         }
     }

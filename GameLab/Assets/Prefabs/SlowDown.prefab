@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 3367300938593463653}
   m_Layer: 0
   m_Name: SlowDown
-  m_TagString: Untagged
+  m_TagString: Slow Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -598,5 +598,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.962727, y: 0.87626326, z: 11.215667}
-  m_Center: {x: 0.16553818, y: -0.061869357, z: -0.13647677}
+  m_Size: {x: 10.962727, y: 3.1559136, z: 11.215667}
+  m_Center: {x: 0.16553818, y: 1.0779548, z: -0.13647677}
