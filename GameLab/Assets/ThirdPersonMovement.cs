@@ -367,7 +367,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// When character is selected, sets the correct character and scriptable
+    /// When character is selected, sets the correct character and scriptable character object
     /// </summary>
     /// <param name="selection"></param>
     public void SelectedCharacter(Character selection)
@@ -467,7 +467,7 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
         speed = 30f;
         this.canMove = false;
-
+        gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("Offensive Idle", 1);
     }
 
     void Update()
