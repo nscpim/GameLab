@@ -6,57 +6,62 @@ using UnityEngine.TextCore.Text;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+
+
+    [Header("Main Variables")]
     public CharacterController controller;
-    public float speed = 30f;
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
-    public float jumpSpeed = 20.0f;
-    public float gravity = 130f;
-    private Vector3 movingDirection = Vector3.zero;
-    public float maxSpeed = 70f;
-    public float acceleration = 5;
-    public LayerMask wallLayerMask;
-    public float launchSpeed;
-    public GameObject prefabToSpawn;
-    public GameObject secondAbility;
-    public GameObject characterPrefab;
     public int playerInt;
     public ControlScheme scheme;
-    public Quaternion respawnRotation;
-
     private Animator _anim;
-    public bool canJump;
-
-    private Timer spawnTimer;
-    private Timer secondSpawnTimer;
-    private GameObject objectSpawnedIn;
-    private GameObject secondObjectSpawnedIn;
-    private Timer cutOffTime;
-
     public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
-    private float timeStamp;
     public bool canSelectCharacter;
-    private Timer abilityCooldown;
-    private Timer secondAbilityTimer;
-    public bool canMove;
-    private bool canPause;
-    private Timer pauseTimer;
-    private Timer respawnTimer;
-    public bool respawning;
-    public bool isGrounded;
     public float raycastDistance = 1.5f;
 
+    [Header("Movement")]
+    public float speed = 30f;
+    public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    public float jumpSpeed = 20.0f;
+    public float gravity = 130f;
+    public float maxSpeed = 70f;
+    public float acceleration = 5;
+    public float launchSpeed;
+    private Vector3 movingDirection = Vector3.zero;
+    public LayerMask wallLayerMask;
+    public bool canJump;
+    public bool canMove;
+    public bool isGrounded;
     public bool attached;
+    private bool isCollidingWithWall = false;
+
+    [Header("Abilities")]
+    public GameObject prefabToSpawn;
+    public GameObject secondAbility;
+    private GameObject objectSpawnedIn;
+    private GameObject secondObjectSpawnedIn;
+
+    [Header("Timers")]
+    private Timer spawnTimer;
+    private Timer secondSpawnTimer;
+    private Timer cutOffTime;
+    private Timer abilityCooldown;
+    private Timer secondAbilityTimer;
+    private Timer respawnTimer;
+
 
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
+    public Quaternion respawnRotation;
+    public bool respawning;
 
 
 
-
-    private bool isCollidingWithWall = false;
+    /// <summary>
+    /// Initialize variables and setup the cameras based on how many players are in the game
+    /// Start is being called once in the ingame scene.
+    /// </summary>
     void Start()
     {
         respawnTimer = new Timer();
@@ -82,6 +87,10 @@ public class ThirdPersonMovement : MonoBehaviour
         spawnTimer = new Timer();
     }
 
+    /// <summary>
+    /// Method for setting up the cameras if the first one failed, this is purely a safety net if somehow the code is executed in another order.
+    /// This wont affect performance because its a call thats being done once.
+    /// </summary>
     public void TryCineMachineSetup()
     {
         try
@@ -100,7 +109,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Setting up the cameras based on how many players.
+    /// </summary>
+    /// <param name="_name"></param>
+    /// <param name="amount"></param>
     public void SetViewPortRect(string _name, int amount)
     {
         //X , Y, Width and Height
@@ -165,6 +178,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update of the layers, so everyone sees the correct things in the scene and not each others cameras etc.
+    /// </summary>
     public void UpdateLayers()
     {
 
@@ -187,7 +203,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// After character selection, update the character model and setup the correct ability gameobjects.
+    /// </summary>
     public void UpdateMesh()
     {
         //Change character prefab
@@ -207,18 +225,28 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Returns the cooldown of the speed ability
+    /// </summary>
+    /// <returns></returns>
     public int ReturnAbilityCooldown() 
     {
         return Mathf.RoundToInt(abilityCooldown.TimeLeft());
     }
 
+
+    /// <summary>
+    /// return the cooldown of the slow ability
+    /// </summary>
+    /// <returns></returns>
     public int ReturnSecondAbilityCooldown() 
     {
         return Mathf.RoundToInt(secondAbilityTimer.TimeLeft());
     }
 
-
+    /// <summary>
+    /// Code executed by timers
+    /// </summary>
     public void Timer()
     {
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
@@ -226,15 +254,10 @@ public class ThirdPersonMovement : MonoBehaviour
             abilityCooldown.StopTimer();
         }
 
-        
-
-
-
         if (secondAbilityTimer.isActive && secondAbilityTimer.TimerDone())
         {
             secondAbilityTimer.StopTimer();
         }
-
 
         if (spawnTimer.isActive && spawnTimer.TimerDone())
         {
@@ -263,7 +286,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Executed the first ability through the input manager
+    /// </summary>
     public void ExecuteAbility()
     {
         if (!abilityCooldown.isActive && canMove)
@@ -272,7 +297,6 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 case Character.Test:
                     SpawnPrefab();
-                    Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
                     SpawnPrefab();
@@ -294,7 +318,9 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log(gameObject.name + " Your first ability is on cooldown: " + abilityCooldown.TimeLeft());
         }
     }
-
+    /// <summary>
+    /// Executed the second ability through the input manager
+    /// </summary>
     public void ExecuteSecondAbility()
     {
         if (!secondAbilityTimer.isActive && canMove)
@@ -325,6 +351,11 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Sets the controlscheme for the player
+    /// </summary>
+    /// <param name="scheme"></param>
     public void SetControlScheme(ControlScheme scheme)
     {
         if (scheme != null)
@@ -335,7 +366,10 @@ public class ThirdPersonMovement : MonoBehaviour
         this.scheme = scheme;
     }
 
-
+    /// <summary>
+    /// When character is selected, sets the correct character and scriptable character object
+    /// </summary>
+    /// <param name="selection"></param>
     public void SelectedCharacter(Character selection)
     {
         character = GameManager.instance.characters[(int)selection];
@@ -433,7 +467,7 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
         speed = 30f;
         this.canMove = false;
-
+        gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("Offensive Idle", 1);
     }
 
     void Update()
@@ -549,8 +583,6 @@ public class ThirdPersonMovement : MonoBehaviour
             this.transform.parent = hit.transform;
 
         }
-
-
     }
 
     void FixedUpdate()

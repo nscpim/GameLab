@@ -208,32 +208,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 7655495136395385240}
+  playerInt: 0
+  mainCamera: {fileID: 0}
+  character: {fileID: 0}
+  canSelectCharacter: 0
+  raycastDistance: 4
   speed: 50
   turnSmoothTime: 0.1
   jumpSpeed: 115
   gravity: 200
   maxSpeed: 115
   acceleration: 30
+  launchSpeed: 300
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  launchSpeed: 300
+  canJump: 0
+  canMove: 0
+  isGrounded: 0
+  attached: 0
   prefabToSpawn: {fileID: 7419262374120515926, guid: 69877820f21b3514eb618e8cf0970a5e, type: 3}
   secondAbility: {fileID: 8038673653539609449, guid: 4f2dadb4f497bcf4593f4a6643ff7716, type: 3}
-  characterPrefab: {fileID: 0}
-  playerInt: 0
-  respawnRotation: {x: 0, y: 0, z: 0, w: 0}
-  canJump: 0
-  mainCamera: {fileID: 0}
-  character: {fileID: 0}
-  canSelectCharacter: 0
-  canMove: 0
-  respawning: 0
-  isGrounded: 0
-  raycastDistance: 4
-  attached: 0
   currentCheckpoint: 0
   respawnPosition: {x: 0, y: 0, z: 0}
+  respawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  respawning: 0
 --- !u!114 &8976654661707921509
 MonoBehaviour:
   m_ObjectHideFlags: 0
