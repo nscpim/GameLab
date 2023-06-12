@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public Button[] buttons;
     public GameObject options;
     public Slider volumeSlider;
+    public GameObject backButton;
 
     /// <summary>
     /// When the player presses the start button
@@ -18,6 +19,7 @@ public class MainMenu : MonoBehaviour
     {
         canvas[0].gameObject.SetActive(false);
         canvas[1].gameObject.SetActive(true);
+        canvas[2].gameObject.SetActive(false);
     }
     /// <summary>
     /// When the game starts the first button will be the first selected one
@@ -25,6 +27,16 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         GameManager.instance.eventSystem.SetSelectedGameObject(buttons[0].gameObject);
+    }
+    /// <summary>
+    /// Method for when the player presses the controls button
+    /// </summary>
+    public void Controls() 
+    {
+        canvas[0].gameObject.SetActive(false);
+        canvas[1].gameObject.SetActive(false);
+        canvas[2].gameObject.SetActive(true);
+        GameManager.instance.eventSystem.SetSelectedGameObject(backButton);
     }
 
     public void PracticePlay()
@@ -52,6 +64,7 @@ public class MainMenu : MonoBehaviour
     {
         canvas[0].gameObject.SetActive(true);
         canvas[1].gameObject.SetActive(false);
+        canvas[2].gameObject.SetActive(false);
         options.gameObject.SetActive(false);
     }
 }

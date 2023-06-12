@@ -13,6 +13,9 @@ public class FPSCounter : MonoBehaviour
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.01f;
     }
 
+    /// <summary>
+    /// OnGUI for showing the current frames per second on the screen.
+    /// </summary>
     private void OnGUI()
     {
         int w = Screen.width, h = Screen.height;
