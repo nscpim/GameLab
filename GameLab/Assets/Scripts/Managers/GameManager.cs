@@ -206,7 +206,36 @@ public class GameManager : MonoBehaviour
         {
             SetInputModule(order);
             currentPlayers[order - 1].canSelectCharacter = true;
+            if (order == 2)
+            {
+                StartCoroutine(WaitForName("playertwochoose"));
+                Invoke("ChooseYourCharacter", 3f);
+            }
+            if (order == 3)
+            {
+                StartCoroutine(WaitForName("playerthreechoose"));
+                Invoke("ChooseYourCharacter", 3f);
+            }
+            if (order == 4)
+            {
+                StartCoroutine(WaitForName("playerfourchoose"));
+                Invoke("ChooseYourCharacter", 3f);
+            }
+
         }
+    }
+
+
+    public IEnumerator WaitForName(string clip) 
+    {
+        yield return new WaitForSeconds(2f);
+        GameManager.GetManager<AudioManager>().PlaySound(clip, false, Vector3.zero, false, null);
+    }
+
+  
+    public void ChooseYourCharacter()
+    {
+        GameManager.GetManager<AudioManager>().PlaySound("choosecharacter", false, Vector3.zero, false, null);
     }
 
     /// <summary>

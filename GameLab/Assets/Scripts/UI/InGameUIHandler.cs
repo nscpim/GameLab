@@ -28,7 +28,7 @@ public class InGameUIHandler : MonoBehaviour
 
     public TextMeshProUGUI[] Ability1CooldownTexts;
     public TextMeshProUGUI[] Ability2CooldownTexts;
-    public TextMeshProUGUI playerThatsSelecting;
+    public TextMeshProUGUI[] playerThatsSelecting;
 
 
     [Header("VariableChangeUI")]
@@ -61,6 +61,8 @@ public class InGameUIHandler : MonoBehaviour
         matchTimerUpdater = new Timer();
         GameManager.instance.SetCanMove(false);
         GameManager.instance.canSelect = true;
+        GameManager.GetManager<AudioManager>().PlaySound("playeronechoose", false, Vector3.zero, false, null);
+        Invoke("ChooseYourCharacter", 1.5f);
         matchTimer = 0f;
         SetupPanels();
         ResetSelection();
@@ -71,12 +73,23 @@ public class InGameUIHandler : MonoBehaviour
         }
     }
 
+    public void ChooseYourCharacter() 
+    {
+        GameManager.GetManager<AudioManager>().PlaySound("choosecharacter", false, Vector3.zero, false, null);
+    }
+
     public void SetupPanels()
     {
 
+        for (int i = 0; i < playerThatsSelecting.Length; i++)
+        {
+            playerThatsSelecting[i].gameObject.SetActive(true);
+            playerThatsSelecting[i].text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
+        }
 
-        playerThatsSelecting.gameObject.SetActive(true);
-        playerThatsSelecting.text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
+        
+        
+      
         /*
      switch (GameManager.instance.amountOfPlayers)
         {
@@ -131,7 +144,11 @@ public class InGameUIHandler : MonoBehaviour
         {
             GameManager.instance.canSelect = false;
             NewSelectionPanel.gameObject.SetActive(false);
-            playerThatsSelecting.gameObject.SetActive(false);
+            for (int i = 0; i < playerThatsSelecting.Length; i++)
+            {
+                playerThatsSelecting[i].gameObject.SetActive(false);
+            }
+         
             toolTipPanel.SetActive(false);
             once = true;
             GameManager.GetManager<AudioManager>().StopPlaying();
@@ -484,7 +501,11 @@ public class InGameUIHandler : MonoBehaviour
         //-1 because arrays start at 0
         GameManager.instance.currentPlayers[GameManager.instance.order - 1].SelectedCharacter((Character)character);
         ResetSelection();
-        playerThatsSelecting.text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
+        for (int i = 0; i < playerThatsSelecting.Length; i++)
+        {
+            playerThatsSelecting[i].gameObject.SetActive(true);
+            playerThatsSelecting[i].text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
+        }
     }
 
     public void ResetSelection()

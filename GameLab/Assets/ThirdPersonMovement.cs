@@ -482,6 +482,8 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
         speed = 30f;
         this.canMove = false;
+        gameObject.GetComponent<ThirdPersonDash>().canDash = false;
+
         gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("Offensive Idle", 1);
     }
 

@@ -22,7 +22,7 @@ MonoBehaviour:
   characterMesh: {fileID: 0}
   Ability1: {fileID: 4094438606994284889, guid: 29b9807cf00a61340ac9ec1aa08db660, type: 3}
   Ability2: {fileID: 914742409132969445, guid: 23568bef382368545a65a568bbc332c2, type: 3}
-  characterPrefab: {fileID: 991175511172087626, guid: 5848ad1870035914191f0d92e9bbcf07, type: 3}
+  characterPrefab: {fileID: 6549950647453372572, guid: de88d53aa023c144a9cb633757855e80, type: 3}
   abilityCooldown: 10
   secondAbilityCooldown: 5
   speed: 100
