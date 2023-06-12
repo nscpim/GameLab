@@ -15,7 +15,6 @@ public class RotateLights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Rotating the Volumetric Lights
        transform.Rotate(0, rotationvalue, 0, Space.World);
     }
 }
