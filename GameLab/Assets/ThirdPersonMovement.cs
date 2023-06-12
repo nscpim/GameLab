@@ -367,7 +367,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// When character is selected, sets the correct character and scriptable
+    /// When character is selected, sets the correct character and scriptable character object
     /// </summary>
     /// <param name="selection"></param>
     public void SelectedCharacter(Character selection)
@@ -380,6 +380,7 @@ public class ThirdPersonMovement : MonoBehaviour
             GameManager.instance.SelectedPlayer();
         }
       
+        //Playing sound based on which character has been selected
         switch (character.characterName)
         {
             case "Etienne":
@@ -400,13 +401,18 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// if somehow the scheme is not null it will clear the control scheme at the start
+    /// </summary>
     public void ClearControlScheme()
     {
         scheme = null;
     }
 
-
-
+    /// <summary>
+    /// All mechanics in place for when the player respawns
+    /// </summary>
     public void Respawn()
     {
         _anim.SetFloat("speedMovement", 0f);
@@ -431,7 +437,10 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
-
+    /// <summary>
+    /// Method for switching cameras
+    /// being used when respawning
+    /// </summary>
     public void ChangeCameras()
     {
         CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(false);
@@ -439,6 +448,9 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method for when the player jumps
+    /// </summary>
     public void Jump()
     {
         if (isGrounded && canMove && canJump)
@@ -460,6 +472,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets called whenever the player finished the map.
+    /// </summary>
     public void ReachedEnd() 
     {
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(true);
@@ -467,9 +482,12 @@ public class ThirdPersonMovement : MonoBehaviour
         CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
         speed = 30f;
         this.canMove = false;
-
+        gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>().Play("Offensive Idle", 1);
     }
 
+    /// <summary>
+    /// Update gameloop
+    /// </summary>
     void Update()
     {
         gameObject.transform.GetChild(0).rotation = gameObject.transform.rotation;
@@ -559,14 +577,19 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Called when the game should be paused
+    /// </summary>
     public void Pause()
     {
         GameManager.Pause();
         Debug.Log("Paused");
     }
 
-
+    /// <summary>
+    /// When the player collides with wall objects it will stick to them
+    /// </summary>
+    /// <param name="hit"></param>
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
@@ -585,6 +608,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fixed update loop for physics
+    /// </summary>
     void FixedUpdate()
     {
 
@@ -604,6 +630,10 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Trigger Methods for the abilitys
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
 
@@ -623,17 +653,23 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
    
+    /// <summary>
+    /// Used when the player jumps or gets off from a moving platform
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
             this.transform.parent = null;
         }
-           
     }
 
 
-
+    /// <summary>
+    /// Enter trigger for when the player steps on the jumppad
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Jump Pad"))
@@ -644,6 +680,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns first ability prefab
+    /// </summary>
     void SpawnPrefab()
     {
         // Instantiate the prefab at the current object's position
@@ -655,6 +694,9 @@ public class ThirdPersonMovement : MonoBehaviour
         spawnTimer.SetTimer(5f);
     }
 
+    /// <summary>
+    /// spawns second ability prefab
+    /// </summary>
     void SpawnSecondPrefab()
     {
         // Instantiate the prefab at the current object's position

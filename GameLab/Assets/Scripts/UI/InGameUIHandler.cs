@@ -19,12 +19,16 @@ public class InGameUIHandler : MonoBehaviour
     public GameObject[] buttons4players;
 
 
+    public GameObject NewSelectionPanel;
+    public GameObject[] buttonsNewSelection;
+
     [Header("Abilities")]
     public GameObject[] AbilityPanels;
 
 
     public TextMeshProUGUI[] Ability1CooldownTexts;
     public TextMeshProUGUI[] Ability2CooldownTexts;
+    public TextMeshProUGUI playerThatsSelecting;
 
 
     [Header("VariableChangeUI")]
@@ -45,6 +49,7 @@ public class InGameUIHandler : MonoBehaviour
     public bool matchStarted = false;
     private bool activeState = false;
 
+    private int placeInArray = 0;
     public TextMeshProUGUI matchTimerText;
 
     public bool[] soundBools;
@@ -57,7 +62,7 @@ public class InGameUIHandler : MonoBehaviour
         GameManager.instance.SetCanMove(false);
         GameManager.instance.canSelect = true;
         matchTimer = 0f;
-        SetupPanels(true);
+        SetupPanels();
         ResetSelection();
         //Dont forget to disable movement code 
         for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
@@ -66,9 +71,14 @@ public class InGameUIHandler : MonoBehaviour
         }
     }
 
-    public void SetupPanels(bool value)
+    public void SetupPanels()
     {
-        switch (GameManager.instance.amountOfPlayers)
+
+
+        playerThatsSelecting.gameObject.SetActive(true);
+        playerThatsSelecting.text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
+        /*
+     switch (GameManager.instance.amountOfPlayers)
         {
             case 2:
                 PlayerSelectionPanel_2.SetActive(value);
@@ -82,6 +92,7 @@ public class InGameUIHandler : MonoBehaviour
             default:
                 break;
         }
+    */
     }
 
     public void OnTextFieldChange()
@@ -102,6 +113,9 @@ public class InGameUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(GameManager.instance.order);
+
+       
 
         AbilityCooldown1();
 
@@ -113,15 +127,45 @@ public class InGameUIHandler : MonoBehaviour
             variablesPanel.gameObject.SetActive(activeState);
         }
 
-        if (GameManager.instance.order == (GameManager.instance.amountOfPlayers + 1) && !once)
+        if (GameManager.instance.order >= (GameManager.instance.amountOfPlayers + 1) && !once)
         {
-            SetupPanels(false);
             GameManager.instance.canSelect = false;
+            NewSelectionPanel.gameObject.SetActive(false);
+            playerThatsSelecting.gameObject.SetActive(false);
             toolTipPanel.SetActive(false);
             once = true;
             GameManager.GetManager<AudioManager>().StopPlaying();
             countdownTimer.SetTimer(GameManager.instance.matchCountdown);
             // Debug.Log("MATCH ABOUT TO START");
+        }
+
+        if (Input.GetButtonDown("UIPositive" + GameManager.instance.order) && GameManager.instance.canSelect)
+        {
+            placeInArray += 1;
+            if (placeInArray >= 3)
+            {
+                placeInArray = 3;
+            }
+            for (int i = 0; i < buttonsNewSelection.Length; i++)
+            {
+                buttonsNewSelection[i].gameObject.SetActive(false);
+            }
+            buttonsNewSelection[placeInArray].gameObject.SetActive(true);
+            GameManager.instance.eventSystem.SetSelectedGameObject(buttonsNewSelection[placeInArray].transform.GetChild(0).gameObject);
+        }
+        if (Input.GetButtonDown("UINegative" + GameManager.instance.order) && GameManager.instance.canSelect)
+        {
+            placeInArray -= 1;
+            if (placeInArray <= 0)
+            {
+                placeInArray = 0;
+            }
+            for (int i = 0; i < buttonsNewSelection.Length; i++)
+            {
+                buttonsNewSelection[i].gameObject.SetActive(false);
+            }
+            buttonsNewSelection[placeInArray].gameObject.SetActive(true);
+            GameManager.instance.eventSystem.SetSelectedGameObject(buttonsNewSelection[placeInArray].transform.GetChild(0).gameObject);
         }
 
         if (countdownTimer.isActive && countdownTimer.TimerDone())
@@ -440,66 +484,75 @@ public class InGameUIHandler : MonoBehaviour
         //-1 because arrays start at 0
         GameManager.instance.currentPlayers[GameManager.instance.order - 1].SelectedCharacter((Character)character);
         ResetSelection();
+        playerThatsSelecting.text = String.Format("Player  {0}  is selecting", GameManager.instance.order);
     }
 
     public void ResetSelection()
     {
-        //Amount of Players
-        switch (GameManager.instance.amountOfPlayers)
+        for (int i = 0; i < buttonsNewSelection.Length; i++)
         {
-            case 2:
-                //Order of the players
-                switch (GameManager.instance.order)
-                {
-                    case 1:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons2players[0]);
-                        break;
-                    case 2:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons2players[4]);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 3:
-                switch (GameManager.instance.order)
-                {
-                    case 1:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[0]);
-                        break;
-                    case 2:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[4]);
-                        break;
-                    case 3:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[8]);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 4:
-                switch (GameManager.instance.order)
-                {
-                    case 1:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[0]);
-                        break;
-                    case 2:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[4]);
-                        break;
-                    case 3:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[8]);
-                        break;
-                    case 4:
-                        GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[12]);
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
+            buttonsNewSelection[i].SetActive(false);
         }
+        buttonsNewSelection[0].SetActive(true);
+        GameManager.instance.eventSystem.SetSelectedGameObject(buttonsNewSelection[0].transform.GetChild(0).gameObject);
+        placeInArray = 0;
 
+        /* //Amount of Players
+         switch (GameManager.instance.amountOfPlayers)
+         {
+             case 2:
+                 //Order of the players
+                 switch (GameManager.instance.order)
+                 {
+                     case 1:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons2players[0]);
+                         break;
+                     case 2:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons2players[4]);
+                         break;
+                     default:
+                         break;
+                 }
+                 break;
+             case 3:
+                 switch (GameManager.instance.order)
+                 {
+                     case 1:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[0]);
+                         break;
+                     case 2:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[4]);
+                         break;
+                     case 3:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons3players[8]);
+                         break;
+                     default:
+                         break;
+                 }
+                 break;
+             case 4:
+                 switch (GameManager.instance.order)
+                 {
+                     case 1:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[0]);
+                         break;
+                     case 2:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[4]);
+                         break;
+                     case 3:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[8]);
+                         break;
+                     case 4:
+                         GameManager.instance.eventSystem.SetSelectedGameObject(buttons4players[12]);
+                         break;
+                     default:
+                         break;
+                 }
+                 break;
+             default:
+                 break;
+         }
+        */
     }
 
     public void SetActivePanel(GameObject panel, bool state)

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnPointSetter : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// At the start of the game sets the spawnpoints to add them to the gamemanager
+    /// </summary>
     void Start()
     {
         DontDestroyOnLoad(gameObject);
