@@ -454,6 +454,22 @@ InputManager:
     axis: 4
     joyNum: 4
   - serializedVersion: 3
+    m_Name: UIPositive5
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 4 button 5
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 2
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 4
+    joyNum: 5
+  - serializedVersion: 3
     m_Name: UINegative1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -517,6 +533,22 @@ InputManager:
     type: 0
     axis: 4
     joyNum: 4
+  - serializedVersion: 3
+    m_Name: UINegative5
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 4 button 4
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.5
+    sensitivity: 2
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 4
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Vertical1
     descriptiveName: 

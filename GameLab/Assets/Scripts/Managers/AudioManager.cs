@@ -108,6 +108,7 @@ public class AudioManager : Manager
         AudioSource source = sourceObj.AddComponent<AudioSource>();
         source.name = "AudioClip";
         source.clip = GameManager.instance.GetComponent<AudioLibrary>().GetAudio(soundName);
+        source.volume = masterVolume;
         if (spatialSound)
         {
             source.spatialBlend = 1;

@@ -113,6 +113,31 @@ public class InGameUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(GameManager.instance.order);
+
+       
+
+        AbilityCooldown1();
+
+        GameManager.instance.currentMatchCountdown = countdownTimer.TimeLeft();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            activeState = !activeState;
+            variablesPanel.gameObject.SetActive(activeState);
+        }
+
+        if (GameManager.instance.order >= (GameManager.instance.amountOfPlayers + 1) && !once)
+        {
+            GameManager.instance.canSelect = false;
+            NewSelectionPanel.gameObject.SetActive(false);
+            playerThatsSelecting.gameObject.SetActive(false);
+            toolTipPanel.SetActive(false);
+            once = true;
+            GameManager.GetManager<AudioManager>().StopPlaying();
+            countdownTimer.SetTimer(GameManager.instance.matchCountdown);
+            // Debug.Log("MATCH ABOUT TO START");
+        }
 
         if (Input.GetButtonDown("UIPositive" + GameManager.instance.order) && GameManager.instance.canSelect)
         {
@@ -141,28 +166,6 @@ public class InGameUIHandler : MonoBehaviour
             }
             buttonsNewSelection[placeInArray].gameObject.SetActive(true);
             GameManager.instance.eventSystem.SetSelectedGameObject(buttonsNewSelection[placeInArray].transform.GetChild(0).gameObject);
-        }
-
-        AbilityCooldown1();
-
-        GameManager.instance.currentMatchCountdown = countdownTimer.TimeLeft();
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            activeState = !activeState;
-            variablesPanel.gameObject.SetActive(activeState);
-        }
-
-        if (GameManager.instance.order == (GameManager.instance.amountOfPlayers + 1) && !once)
-        {
-            NewSelectionPanel.gameObject.SetActive(false);
-            playerThatsSelecting.gameObject.SetActive(false);
-            GameManager.instance.canSelect = false;
-            toolTipPanel.SetActive(false);
-            once = true;
-            GameManager.GetManager<AudioManager>().StopPlaying();
-            countdownTimer.SetTimer(GameManager.instance.matchCountdown);
-            // Debug.Log("MATCH ABOUT TO START");
         }
 
         if (countdownTimer.isActive && countdownTimer.TimerDone())
