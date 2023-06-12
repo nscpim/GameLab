@@ -245,5 +245,5 @@ Material:
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ShapeColor: {r: 0.48126557, g: 0.6581734, b: 0.9716981, a: 1}
+    - _ShapeColor: {r: 0.23589355, g: 0.28668645, b: 0.8773585, a: 1}
   m_BuildTextureStacks: []

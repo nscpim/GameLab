@@ -8,20 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Window
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ValidKeywords:
-  - _EMISSION
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _OCCLUSIONMAP
-  - _PARALLAXMAP
+  m_Shader: {fileID: -6465566751694194690, guid: f56902d86aae325429ba35c2b665a021, type: 3}
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -84,6 +78,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Vector1_7A26C0DF: 0.13
+    - Vector1_8CA290E3: 0
+    - Vector1_A208836A: 0.7
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -101,6 +98,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -111,6 +109,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_99F9ED08: {r: 1, g: 1, b: 1, a: 0}
+    - Color_ABD0D7B1: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
+    - Color_DF55D64F: {r: 8, g: 8, b: 8, a: 0}
+    - Color_FB0ECDA7: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.9433962, g: 0.20914915, b: 0.5543092, a: 1}
