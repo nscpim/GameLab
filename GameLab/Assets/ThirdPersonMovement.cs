@@ -6,56 +6,62 @@ using UnityEngine.TextCore.Text;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+
+
+    [Header("Main Variables")]
     public CharacterController controller;
-    public float speed = 30f;
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
-    public float jumpSpeed = 20.0f;
-    public float gravity = 130f;
-    private Vector3 movingDirection = Vector3.zero;
-    public float maxSpeed = 70f;
-    public float acceleration = 5;
-    public LayerMask wallLayerMask;
-    public float launchSpeed;
-    public GameObject prefabToSpawn;
-    public GameObject secondAbility;
-    public GameObject characterPrefab;
     public int playerInt;
     public ControlScheme scheme;
-    public Quaternion respawnRotation;
-
     private Animator _anim;
-    public bool canJump;
-
-    private Timer spawnTimer;
-    private Timer secondSpawnTimer;
-    private GameObject objectSpawnedIn;
-    private GameObject secondObjectSpawnedIn;
-    private Timer cutOffTime;
-
     public Camera mainCamera;
     [HideInInspector] public ScriptableCharacter character;
-    private float timeStamp;
     public bool canSelectCharacter;
-    private Timer abilityCooldown;
-    private Timer secondAbilityTimer;
-    public bool canMove;
-    private bool canPause;
-    private Timer pauseTimer;
-    private Timer respawnTimer;
-    public bool respawning;
-    public bool isGrounded;
     public float raycastDistance = 1.5f;
 
+    [Header("Movement")]
+    public float speed = 30f;
+    public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    public float jumpSpeed = 20.0f;
+    public float gravity = 130f;
+    public float maxSpeed = 70f;
+    public float acceleration = 5;
+    public float launchSpeed;
+    private Vector3 movingDirection = Vector3.zero;
+    public LayerMask wallLayerMask;
+    public bool canJump;
+    public bool canMove;
+    public bool isGrounded;
     public bool attached;
+    private bool isCollidingWithWall = false;
+
+    [Header("Abilities")]
+    public GameObject prefabToSpawn;
+    public GameObject secondAbility;
+    private GameObject objectSpawnedIn;
+    private GameObject secondObjectSpawnedIn;
+
+    [Header("Timers")]
+    private Timer spawnTimer;
+    private Timer secondSpawnTimer;
+    private Timer cutOffTime;
+    private Timer abilityCooldown;
+    private Timer secondAbilityTimer;
+    private Timer respawnTimer;
+
 
     [Header("Checkpoints")]
     public int currentCheckpoint = 0;
     public Vector3 respawnPosition;
+    public Quaternion respawnRotation;
+    public bool respawning;
 
 
 
-    private bool isCollidingWithWall = false;
+    /// <summary>
+    /// Initialize variables and setup the cameras based on how many players are in the game
+    /// Start is being called once in the ingame scene.
+    /// </summary>
     void Start()
     {
         respawnTimer = new Timer();
@@ -81,6 +87,10 @@ public class ThirdPersonMovement : MonoBehaviour
         spawnTimer = new Timer();
     }
 
+    /// <summary>
+    /// Method for setting up the cameras if the first one failed, this is purely a safety net if somehow the code is executed in another order.
+    /// This wont affect performance because its a call thats being done once.
+    /// </summary>
     public void TryCineMachineSetup()
     {
         try
@@ -99,7 +109,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Setting up the cameras based on how many players.
+    /// </summary>
+    /// <param name="_name"></param>
+    /// <param name="amount"></param>
     public void SetViewPortRect(string _name, int amount)
     {
         //X , Y, Width and Height
@@ -164,6 +178,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update of the layers, so everyone sees the correct things in the scene and not each others cameras etc.
+    /// </summary>
     public void UpdateLayers()
     {
 
@@ -186,11 +203,11 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// After character selection, update the character model and setup the correct ability gameobjects.
+    /// </summary>
     public void UpdateMesh()
     {
-
-        //NOTE: Put characters in scene already || let players spawn in with all models but only enable model that has been chosen.
         //Change character prefab
         Destroy(gameObject.transform.GetChild(0).gameObject);
         Destroy(gameObject.GetComponent<Animator>());
@@ -203,9 +220,33 @@ public class ThirdPersonMovement : MonoBehaviour
         prefabSpawnable.transform.position = prefabSpawnable.transform.parent.transform.position;
         prefabSpawnable.transform.localScale = new Vector3(1, 1, 1);
         _anim = prefabSpawnable.GetComponent<Animator>();
+        prefabToSpawn = character.Ability1;
+        secondAbility = character.Ability2;
 
     }
 
+    /// <summary>
+    /// Returns the cooldown of the speed ability
+    /// </summary>
+    /// <returns></returns>
+    public int ReturnAbilityCooldown() 
+    {
+        return Mathf.RoundToInt(abilityCooldown.TimeLeft());
+    }
+
+
+    /// <summary>
+    /// return the cooldown of the slow ability
+    /// </summary>
+    /// <returns></returns>
+    public int ReturnSecondAbilityCooldown() 
+    {
+        return Mathf.RoundToInt(secondAbilityTimer.TimeLeft());
+    }
+
+    /// <summary>
+    /// Code executed by timers
+    /// </summary>
     public void Timer()
     {
         if (abilityCooldown.isActive && abilityCooldown.TimerDone())
@@ -213,12 +254,10 @@ public class ThirdPersonMovement : MonoBehaviour
             abilityCooldown.StopTimer();
         }
 
-
         if (secondAbilityTimer.isActive && secondAbilityTimer.TimerDone())
         {
             secondAbilityTimer.StopTimer();
         }
-
 
         if (spawnTimer.isActive && spawnTimer.TimerDone())
         {
@@ -247,7 +286,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Executed the first ability through the input manager
+    /// </summary>
     public void ExecuteAbility()
     {
         if (!abilityCooldown.isActive && canMove)
@@ -256,7 +297,6 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 case Character.Test:
                     SpawnPrefab();
-                    Debug.Log("Ability goes yeet");
                     break;
                 case Character.Test1:
                     SpawnPrefab();
@@ -278,7 +318,9 @@ public class ThirdPersonMovement : MonoBehaviour
             Debug.Log(gameObject.name + " Your first ability is on cooldown: " + abilityCooldown.TimeLeft());
         }
     }
-
+    /// <summary>
+    /// Executed the second ability through the input manager
+    /// </summary>
     public void ExecuteSecondAbility()
     {
         if (!secondAbilityTimer.isActive && canMove)
@@ -309,6 +351,11 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Sets the controlscheme for the player
+    /// </summary>
+    /// <param name="scheme"></param>
     public void SetControlScheme(ControlScheme scheme)
     {
         if (scheme != null)
@@ -319,7 +366,10 @@ public class ThirdPersonMovement : MonoBehaviour
         this.scheme = scheme;
     }
 
-
+    /// <summary>
+    /// When character is selected, sets the correct character and scriptable
+    /// </summary>
+    /// <param name="selection"></param>
     public void SelectedCharacter(Character selection)
     {
         character = GameManager.instance.characters[(int)selection];
@@ -347,6 +397,8 @@ public class ThirdPersonMovement : MonoBehaviour
             default:
                 break;
         }
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
     public void ClearControlScheme()
     {
@@ -373,9 +425,9 @@ public class ThirdPersonMovement : MonoBehaviour
         newPos = transform.position;
         transform.rotation = respawnRotation;
         controller.enabled = true;
-        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.simpleCameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
         CineMachineHandler.instance.cameras[playerInt - 1].OnTargetObjectWarped(gameObject.transform, old - newPos);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(true);
         CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(false);
     }
 
@@ -408,9 +460,18 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
+    public void ReachedEnd() 
+    {
+        CineMachineHandler.instance.cameras[playerInt - 1].gameObject.SetActive(true);
+        CineMachineHandler.instance.simpleCameras[playerInt - 1].gameObject.SetActive(false);
+        CineMachineHandler.instance.cameras[playerInt - 1].m_XAxis.Value = CineMachineHandler.instance.simpleCameras[playerInt - 1].m_XAxis.Value + 0.5f * Time.deltaTime;
+        speed = 30f;
+        this.canMove = false;
+
+    }
+
     void Update()
     {
-
         gameObject.transform.GetChild(0).rotation = gameObject.transform.rotation;
         scheme.Update();
         Timer();
@@ -522,8 +583,6 @@ public class ThirdPersonMovement : MonoBehaviour
             this.transform.parent = hit.transform;
 
         }
-
-
     }
 
     void FixedUpdate()
@@ -551,13 +610,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Slow Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() != playerInt)
         {
             speed = 50f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: " + playerInt + " entered the trigger!  slow down, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
 
         if (other.CompareTag("Fast Area") && other.GetComponent<CheckPlayer>().GrabPlayerInt() == playerInt)
         {
             speed = 300f;
-            Debug.Log("Player entered the trigger!");
+            Debug.LogWarning("Player: "+ playerInt + " entered the trigger! Speed Up, prefab had this int: " + other.GetComponent<CheckPlayer>().GrabPlayerInt());
         }
     }
     //Reset and rework this
@@ -580,6 +639,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.CompareTag("Jump Pad"))
         {
             movingDirection.y = launchSpeed;
+            GameManager.GetManager<AudioManager>().PlaySound("jumppad", false, Vector3.zero, false, null);
             Debug.Log("Player entered the jump pad trigger!");
         }
     }

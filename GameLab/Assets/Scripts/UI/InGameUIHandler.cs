@@ -20,9 +20,12 @@ public class InGameUIHandler : MonoBehaviour
 
 
     [Header("Abilities")]
-    public GameObject[] Abilities2Players;
-    public GameObject[] Abilities3Players;
-    public GameObject[] Abilities4Players;
+    public GameObject[] AbilityPanels;
+
+
+    public TextMeshProUGUI[] Ability1CooldownTexts;
+    public TextMeshProUGUI[] Ability2CooldownTexts;
+
 
     [Header("VariableChangeUI")]
     public Transform variablesPanel;
@@ -100,6 +103,8 @@ public class InGameUIHandler : MonoBehaviour
     void Update()
     {
 
+        AbilityCooldown1();
+
         GameManager.instance.currentMatchCountdown = countdownTimer.TimeLeft();
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -125,29 +130,34 @@ public class InGameUIHandler : MonoBehaviour
             countdownText.transform.parent.gameObject.SetActive(false);
             matchTimerUpdater.SetTimer(1f);
             matchStarted = true;
+            foreach (ThirdPersonMovement i in GameManager.instance.currentPlayers)
+            {
+                i.ChangeCameras();
+            }
             GameManager.instance.SetCanMove(true);
             GameManager.GetManager<AudioManager>().PlayMusic("ingame");
 
             switch (GameManager.instance.amountOfPlayers)
             {
                 case 2:
-                    Abilities2Players[0].gameObject.SetActive(true);
-                    Abilities2Players[1].gameObject.SetActive(false);
-                    Abilities2Players[2].gameObject.SetActive(false);
+                    AbilityPanels[0].gameObject.SetActive(true);
+                    AbilityPanels[1].gameObject.SetActive(false);
+                    AbilityPanels[2].gameObject.SetActive(false);
                     break;
                 case 3:
-                    Abilities2Players[0].gameObject.SetActive(false);
-                    Abilities2Players[1].gameObject.SetActive(true);
-                    Abilities2Players[2].gameObject.SetActive(false);
+                    AbilityPanels[0].gameObject.SetActive(false);
+                    AbilityPanels[1].gameObject.SetActive(true);
+                    AbilityPanels[2].gameObject.SetActive(false);
                     break;
                 case 4:
-                    Abilities2Players[0].gameObject.SetActive(false);
-                    Abilities2Players[1].gameObject.SetActive(false);
-                    Abilities2Players[2].gameObject.SetActive(true);
+                    AbilityPanels[0].gameObject.SetActive(false);
+                    AbilityPanels[1].gameObject.SetActive(false);
+                    AbilityPanels[2].gameObject.SetActive(true);
                     break;
                 default:
                     break;
             }
+
 
             // Debug.Log("GAME STARTING");
             for (int i = 0; i < GameManager.instance.currentPlayers.Count; i++)
@@ -205,6 +215,9 @@ public class InGameUIHandler : MonoBehaviour
         if (matchStarted)
         {
             matchTimer += Time.deltaTime;
+
+
+
         }
 
         if (matchTimerUpdater.isActive && matchTimerUpdater.TimerDone())
@@ -216,6 +229,210 @@ public class InGameUIHandler : MonoBehaviour
             matchTimerUpdater.SetTimer(1f);
         }
 
+        AbilityCooldown2();
+
+    }
+
+
+    public void AbilityCooldown2()
+    {
+        for (int i = 0; i < Ability2CooldownTexts.Length; i++)
+        {
+            switch (i)
+            {
+                //2 Players
+                case 0:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 1:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                //3players
+                case 2:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 3:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 4:
+
+                    if (GameManager.instance.currentPlayers.Count < 3)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[2].ReturnSecondAbilityCooldown().ToString();
+                        if (Ability2CooldownTexts[i].text == "0")
+                        {
+                            Ability2CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                //4 players
+                case 5:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 6:
+                    Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnSecondAbilityCooldown().ToString();
+                    if (Ability2CooldownTexts[i].text == "0")
+                    {
+                        Ability2CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 7:
+                    if (GameManager.instance.currentPlayers.Count < 3)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[2].ReturnSecondAbilityCooldown().ToString();
+                        if (Ability2CooldownTexts[i].text == "0")
+                        {
+                            Ability2CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                case 8:
+                    if (GameManager.instance.currentPlayers.Count < 4)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability2CooldownTexts[i].text = GameManager.instance.currentPlayers[3].ReturnSecondAbilityCooldown().ToString();
+                        if (Ability2CooldownTexts[i].text == "0")
+                        {
+                            Ability2CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    public void AbilityCooldown1()
+    {
+
+        for (int i = 0; i < Ability1CooldownTexts.Length; i++)
+        {
+            switch (i)
+            {
+                //2 Players
+                case 0:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+
+                    break;
+                case 1:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                //3players
+                case 2:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 3:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 4:
+                    if (GameManager.instance.currentPlayers.Count < 3)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[2].ReturnAbilityCooldown().ToString();
+                        if (Ability1CooldownTexts[i].text == "0")
+                        {
+                            Ability1CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                //4 players
+                case 5:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[0].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 6:
+                    Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[1].ReturnAbilityCooldown().ToString();
+                    if (Ability1CooldownTexts[i].text == "0")
+                    {
+                        Ability1CooldownTexts[i].text = "Ready";
+                    }
+                    break;
+                case 7:
+                    if (GameManager.instance.currentPlayers.Count < 3)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[2].ReturnAbilityCooldown().ToString();
+                        if (Ability1CooldownTexts[i].text == "0")
+                        {
+                            Ability1CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                case 8:
+
+                    if (GameManager.instance.currentPlayers.Count < 4)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Ability1CooldownTexts[i].text = GameManager.instance.currentPlayers[3].ReturnAbilityCooldown().ToString();
+                        if (Ability1CooldownTexts[i].text == "0")
+                        {
+                            Ability1CooldownTexts[i].text = "Ready";
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void ChooseCharacter(int character)
