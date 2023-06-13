@@ -43395,7 +43395,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &206090520830753785
@@ -43452,9 +43452,9 @@ GameObject:
   - component: {fileID: 206090520830753766}
   - component: {fileID: 206090520830753785}
   - component: {fileID: 206090520830753784}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69351,9 +69351,9 @@ GameObject:
   - component: {fileID: 1528899667579890195}
   - component: {fileID: 5235042242822084071}
   - component: {fileID: 6541172290980831922}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.031
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
